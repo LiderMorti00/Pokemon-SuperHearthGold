@@ -71,7 +71,7 @@ SINNOH_DEBUG_WARP=1 make -j$(nproc)
 ```
 
 En esa ROM, tres puertas de Ciudad Cerezo llevan a Sinnoh: la del Centro Pokémon a Ciudad Canal
-y las dos casas de la izquierda a Jubileo y a Pirita. Al compilar sin la variable, las puertas
+la de la Tienda a Jubileo y la de la casa del suroeste a Pirita. Al compilar sin la variable, las puertas
 vuelven a ser las normales.
 
 ### Limitaciones actuales
