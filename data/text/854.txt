@@ -1,0 +1,7 @@
+{STRVAR_1 3, 0, 0}! I heard you defeated\nRed on Mt. Silver. Incredible!\rI have a favor to ask of you.\rMy colleague Professor Rowan studies\nPokémon in the Sinnoh region.\rI’ve arranged for the S.S. Aqua’s crew\nto take you to Canalave City.\rTalk to the sailors at the ports\nin Olivine City or Vermilion City!
+This ship sails to Canalave City in\nthe Sinnoh region.\rWe can only take passengers who\nhave Professor Oak’s permission.
+Professor Oak told us about you!\rWould you like to sail to Canalave\nCity in the Sinnoh region?
+All aboard! We’re setting sail!
+Come back anytime!
+Welcome to Canalave City!\rShall we sail back to Olivine City\nin Johto?
+Then shall we sail to Vermilion City\nin Kanto?

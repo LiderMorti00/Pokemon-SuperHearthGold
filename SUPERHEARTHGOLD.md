@@ -25,7 +25,7 @@ Añade el tipo Hada, los Pokémon y movimientos hasta la Gen 9, y un viaje de po
 2. [ ] Herramientas de conversión Platino → HGSS y primer tramo caminable.
    - [x] Importador de mapas (`tools/sinnoh/import_sinnoh.py`): terreno, matriz, texturas,
          edificios y cabeceras. Canal, Ruta 218, Jubileo, rutas 202–204 y Pirita.
-   - [ ] Barco desde Olivo/Carmín hasta Canal.
+   - [x] Barco desde Olivo/Carmín hasta Canal (ver «El viaje a Sinnoh»).
    - [ ] Ampliar la tabla de cabeceras de mapa (ahora se reutilizan cabeceras sin uso de HGSS).
 3. [ ] Resto del mapa de Sinnoh.
 4. [ ] Encuentros, entrenadores, gimnasios y Liga de Sinnoh.
@@ -44,6 +44,21 @@ make AUTO_TEST=Y TEST_FILTER="fairy" -j$(nproc)
 # test.sav: https://github.com/BluRosie/hg-engine/raw/workflows/assets/test.sav
 SDL_VIDEODRIVER=dummy scripts/run_tests.sh
 ```
+
+## El viaje a Sinnoh
+
+1. Tras vencer a Red (flag `FLAG_UNK_25F`) y haber recibido el inicial de Kanto, al hablar con el
+   Prof. Oak en su laboratorio te da permiso para viajar a Sinnoh (`FLAG_SHG_SINNOH_UNLOCKED`).
+2. En los puertos del S.S. Aqua de Ciudad Olivo y Ciudad Carmín hay un marinero nuevo que, con
+   ese permiso, te lleva al muelle de Ciudad Canal.
+3. En el muelle de Canal otro marinero te lleva de vuelta a Olivo o a Carmín.
+
+Archivos: `data/scr_seq/scr_seq_00152_*.s` (puerto de Olivo), `00154_*` (puerto de Carmín),
+`00740_*` (laboratorio de Oak), `00965_shg_canalave.s` (Canal), los textos en
+`data/text/854.txt` y las constantes en `data/scr_seq/include/superhearthgold.inc`.
+Los scripts de Olivo, Carmín y Oak son los originales de HGSS (sacados con el volcador de
+hg-engine y comprobados byte a byte) con los añadidos marcados como `SuperHearthGold`.
+Los textos nuevos están en inglés, como el resto de la ROM.
 
 ## Cómo funciona la importación de Sinnoh
 
@@ -71,7 +86,8 @@ SINNOH_DEBUG_WARP=1 make -j$(nproc)
 ```
 
 En esa ROM, tres puertas de Ciudad Cerezo llevan a Sinnoh: la del Centro Pokémon a Ciudad Canal
-la de la Tienda a Jubileo y la de la casa del suroeste a Pirita. Al compilar sin la variable, las puertas
+la de la Tienda a Jubileo y la de la casa del suroeste a Pirita; la cuarta casa lleva al puerto de
+Ciudad Olivo para probar el barco. Al compilar sin la variable, las puertas
 vuelven a ser las normales.
 
 ### Limitaciones actuales

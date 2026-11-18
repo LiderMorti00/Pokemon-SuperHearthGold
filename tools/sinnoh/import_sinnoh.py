@@ -118,6 +118,7 @@ def convert_land_data(data, prop_remap):
 
 
 def encode_header(zone, area_bank, matrix_id, events_bank):
+    scripts = zone.get("scripts", SCRIPTS_EVERYWHERE)
     flags = 0
     flags |= MAP_TYPES[zone["map_type"]] << 8
     flags |= FOLLOW_ALLOW << 18
@@ -131,14 +132,15 @@ def encode_header(zone, area_bank, matrix_id, events_bank):
     return struct.pack(
         "<BBHHHHHHHHHI",
         ENCDATA_NA, area_bank, MOVE_MODEL_BANK, matrix_id,
-        SCRIPTS_EVERYWHERE, SCRIPT_HEADER_EVERYWHERE, MSG_EVERYWHERE,
+        scripts, SCRIPT_HEADER_EVERYWHERE, MSG_EVERYWHERE,
         zone["music"], zone["music"], events_bank, mapsec_word, flags,
     )
 
 
 # --- modo de prueba -----------------------------------------------------------------------
 # Con SINNOH_DEBUG_WARP=1 tres puertas de Ciudad Cerezo llevan a los Centros Pokémon de Canal,
-# Jubileo y Pirita, y esas puertas devuelven al Centro Pokémon de Cerezo. Solo sirve para
+# Jubileo y Pirita (y esas puertas devuelven al Centro Pokémon de Cerezo), y una cuarta al
+# puerto de Ciudad Olivo. Solo sirve para
 # probar los mapas mientras no exista el barco.
 MAP_CHERRYGROVE = 67
 MAP_CHERRYGROVE_POKECENTER_1F = 69
@@ -147,6 +149,7 @@ DEBUG_DOORS = {
     (564, 391): ("MAP_HEADER_CANALAVE_CITY", 58, 722),
     (555, 391): ("MAP_HEADER_JUBILIFE_CITY", 180, 776),
     (547, 399): ("MAP_HEADER_OREBURGH_CITY", 303, 756),
+    (558, 401): (240, None, None),  # puerto de Ciudad Olivo (para probar el barco)
 }
 
 
@@ -177,7 +180,8 @@ def apply_debug_warp(events, arm9, zones, enable):
         if (x, z) not in DEBUG_DOORS:
             continue
         if enable:
-            struct.pack_into("<HH", ev, w + 4, hg_map[DEBUG_DOORS[(x, z)][0]], 0)
+            target = DEBUG_DOORS[(x, z)][0]
+            struct.pack_into("<HH", ev, w + 4, target if isinstance(target, int) else hg_map[target], 0)
         else:
             for vw in _warp_offsets(vanilla):
                 if struct.unpack_from("<2H", vanilla, vw) == (x, z):
@@ -236,9 +240,43 @@ def extend_matshp(prop_remap):
     (ROOT / MATSHP_HG).write_bytes(data)
 
 
-def build_events(warps):
+def pack_object(local_id, gfx, script, direction, x, z, movement=0):
+    """Objeto (NPC) de un archivo de eventos de HGSS: 14 hwords + y (word)."""
+    return struct.pack("<14HI", local_id, gfx, movement, 0, 0, script, direction, 0, 0, 0, 0, 0, x, z, 0)
+
+
+def append_objects(event_file, objects):
+    """Añade objetos al final de la lista de objetos de un archivo de eventos existente."""
+    ev = bytearray(event_file)
+    off = 4 + 20 * struct.unpack_from("<I", ev, 0)[0]
+    count = struct.unpack_from("<I", ev, off)[0]
+    insert_at = off + 4 + 32 * count
+    struct.pack_into("<I", ev, off, count + len(objects))
+    return bytes(ev[:insert_at]) + b"".join(objects) + bytes(ev[insert_at:])
+
+
+# Marineros que llevan a Sinnoh en los puertos del S.S. Aqua. El script es el nuevo que se
+# añade al final de los scripts del mapa (data/scr_seq/scr_seq_00152_*.s y 00154_*.s).
+SPRITE_SEAMAN_2 = 348
+PORT_SAILORS = {
+    240: dict(script=6, x=9, z=8),  # puerto de Ciudad Olivo (P01R0101): scr_seq_P01R0101_005
+    386: dict(script=4, x=9, z=8),  # puerto de Ciudad Carmín (P01R0103): scr_seq_P01R0103_003
+}
+SHG_OBJECT_ID = 0x20  # ID local para los objetos añadidos a mapas de HGSS
+
+
+def add_port_sailors(events, arm9):
+    vanilla = ndspy.narc.NARC(vanilla_file("a/0/3/2"))
+    for map_id, s in PORT_SAILORS.items():
+        bank = struct.unpack_from("<H", arm9, MAP_HEADERS_ARM9 + 24 * map_id + 16)[0]
+        sailor = pack_object(SHG_OBJECT_ID, SPRITE_SEAMAN_2, s["script"], 1, s["x"], s["z"])
+        events.files[bank] = append_objects(vanilla.files[bank], [sailor])
+
+
+def build_events(warps, objects=()):
     data = struct.pack("<I", 0)          # bg events
-    data += struct.pack("<I", 0)         # objetos
+    data += struct.pack("<I", len(objects))
+    data += b"".join(objects)
     data += struct.pack("<I", len(warps))
     for x, z, dest, dest_warp, y in warps:
         data += struct.pack("<HHHHI", x, z, dest, dest_warp, y)
@@ -360,10 +398,13 @@ def main():
         events_bank = len(events.files)
         warps = [(*to_hg_coords(overworld, x, z), dest, dw, y)
                  for x, z, dest, dw, y in debug_warps(zone["platinum_header"])] if debug_warp else []
-        events.files.append(build_events(warps))
+        objects = [pack_object(i, o["graphics_id"], o["script"], o["dir"], *to_hg_coords(overworld, o["x"], o["z"]))
+                   for i, o in enumerate(zone.get("objects", []))]
+        events.files.append(build_events(warps, objects))
         hdr = encode_header(zone, area_remap[plat["areaData"]], matrix_id, events_bank)
         off = MAP_HEADERS_ARM9 + 24 * zone["hg_map"]
         arm9[off:off + 24] = hdr
+    add_port_sailors(events, arm9)
     save_narc("events", events)
     ARM9.write_bytes(arm9)
 

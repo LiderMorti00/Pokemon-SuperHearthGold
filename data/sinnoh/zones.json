@@ -1,5 +1,5 @@
 {
-  "_comment": "Zonas de Sinnoh importadas desde Platino. hg_map es el ID de cabecera de HGSS que ocupa cada una (de momento se reutilizan cabeceras sin uso de HGSS; ver SUPERHEARTHGOLD.md).",
+  "_comment": "Zonas de Sinnoh importadas desde Platino. hg_map es el ID de cabecera de HGSS que ocupa cada una (de momento se reutilizan cabeceras sin uso de HGSS; ver SUPERHEARTHGOLD.md). scripts: archivo de scripts propio (data/scr_seq/scr_seq_NNNNN_*.s); objects: NPCs con coordenadas de Platino.",
   "zones": [
     {
       "platinum_header": "MAP_HEADER_CANALAVE_CITY",
@@ -8,7 +8,18 @@
       "map_type": "MAP_TYPE_CITY_TOWN",
       "battle_bg": "BATTLE_BG_CITY",
       "music": 1024,
-      "fly": true
+      "fly": true,
+      "scripts": 965,
+      "objects": [
+        {
+          "_comment": "marinero del muelle (barco a Olivo/Carmín)",
+          "graphics_id": 348,
+          "script": 1,
+          "dir": 0,
+          "x": 45,
+          "z": 751
+        }
+      ]
     },
     {
       "platinum_header": "MAP_HEADER_ROUTE_218",
