@@ -14206,4 +14206,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_MAGIKARP,
     },
 
+
+    // Pokémon SuperHearthGold: Pokémon salvajes de Sinnoh (tools/sinnoh/sync_encounters.py)
+#include "sinnoh/encounters.h"
 };

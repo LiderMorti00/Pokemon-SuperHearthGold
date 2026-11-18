@@ -143,7 +143,7 @@ def encode_header(zone, area_bank, matrix_id, events_bank, music):
     mapsec_word = zone["mapsec"] | (area_icon << 8) | (10 << 12)
     return struct.pack(
         "<BBHHHHHHHHHI",
-        ENCDATA_NA, area_bank, MOVE_MODEL_BANK, matrix_id,
+        zone.get("wild", ENCDATA_NA), area_bank, MOVE_MODEL_BANK, matrix_id,
         zone.get("scripts", SCRIPTS_EVERYWHERE), SCRIPT_HEADER_EVERYWHERE, MSG_EVERYWHERE,
         music(zone["music_day"]), music(zone["music_night"]), events_bank, mapsec_word, flags,
     )
@@ -325,7 +325,10 @@ def apply_debug_doors(events, hg_ids, enable):
 def main():
     zones = json.loads((SINNOH / "zones.json").read_text())["zones"]
     overrides = json.loads((SINNOH / "zone_overrides.json").read_text())
+    wild = json.loads((SINNOH / "encounters.json").read_text())["banks"] if (SINNOH / "encounters.json").exists() else {}
     for z in zones:
+        if z["stem"] in wild:
+            z["wild"] = wild[z["stem"]]
         z.update({k: v for k, v in overrides.get(z["stem"], {}).items() if not k.startswith("_")})
     hg_ids = {z["stem"]: z["hg_map"] for z in zones}
     header_ids = {f"MAP_HEADER_{z['stem'].upper()}": z["hg_map"] for z in zones}
