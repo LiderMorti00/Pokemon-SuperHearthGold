@@ -5,3 +5,48 @@ All aboard! We’re setting sail!
 Come back anytime!
 Welcome to Canalave City!\rShall we sail back to Olivine City\nin Johto?
 Then shall we sail to Vermilion City\nin Kanto?
+Welcome! This is the Oreburgh Pokémon Gym!\rI’m Roark, the Gym Leader!\rI’m but one Trainer who decided to\nwalk proudly with Rock-type Pokémon!\rSo you’re the Champion from Johto?\nShow me how tough your Pokémon are!
+This is embarrassing...\rBut that’s tough. You were strong,\nand I was weak. That’s all there is.\rHere’s your official Pokémon League\nCoal Badge.
+{STRVAR_1 3, 0, 0} received the\nCoal Badge from Roark!
+In this region of Sinnoh, there are\nseven other Gym Leaders.\rI should warn you--they’re a lot\ntougher than I am!
+You kept me waiting!\rI’m Eterna’s Gym Leader, Gardenia,\nthe Grass-type master!\rYou have a winning aura about you.\rSo, anyway, this will be fun.\nLet’s have our battle!
+You’re really tough!\rI guess that’s a measure of how much\nyou love your Pokémon.\rIn recognition of that, I proudly\ngrant you this!
+{STRVAR_1 3, 0, 0} received the\nForest Badge from Gardenia!
+Yup! You and your Pokémon are gonna\nget even tougher, and I mean seriously!
+Ohohoho!!\rFinally, you have arrived!\rI am Fantina, the Gym Leader of\nHearthome. I study Pokémon very much.\rBut I shall win. That is what a Gym\nLeader does, non?
+I am dumbfounded!\rSo very, very strong! You, your\nPokémon, so strong!\rYour power is admirable! I shall\nhonor it with this Gym Badge!
+{STRVAR_1 3, 0, 0} received the\nRelic Badge from Fantina!
+You are so very strong!\nC’est magnifique!
+Hello. I’m pleased to meet you.\rI’m Maylene, and I’m the Gym Leader.\rI take battling very seriously.\nWhenever you’re ready!
+...OK. You win.\rThat was a tough loss.\nI learned a lot from it.\rPlease, accept this Gym Badge.
+{STRVAR_1 3, 0, 0} received the\nCobble Badge from Maylene!
+I have to train harder...\rI want to become as strong as you\nand your Pokémon.
+Welcome! I don’t get challenged\nvery often!\rThat’s right, I’m Crasher Wake!\rMy Pokémon were toughened up by\nstormy white waters!\rVictory will be ours! Come on,\nlet’s get it done!
+It seems the undertow pulled me\nunder...\rBut I had a great time battling\nwith you! You’ve earned this!
+{STRVAR_1 3, 0, 0} received the\nFen Badge from Crasher Wake!
+Wahahahah! That was a great battle!\rCome splash around anytime!
+Welcome, challenger!\rI am Byron, Leader of the Canalave\nGym and father of Roark!\rMy Steel-type Pokémon are harder\nthan any steel you’ve ever seen!\rCome! Show me what you’ve got!
+You were strong enough to take down\nmy prized team of Pokémon.\rIn recognition of that power,\nI give you this!
+{STRVAR_1 3, 0, 0} received the\nMine Badge from Byron!
+Hahahah! Splendid!\rI’ll have to tell my son Roark\nabout you!
+You want to challenge Candice?\rSure thing! I was waiting for\nsomeone tough!\rI’m tough because I know how to\nfocus. It’s all about focus!\rGet ready to lose!
+Wow! You’re great! You’ve earned\nmy respect!\rOh, that’s right! I’m supposed to\ngive you this!
+{STRVAR_1 3, 0, 0} received the\nIcicle Badge from Candice!
+Your focus and will bowled us over\ntotally. Keep it up!
+...All right, challenger.\rI’m Volkner, the Gym Leader.\rThey say I’m the top Gym Leader in\nSinnoh, but my battles have been\rboring lately.\rI hope you’re the Trainer who’ll make\nme remember how fun it is to battle!
+...Hehehe. Hahahah!\r...That was the most fun I’ve had in\na battle since...I don’t know when!\rYou’ve earned this!
+{STRVAR_1 3, 0, 0} received the\nBeacon Badge from Volkner!
+With all eight Sinnoh Gym Badges,\nyou can enter the Pokémon League.\rHead for Victory Road!
+Welcome to the Sinnoh Pokémon League.\rOnly Trainers who have all eight\nSinnoh Gym Badges may pass.
+Very well!\rTrainer, you’ve indeed collected all\nthe Gym Badges of Sinnoh!\rYou will be facing the Elite Four.\rIf you can’t beat all four of them in\na row, you have to start from the\rfirst one again. Go for glory!
+Hello!\nWelcome to the Pokémon League!\rI’m Aaron of the Elite Four.\nIt’s good to meet you.\rOh, I should explain, I’m a huge fan\nof bug Pokémon.\rBug Pokémon are nasty-mean, and yet\nthey’re beautiful, too...\rWould you like to know why I take\non challengers here?\rIt’s because I want to become\nperfect, just like my bug Pokémon!\rOK! Let me take you on!
+Go on, go to the next room.\rI’m going to become a top-level\nTrainer who can’t be outclassed with\rmy beautiful and tough bug Pokémon!
+Well, well.\rYou’re quite the adorable Trainer,\nbut you’ve also got a spine.\rAhaha!\nI’m Bertha.\rI have a preference for Ground-type\nPokémon.\rWell, would you show this old lady\nhow much you’ve learned?
+The Trainer in the next room is a\nmuch more formidable opponent.\rYou really must have your wits\nabout you.\rHowever, I think you can go as far\nas you desire. Ahahaha!
+I was waiting for you, challenger!\rFlint, the master of the Fire type,\nis up next!\rBattles are clashes of the burning\nspirit of Pokémon.\rBattles aren’t about appearances\nor what’s weak or strong.\rIt all comes down to whether the\ncombatants can burn hot or not.
+...\n...\r...Keep going...\rI know your spirit burns hot.\nYour whole team does.
+Ah, you timed your arrival well.\rI’ve just finished reading a book,\nyou see.\rAllow me to introduce myself.\rI am Lucian.\nI am a user of the Psychic type.\rI must say, you’ve already proven\nyourself to be outstanding by coming\rthis far.\rThey say I am the toughest of the\nElite Four.\rI’m afraid I will have to go all out\nagainst you to live up to that\rreputation.
+I’ll be reading books until the next\nchallenger arrives.\rThat will calm my nerves, so that\nI may deal with all situations without\rpanicking.
+Cynthia: One look at you tells\nme many things about you.\rTogether, you and your Pokémon\novercame all the challenges you\rfaced, however difficult.\rIt means that you’ve triumphed over\nany personal weaknesses, too.\rThe power you learned...\nI can feel it from you.\rThat’s enough talking.\nLet’s get on with why you’re here.\rI, Cynthia, accept your challenge as\nthe Pokémon League Champion!\rThere won’t be any letup from me!
+Cynthia: That was excellent.\nTruly, an outstanding battle.\rYou are the Champion of Sinnoh\nas well as Johto and Kanto!\rCome back and challenge us again\nanytime!
+Cynthia: The Elite Four will be\nwaiting for your next challenge.

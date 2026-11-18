@@ -87,6 +87,7 @@ FOLLOW = {"PREVENT": 0, "HEIGHT_RESTRICT": 1, "ALLOW": 2}
 ENCDATA_NA = 0xFF
 MOVE_MODEL_BANK = 15
 SCRIPTS_EVERYWHERE = 139
+SERVICES_SCRIPTS = 967  # data/scr_seq/scr_seq_00967_shg_sinnoh_league.s: enfermera, tienda y Liga
 SCRIPT_HEADER_EVERYWHERE = 399
 MSG_EVERYWHERE = 3
 
@@ -147,6 +148,15 @@ def read_matshp(data):
 def write_matshp(locs, ids):
     return (struct.pack("<HH", len(locs), len(ids)) + b"".join(struct.pack("<HH", *l) for l in locs)
             + b"".join(struct.pack("<HH", *i) for i in ids))
+
+
+# Comportamientos de casilla de Platino sin equivalente en HGSS: los suelos del gimnasio de Pradera
+# que dependen del nivel del agua (los botones son scripts de Platino) pasan a suelo normal.
+BEHAVIOR_REMAP = {
+    0x56: 0x00,  # TILE_BEHAVIOR_PASTORIA_GYM_H_GROUND
+    0x57: 0x00,  # TILE_BEHAVIOR_PASTORIA_GYM_M_GROUND
+    0x58: 0x00,  # TILE_BEHAVIOR_PASTORIA_GYM_L_GROUND
+}
 
 
 # --- cabeceras ------------------------------------------------------------------------------
@@ -260,12 +270,38 @@ def music_mapper(table):
 
 # --- eventos ----------------------------------------------------------------------------------
 
+# Los sprites de Platino (OBJ_EVENT_GFX_*) tienen el mismo índice que en HGSS salvo los que HGSS quitó
+# de su tabla (overlay 1); un objeto con uno de esos índices deja la pantalla en negro.
+HG_MISSING_SPRITES = {26, 27, 28, 32, 46, 47, 48, 49, 57, 58, 61, 64, 65, 66, 67, *range(72, 84),
+                      *range(88, 97), *range(100, 126), *range(134, 141), 147, 149}
+SPRITE_REMAP = {
+    32: 68,    # esquiador -> SPRITE_MAN5 (Entrenador Guay de nieve)
+    46: 342,   # nadador -> SPRITE_GSSWIMMERM
+    47: 343,   # nadadora -> SPRITE_GSSWIMMERW
+    48: 316,   # chica flotador -> SPRITE_GSBABYGIRL1
+    49: 315,   # chico flotador -> SPRITE_GSBABYBOY1
+    134: 5,    # Alecrán (Aaron) -> SPRITE_BOY3 (cazabichos)
+    135: 18,   # Gaia (Bertha) -> SPRITE_OLDWOMAN1
+    136: 11,   # Fausto (Flint) -> SPRITE_MAN3
+    137: 36,   # Delos (Lucian) -> SPRITE_GENTLEMAN
+    138: 422,  # Cintia -> SPRITE_CHAMPION (la Cintia de HGSS)
+}
+
+
+def hg_sprite(gfx):
+    if gfx in HG_MISSING_SPRITES:
+        if gfx not in SPRITE_REMAP:
+            print(f"AVISO: sprite {gfx} sin equivalente en HGSS; se usa SPRITE_MAN3")
+        return SPRITE_REMAP.get(gfx, 11)
+    return gfx
+
+
 def pack_object(local_id, gfx, script, direction, x, z, movement=0, trainer_type=0, sight=0,
-                range_x=0, range_z=0, y=0):
+                range_x=0, range_z=0, y=0, flag=0):
     """Objeto (NPC) de un archivo de eventos de HGSS: id, sprite, movimiento, tipo de entrenador,
     flag oculto, script, dirección, 3 parámetros (el primero es el alcance de vista de un
     entrenador), rango x/z, x, z (hwords) e y (word)."""
-    return struct.pack("<14HI", local_id, gfx, movement, trainer_type, 0, script, direction, sight, 0, 0,
+    return struct.pack("<14HI", local_id, hg_sprite(gfx), movement, trainer_type, flag, script, direction, sight, 0, 0,
                        range_x, range_z, x, z, y & 0xFFFFFFFF)
 
 
@@ -359,6 +395,11 @@ def main():
             z["wild"] = wild[z["stem"]]
         z.update({k: v for k, v in overrides.get(z["stem"], {}).items() if not k.startswith("_")})
     hg_ids = {z["stem"]: z["hg_map"] for z in zones}
+    # warp_targets (zone_overrides.json): {"índice del warp": "mapa:warp de destino"}
+    for z in zones:
+        for i, target in z.get("warp_targets", {}).items():
+            stem, _, w = target.partition(":")
+            z["warps"][int(i)][3:5] = [hg_ids[stem], int(w or 0)]
     header_ids = {f"MAP_HEADER_{z['stem'].upper()}": z["hg_map"] for z in zones}
 
     expected = int(re.search(r"SHG_NUM_MAP_HEADERS (\d+)", (REPO / "include" / "superhearthgold_maps.h").read_text()).group(1))
@@ -446,6 +487,11 @@ def main():
             data = (SINNOH / "land_data" / f"map_data_{pt_land:03d}.bin").read_bytes()
             perm, bldg, _, _ = struct.unpack_from("<4I", data, 0)
             body = bytearray(data[16:])
+            # comportamientos de casilla propios de Platino que HGSS no entiende
+            for off in range(0, perm, 2):
+                b = body[off]
+                if b in BEHAVIOR_REMAP:
+                    body[off] = BEHAVIOR_REMAP[b]
             for i in range(bldg // 48):
                 off = perm + 48 * i
                 pt_model = struct.unpack_from("<I", body, off)[0]
@@ -511,18 +557,30 @@ def main():
     music = music_mapper(add_music())
     trainers_json = SINNOH / "trainers.json"
     trainer_objects = json.loads(trainers_json.read_text())["objects"] if trainers_json.exists() else {}
+    services_json = SINNOH / "services.json"
+    service_objects = json.loads(services_json.read_text())["objects"] if services_json.exists() else {}
     headers = ndspy.narc.NARC(vanilla_file(MAP_HEADER_NARC))
     arm9 = vanilla_arm9()
     headers.files = [arm9[HG_MAP_HEADERS_ARM9 + 24 * i:HG_MAP_HEADERS_ARM9 + 24 * (i + 1)] for i in range(NUM_HG_HEADERS)]
     for z in zones:
         warps = [(*to_hg(z["group"], x, zz), y, dest, dw) for x, zz, y, dest, dw in z["warps"]]
-        objects = [pack_object(i, o["graphics_id"], o["script"], o["dir"], *to_hg(z["group"], o["x"], o["z"]))
+        # y: altura en casillas como en los JSON de Platino; en el archivo de eventos va en fx32 (<< 16)
+        # flag: flag que oculta el objeto mientras está activo (0 = siempre visible)
+        objects = [pack_object(i, o["graphics_id"], o["script"], o["dir"], *to_hg(z["group"], o["x"], o["z"]),
+                               movement=o.get("movement_type", 0), y=o.get("y", 0) << 16, flag=o.get("flag", 0))
                    for i, o in enumerate(z.get("objects", []))]
-        for t in trainer_objects.get(z["stem"], []):
+        # enfermeras y dependientes (scripts comunes de servicios)
+        for o in service_objects.get(z["stem"], []):
+            objects.append(pack_object(len(objects), o["graphics_id"], o["script"], o["dir"],
+                                       *to_hg(z["group"], o["x"], o["z"]), movement=o["movement_type"],
+                                       y=o["y"] << 16))
+            z.setdefault("scripts", SERVICES_SCRIPTS)
+        for t in ([] if os.environ.get("SINNOH_DEBUG_NO_TRAINERS") == "1" else trainer_objects.get(z["stem"], [])):
             x, zz = to_hg(z["group"], t["x"], t["z"])
             objects.append(pack_object(len(objects), t["graphics_id"], t["script"], t["dir"], x, zz,
                                        movement=t["movement_type"], trainer_type=t["trainer_type"],
-                                       sight=t["sight"], range_x=t["range_x"], range_z=t["range_z"], y=t["y"]))
+                                       sight=t["sight"], range_x=t["range_x"], range_z=t["range_z"],
+                                       y=0 if z.get("flatten_y") else t["y"] << 16))
         events_bank = len(events.files)
         events.files.append(build_events(warps, objects))
         cls = area_class[z["area"]]

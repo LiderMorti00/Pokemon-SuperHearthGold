@@ -1,0 +1,703 @@
+{
+ "_comment": "Generado por tools/sinnoh/sync_trainers.py: enfermeras y dependientes de Sinnoh",
+ "objects": {
+  "jubilife_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "jubilife_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "canalave_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "canalave_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "oreburgh_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "oreburgh_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "eterna_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "eterna_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "route_206_cycling_road_north_gate": [
+   {
+    "graphics_id": 24,
+    "movement_type": 16,
+    "script": 2,
+    "dir": 2,
+    "x": 10,
+    "z": 7,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 17,
+    "script": 2,
+    "dir": 3,
+    "x": 4,
+    "z": 7,
+    "y": 0
+   }
+  ],
+  "eterna_city_herb_shop": [
+   {
+    "graphics_id": 25,
+    "movement_type": 15,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "hearthome_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "hearthome_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "contest_hall_lobby": [
+   {
+    "graphics_id": 335,
+    "movement_type": 15,
+    "script": 1,
+    "dir": 1,
+    "x": 16,
+    "z": 4,
+    "y": 0
+   },
+   {
+    "graphics_id": 335,
+    "movement_type": 15,
+    "script": 1,
+    "dir": 1,
+    "x": 5,
+    "z": 4,
+    "y": 0
+   },
+   {
+    "graphics_id": 335,
+    "movement_type": 15,
+    "script": 1,
+    "dir": 1,
+    "x": 27,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "pastoria_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "pastoria_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "pastoria_city_observatory_gate_1f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 7,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 3,
+    "x": 2,
+    "z": 6,
+    "y": 0
+   }
+  ],
+  "veilstone_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "veilstone_store_1f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 3,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "veilstone_store_2f": [
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 8,
+    "y": 0
+   },
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 3,
+    "x": 2,
+    "z": 4,
+    "y": 0
+   },
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 3,
+    "x": 2,
+    "z": 6,
+    "y": 0
+   }
+  ],
+  "veilstone_store_3f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 4,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 0,
+    "x": 3,
+    "z": 11,
+    "y": 0
+   }
+  ],
+  "veilstone_store_4f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 3,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 8,
+    "y": 0
+   }
+  ],
+  "sunyshore_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "sunyshore_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "snowpoint_city_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "snowpoint_city_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "pokemon_league_south_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "pokemon_league_north_pokecenter_1f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 16,
+    "z": 1,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 17,
+    "z": 1,
+    "y": 0
+   },
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 4,
+    "z": 1,
+    "y": 0
+   }
+  ],
+  "fight_area_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "fight_area_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "route_201": [
+   {
+    "graphics_id": 24,
+    "movement_type": 9,
+    "script": 2,
+    "dir": 1,
+    "x": 140,
+    "z": 842,
+    "y": 1
+   }
+  ],
+  "route_206_cycling_road_south_gate": [
+   {
+    "graphics_id": 24,
+    "movement_type": 17,
+    "script": 2,
+    "dir": 3,
+    "x": 3,
+    "z": 7,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 16,
+    "script": 2,
+    "dir": 2,
+    "x": 11,
+    "z": 7,
+    "y": 0
+   }
+  ],
+  "sandgem_town_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "sandgem_town_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "floaroma_town_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "floaroma_town_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "solaceon_town_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   },
+   {
+    "graphics_id": 24,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 2,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "solaceon_town_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "celestic_town_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "survival_area_mart": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 3,
+    "z": 5,
+    "y": 0
+   }
+  ],
+  "survival_area_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "resort_area_pokecenter_1f": [
+   {
+    "graphics_id": 335,
+    "movement_type": 0,
+    "script": 1,
+    "dir": 1,
+    "x": 8,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "resort_area_ribbon_syndicate_1f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 15,
+    "z": 4,
+    "y": 0
+   }
+  ],
+  "veilstone_store_b1f": [
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 0,
+    "x": 20,
+    "z": 11,
+    "y": 0
+   },
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 15,
+    "z": 11,
+    "y": 0
+   },
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 1,
+    "x": 5,
+    "z": 11,
+    "y": 0
+   },
+   {
+    "graphics_id": 25,
+    "movement_type": 0,
+    "script": 2,
+    "dir": 2,
+    "x": 20,
+    "z": 6,
+    "y": 0
+   }
+  ]
+ }
+}

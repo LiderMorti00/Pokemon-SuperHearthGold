@@ -23,12 +23,12 @@ Añade el tipo Hada, los Pokémon y movimientos hasta la Gen 9, y un viaje de po
 
 1. [x] Base hg-engine + tipo Hada verificado con pruebas de combate (`data/battle_tests/fairy/`).
 2. [x] Herramientas de conversión Platino → HGSS, barco desde Olivo/Carmín hasta Canal.
-3. [ ] Todo Sinnoh: exteriores e interiores y su música.
+3. [x] Todo Sinnoh: exteriores e interiores y su música.
    - [x] Cabeceras de mapa dinámicas (sin el límite de 540 de HGSS).
    - [x] 463 mapas de Sinnoh (todo menos Subsuelo, Mundo Distorsión, Frente Batalla, salas Wi-Fi,
          concursos y mapas sin uso de Platino), con sus warps.
    - [x] Música de Sinnoh (75 canciones de Platino; ver «Música»).
-4. [ ] Encuentros, entrenadores, gimnasios y Liga de Sinnoh.
+4. [x] Encuentros, entrenadores, gimnasios y Liga de Sinnoh (ver «Fase 4»).
 5. [ ] Mapa del Pokégear, Pokédex de Sinnoh y caja de medallas de Platino.
 
 ## Compilar
@@ -119,10 +119,47 @@ y la de la casa del suroeste a los Centros Pokémon de Canal, Jubileo y Pirita, 
 puerto de Ciudad Olivo. `SINNOH_DEBUG_TARGETS` cambia esos destinos (nombres de `zones.json`,
 opcionalmente `mapa:warp`). Al compilar sin la variable, las puertas vuelven a ser las normales.
 
+## Fase 4: Pokémon salvajes, entrenadores, gimnasios y Liga
+
+Todo se genera desde el decomp de Platino:
+
+```sh
+python3 tools/sinnoh/sync_encounters.py /ruta/a/pokeplatinum   # data/sinnoh/encounters.*
+python3 tools/sinnoh/sync_trainers.py /ruta/a/pokeplatinum     # trainers.*, services.json, ...
+```
+
+- **Pokémon salvajes** (`data/sinnoh/encounters.h`, bancos 142-245 de `data/Encounters.c`): niveles
+  50 + nivel/2. La mañana y el día usan las sustituciones de día de Platino y la noche las de noche,
+  así que el sistema de día y noche de HGSS cambia los encuentros. Los edificios encienden sus
+  ventanas de noche con la iluminación de las áreas de HGSS.
+- **Entrenadores**: 380 (IDs 741-1120), con sus textos de Platino. Sin reclutas ni comandantes del
+  Equipo Galaxia ni el rival. Niveles 50 + nivel/2 con los movimientos que aprenden por nivel. Las
+  banderas de "vencido" de los IDs 1040 o más van al bloque libre 0x9D4 (`src/shg_trainer_flags.c`).
+  `trainerdatagen` nombra ahora los archivos con 4 cifras (con IDs de 4 cifras la narc salía
+  desordenada).
+- **Gimnasios** (`data/scr_seq/scr_seq_00966_shg_sinnoh_gyms.s`): los 8 líderes con sus equipos de
+  revancha de Platino (niveles 61-78) y su MT. Las medallas son las flags 1032-1039 (`FLAG_SHG_BADGE_*`)
+  hasta que llegue la caja de medallas de Platino (fase 5). Los puzles de Platino no existen (no hay
+  scripts de botones, ascensores ni engranajes), pero todos los líderes son accesibles: en Pradera
+  Mananti espera junto a la entrada y en Canal los objetos se colocan a ras de suelo.
+- **Liga** (`data/scr_seq/scr_seq_00967_shg_sinnoh_league.s`): el guardia del Centro Pokémon norte
+  comprueba las 8 medallas y lleva a la sala de Alecrán. Cada miembro del Alto Mando tapa la salida
+  hasta que se le vence y la salida lleva directa a la sala siguiente (sin ascensores). Al vencer a
+  Cintia se vuelve al Centro Pokémon norte (flag 1053, sin Salón de la Fama). La ronda se reinicia
+  al hablar con el guardia.
+- **Servicios**: enfermeras y dependientes en Centros Pokémon y tiendas de Sinnoh (script 967).
+- Sprites: HGSS quitó algunos sprites de Platino (nadadores, Alto Mando...); el importador los
+  sustituye por otros de HGSS (`SPRITE_REMAP` en `import_sinnoh.py`).
+- Mapas: `zone_overrides.json` admite `objects` (con `flag` para ocultar), `scripts`, `warp_targets`
+  y `flatten_y`.
+
+`SINNOH_DEBUG_NO_TRAINERS=1` quita los entrenadores de los mapas (útil para probar rutas).
+
 ### Limitaciones actuales
 
-- Sin NPCs, carteles, objetos ni Pokémon salvajes todavía (fase 4).
-- Las puertas no tienen animación de apertura (los warps sí funcionan).
-- Los ascensores y otros mapas que en Platino dependen de scripts propios no funcionan todavía.
+- Sin NPCs normales, carteles ni objetos en el suelo (solo entrenadores, líderes, Liga y servicios).
+- Los sprites del Alto Mando son sustitutos de HGSS.
+- No se ha visto en el emulador la animación de apertura de las puertas (los warps sí funcionan).
+- Los ascensores y otros mapas que en Platino dependen de scripts propios no funcionan.
 - Las canciones de evento, combate y Pokémon legendarios de Platino no están importadas (solo las
   de los mapas).
