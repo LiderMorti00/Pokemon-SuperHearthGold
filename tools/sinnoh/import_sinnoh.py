@@ -149,11 +149,80 @@ def encode_header(zone, area_bank, matrix_id, events_bank, music):
     )
 
 
-def music_mapper():
-    table = {}
-    path = SINNOH / "music.json"
-    if path.exists():
-        table = json.loads(path.read_text())["sequences"]
+SDAT = "data/sound/gs_sound_data.sdat"
+SOUND = SINNOH / "sound"
+SOUND_PREFIXES = ("SEQ_PL_", "BANK_PL_", "WAVE_ARC_PL_")
+WAVEARC_SINGLE_LOAD = 0x100  # flags en el byte alto (NNS_SND_ARC_WAVEARC_SINGLE_LOAD)
+SAFE_SOUND_SLOTS = (495, 778)  # bancos y archivos de ondas que hg-engine no toma por gritos
+
+
+def add_music():
+    """Añade al SDAT las canciones de Sinnoh de data/sinnoh/sound (ver tools/sinnoh/sync_music.py).
+    Devuelve {canción de Platino: ID de secuencia en HGSS}."""
+    import hashlib
+    import shutil
+    import subprocess
+    import tempfile
+    music_json = SOUND / "music.json"
+    if not music_json.exists():
+        return {}
+    music = json.loads(music_json.read_text())
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    sdattool = [sys.executable, str(REPO / "tools" / "SDATTool.py")]
+    subprocess.run(sdattool + ["-u", str(ROOT / SDAT), str(tmp)], check=True, stdout=subprocess.DEVNULL)
+    info = json.loads((tmp / "InfoBlock.json").read_text())
+    files = json.loads((tmp / "FileBlock.json").read_text())
+
+    # quita lo que hubiera de una compilación anterior
+    while info["seqInfo"] and (info["seqInfo"][-1].get("name") or "").startswith(SOUND_PREFIXES):
+        info["seqInfo"].pop()
+    for key in ("bankInfo", "wavarcInfo"):
+        for i, entry in enumerate(info[key]):
+            if (entry.get("name") or "").startswith(SOUND_PREFIXES):
+                info[key][i] = {"name": ""}
+    for key, vanilla_len in (("bankInfo", 778), ("wavarcInfo", 1383)):
+        while len(info[key]) > vanilla_len and not info[key][-1].get("name"):
+            info[key].pop()
+    files["file"] = [f for f in files["file"] if not f["name"].startswith(SOUND_PREFIXES)]
+
+    # hg-engine trata los bancos >= CRY_PSEUDOBANK_START (778) y los de 2 a 494 como gritos de
+    # Pokémon, así que los bancos nuevos (y sus ondas) van en huecos libres entre 495 y 777.
+    def free_slot(key):
+        for i in range(SAFE_SOUND_SLOTS[0], min(SAFE_SOUND_SLOTS[1], len(info[key]))):
+            if not info[key][i].get("name"):
+                return i
+        sys.exit(f"no quedan huecos libres en {key} entre {SAFE_SOUND_SLOTS[0]} y {SAFE_SOUND_SLOTS[1] - 1}")
+
+    def add_file(name, kind, folder):
+        data = (SOUND / name).read_bytes()
+        (tmp / "Files" / folder / name).write_bytes(data)
+        entry = {"name": name, "type": kind, "MD5": hashlib.md5(data).hexdigest()}
+        if kind == "WAVARC":
+            entry["subFile"] = []
+        files["file"].append(entry)
+
+    for w in music["wavarcs"]:
+        add_file(w["file"], "WAVARC", "WAVARC")
+        info["wavarcInfo"][free_slot("wavarcInfo")] = {"name": w["name"], "fileName": w["file"],
+                                                       "unkA": WAVEARC_SINGLE_LOAD if w["single_load"] else 0}
+    for b in music["banks"]:
+        add_file(b["file"], "BANK", "BANK")
+        info["bankInfo"][free_slot("bankInfo")] = {"name": b["name"], "fileName": b["file"], "unkA": 0, "wa": b["wa"]}
+    seq_ids = {}
+    for q in music["sequences"]:
+        add_file(q["file"], "SEQ", "SEQ")
+        seq_ids[q["name"]] = len(info["seqInfo"])
+        info["seqInfo"].append({"name": q["name"], "fileName": q["file"], "unkA": 0, "bnk": q["bank"],
+                                "vol": q["volume"], "cpr": q["channel_priority"], "ppr": q["player_priority"],
+                                "ply": q["player"], "unkB": [0, 0]})
+    (tmp / "InfoBlock.json").write_text(json.dumps(info, indent=1))
+    (tmp / "FileBlock.json").write_text(json.dumps(files, indent=1))
+    subprocess.run(sdattool + ["-b", str(ROOT / SDAT), str(tmp)], check=True, stdout=subprocess.DEVNULL)
+    shutil.rmtree(tmp)
+    return {plat: seq_ids[ours] for plat, ours in music["map"].items()}
+
+
+def music_mapper(table):
 
     def music(name):
         if name in table:
@@ -400,7 +469,7 @@ def main():
         sailor = pack_object(SHG_OBJECT_ID, SPRITE_SEAMAN_2, s["script"], 1, s["x"], s["z"])
         events.files[bank] = append_objects(vanilla_events.files[bank], [sailor])
 
-    music = music_mapper()
+    music = music_mapper(add_music())
     headers = ndspy.narc.NARC(vanilla_file(MAP_HEADER_NARC))
     arm9 = vanilla_arm9()
     headers.files = [arm9[HG_MAP_HEADERS_ARM9 + 24 * i:HG_MAP_HEADERS_ARM9 + 24 * (i + 1)] for i in range(NUM_HG_HEADERS)]

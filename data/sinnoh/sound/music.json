@@ -1,0 +1,1531 @@
+{
+ "_comment": "Generado por tools/sinnoh/sync_music.py",
+ "sequences": [
+  {
+   "name": "SEQ_PL_AUS",
+   "file": "SEQ_PL_AUS.sseq",
+   "bank": "BANK_PL_AUS",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_BLD_CON",
+   "file": "SEQ_PL_BLD_CON.sseq",
+   "bank": "BANK_PL_BLD_CON",
+   "volume": 56,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_BLD_DENDO",
+   "file": "SEQ_PL_BLD_DENDO.sseq",
+   "bank": "BANK_PL_BLD_DENDO",
+   "volume": 112,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_BLD_GAME",
+   "file": "SEQ_PL_BLD_GAME.sseq",
+   "bank": "BANK_PL_BLD_GAME",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_BLD_TV",
+   "file": "SEQ_PL_BLD_TV.sseq",
+   "bank": "BANK_PL_BLD_TV",
+   "volume": 108,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY01_D",
+   "file": "SEQ_PL_CITY01_D.sseq",
+   "bank": "BANK_PL_CITY01_D",
+   "volume": 96,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY01_N",
+   "file": "SEQ_PL_CITY01_N.sseq",
+   "bank": "BANK_PL_CITY01_N",
+   "volume": 104,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY02_D",
+   "file": "SEQ_PL_CITY02_D.sseq",
+   "bank": "BANK_PL_CITY02_D",
+   "volume": 108,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY02_N",
+   "file": "SEQ_PL_CITY02_N.sseq",
+   "bank": "BANK_PL_CITY02_N",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY03_D",
+   "file": "SEQ_PL_CITY03_D.sseq",
+   "bank": "BANK_PL_CITY03_D",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY03_N",
+   "file": "SEQ_PL_CITY03_N.sseq",
+   "bank": "BANK_PL_CITY03_N",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY04_D",
+   "file": "SEQ_PL_CITY04_D.sseq",
+   "bank": "BANK_PL_CITY04_D",
+   "volume": 96,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY04_N",
+   "file": "SEQ_PL_CITY04_N.sseq",
+   "bank": "BANK_PL_CITY04_N",
+   "volume": 98,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY05_D",
+   "file": "SEQ_PL_CITY05_D.sseq",
+   "bank": "BANK_PL_CITY05_D",
+   "volume": 92,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY05_N",
+   "file": "SEQ_PL_CITY05_N.sseq",
+   "bank": "BANK_PL_CITY05_N",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY06_D",
+   "file": "SEQ_PL_CITY06_D.sseq",
+   "bank": "BANK_PL_CITY06_D",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY06_N",
+   "file": "SEQ_PL_CITY06_N.sseq",
+   "bank": "BANK_PL_CITY06_N",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY07_D",
+   "file": "SEQ_PL_CITY07_D.sseq",
+   "bank": "BANK_PL_CITY07_D",
+   "volume": 120,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY07_N",
+   "file": "SEQ_PL_CITY07_N.sseq",
+   "bank": "BANK_PL_CITY07_N",
+   "volume": 118,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY08_D",
+   "file": "SEQ_PL_CITY08_D.sseq",
+   "bank": "BANK_PL_CITY08_D",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY08_N",
+   "file": "SEQ_PL_CITY08_N.sseq",
+   "bank": "BANK_PL_CITY08_N",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY09_D",
+   "file": "SEQ_PL_CITY09_D.sseq",
+   "bank": "BANK_PL_CITY09_D",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY09_N",
+   "file": "SEQ_PL_CITY09_N.sseq",
+   "bank": "BANK_PL_CITY09_N",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY10_D",
+   "file": "SEQ_PL_CITY10_D.sseq",
+   "bank": "BANK_PL_CITY10_D",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY10_N",
+   "file": "SEQ_PL_CITY10_N.sseq",
+   "bank": "BANK_PL_CITY10_N",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY11_D",
+   "file": "SEQ_PL_CITY11_D.sseq",
+   "bank": "BANK_PL_CITY11_D",
+   "volume": 80,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_CITY11_N",
+   "file": "SEQ_PL_CITY11_N.sseq",
+   "bank": "BANK_PL_CITY11_N",
+   "volume": 80,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_01",
+   "file": "SEQ_PL_D_01.sseq",
+   "bank": "BANK_PL_D_01",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_02",
+   "file": "SEQ_PL_D_02.sseq",
+   "bank": "BANK_PL_D_02",
+   "volume": 88,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_03",
+   "file": "SEQ_PL_D_03.sseq",
+   "bank": "BANK_PL_D_03",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_04",
+   "file": "SEQ_PL_D_04.sseq",
+   "bank": "BANK_PL_D_04",
+   "volume": 120,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_05",
+   "file": "SEQ_PL_D_05.sseq",
+   "bank": "BANK_PL_D_05",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_06",
+   "file": "SEQ_PL_D_06.sseq",
+   "bank": "BANK_PL_D_06",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_AGITO",
+   "file": "SEQ_PL_D_AGITO.sseq",
+   "bank": "BANK_PL_D_AGITO",
+   "volume": 86,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_GINLOBBY",
+   "file": "SEQ_PL_D_GINLOBBY.sseq",
+   "bank": "BANK_PL_D_GINLOBBY",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_KOUEN",
+   "file": "SEQ_PL_D_KOUEN.sseq",
+   "bank": "BANK_PL_D_KOUEN",
+   "volume": 115,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_LAKE",
+   "file": "SEQ_PL_D_LAKE.sseq",
+   "bank": "BANK_PL_D_LAKE",
+   "volume": 88,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_LEAGUE",
+   "file": "SEQ_PL_D_LEAGUE.sseq",
+   "bank": "BANK_PL_D_LEAGUE",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_MOUNT1",
+   "file": "SEQ_PL_D_MOUNT1.sseq",
+   "bank": "BANK_PL_D_MOUNT1",
+   "volume": 112,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_MOUNT2",
+   "file": "SEQ_PL_D_MOUNT2.sseq",
+   "bank": "BANK_PL_D_MOUNT2",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_RYAYHY",
+   "file": "SEQ_PL_D_RYAYHY.sseq",
+   "bank": "BANK_PL_D_RYAYHY",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_D_SAFARI",
+   "file": "SEQ_PL_D_SAFARI.sseq",
+   "bank": "BANK_PL_D_SAFARI",
+   "volume": 84,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_FS",
+   "file": "SEQ_PL_FS.sseq",
+   "bank": "BANK_PL_FS",
+   "volume": 82,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_GYM",
+   "file": "SEQ_PL_GYM.sseq",
+   "bank": "BANK_PL_GYM",
+   "volume": 118,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_KENKYUJO",
+   "file": "SEQ_PL_KENKYUJO.sseq",
+   "bank": "BANK_PL_KENKYUJO",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_PC_01",
+   "file": "SEQ_PL_PC_01.sseq",
+   "bank": "BANK_PL_PC_01",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_PC_02",
+   "file": "SEQ_PL_PC_02.sseq",
+   "bank": "BANK_PL_PC_02",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_A_D",
+   "file": "SEQ_PL_ROAD_A_D.sseq",
+   "bank": "BANK_PL_ROAD_A_D",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_A_N",
+   "file": "SEQ_PL_ROAD_A_N.sseq",
+   "bank": "BANK_PL_ROAD_A_N",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_BZA_D",
+   "file": "SEQ_PL_ROAD_BZA_D.sseq",
+   "bank": "BANK_PL_ROAD_BZA_D",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_BZA_N",
+   "file": "SEQ_PL_ROAD_BZA_N.sseq",
+   "bank": "BANK_PL_ROAD_BZA_N",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_B_D",
+   "file": "SEQ_PL_ROAD_B_D.sseq",
+   "bank": "BANK_PL_ROAD_B_D",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_B_N",
+   "file": "SEQ_PL_ROAD_B_N.sseq",
+   "bank": "BANK_PL_ROAD_B_N",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_C_D",
+   "file": "SEQ_PL_ROAD_C_D.sseq",
+   "bank": "BANK_PL_ROAD_C_D",
+   "volume": 86,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_C_N",
+   "file": "SEQ_PL_ROAD_C_N.sseq",
+   "bank": "BANK_PL_ROAD_C_N",
+   "volume": 86,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_D_D",
+   "file": "SEQ_PL_ROAD_D_D.sseq",
+   "bank": "BANK_PL_ROAD_D_D",
+   "volume": 108,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_D_N",
+   "file": "SEQ_PL_ROAD_D_N.sseq",
+   "bank": "BANK_PL_ROAD_D_N",
+   "volume": 108,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_E_D",
+   "file": "SEQ_PL_ROAD_E_D.sseq",
+   "bank": "BANK_PL_ROAD_E_D",
+   "volume": 86,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_E_N",
+   "file": "SEQ_PL_ROAD_E_N.sseq",
+   "bank": "BANK_PL_ROAD_E_N",
+   "volume": 86,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_F_D",
+   "file": "SEQ_PL_ROAD_F_D.sseq",
+   "bank": "BANK_PL_ROAD_F_D",
+   "volume": 80,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_F_N",
+   "file": "SEQ_PL_ROAD_F_N.sseq",
+   "bank": "BANK_PL_ROAD_F_N",
+   "volume": 80,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_SNOW_D",
+   "file": "SEQ_PL_ROAD_SNOW_D.sseq",
+   "bank": "BANK_PL_ROAD_SNOW_D",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_ROAD_SNOW_N",
+   "file": "SEQ_PL_ROAD_SNOW_N.sseq",
+   "bank": "BANK_PL_ROAD_SNOW_N",
+   "volume": 100,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_SILENCE_FIELD",
+   "file": "SEQ_PL_SILENCE_FIELD.sseq",
+   "bank": "BANK_PL_SILENCE_FIELD",
+   "volume": 70,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_THE_EVENT04",
+   "file": "SEQ_PL_THE_EVENT04.sseq",
+   "bank": "BANK_PL_THE_EVENT04",
+   "volume": 127,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN01_D",
+   "file": "SEQ_PL_TOWN01_D.sseq",
+   "bank": "BANK_PL_TOWN01_D",
+   "volume": 125,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN01_N",
+   "file": "SEQ_PL_TOWN01_N.sseq",
+   "bank": "BANK_PL_TOWN01_N",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN02_D",
+   "file": "SEQ_PL_TOWN02_D.sseq",
+   "bank": "BANK_PL_TOWN02_D",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN02_N",
+   "file": "SEQ_PL_TOWN02_N.sseq",
+   "bank": "BANK_PL_TOWN02_N",
+   "volume": 90,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN03_D",
+   "file": "SEQ_PL_TOWN03_D.sseq",
+   "bank": "BANK_PL_TOWN03_D",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN03_N",
+   "file": "SEQ_PL_TOWN03_N.sseq",
+   "bank": "BANK_PL_TOWN03_N",
+   "volume": 110,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN06_D",
+   "file": "SEQ_PL_TOWN06_D.sseq",
+   "bank": "BANK_PL_TOWN06_D",
+   "volume": 94,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN06_N",
+   "file": "SEQ_PL_TOWN06_N.sseq",
+   "bank": "BANK_PL_TOWN06_N",
+   "volume": 94,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN07_D",
+   "file": "SEQ_PL_TOWN07_D.sseq",
+   "bank": "BANK_PL_TOWN07_D",
+   "volume": 96,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  },
+  {
+   "name": "SEQ_PL_TOWN07_N",
+   "file": "SEQ_PL_TOWN07_N.sseq",
+   "bank": "BANK_PL_TOWN07_N",
+   "volume": 95,
+   "channel_priority": 30,
+   "player_priority": 64,
+   "player": "PLAYER_FIELD"
+  }
+ ],
+ "banks": [
+  {
+   "name": "BANK_PL_AUS",
+   "file": "BANK_PL_AUS.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_BLD_CON",
+   "file": "BANK_PL_BLD_CON.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_BLD_DENDO",
+   "file": "BANK_PL_BLD_DENDO.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_BLD_GAME",
+   "file": "BANK_PL_BLD_GAME.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_BLD_TV",
+   "file": "BANK_PL_BLD_TV.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY01_D",
+   "file": "BANK_PL_CITY01_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY01_N",
+   "file": "BANK_PL_CITY01_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY02_D",
+   "file": "BANK_PL_CITY02_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY02_N",
+   "file": "BANK_PL_CITY02_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY03_D",
+   "file": "BANK_PL_CITY03_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY03_N",
+   "file": "BANK_PL_CITY03_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY04_D",
+   "file": "BANK_PL_CITY04_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY04_N",
+   "file": "BANK_PL_CITY04_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY05_D",
+   "file": "BANK_PL_CITY05_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY05_N",
+   "file": "BANK_PL_CITY05_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY06_D",
+   "file": "BANK_PL_CITY06_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY06_N",
+   "file": "BANK_PL_CITY06_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY07_D",
+   "file": "BANK_PL_CITY07_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY07_N",
+   "file": "BANK_PL_CITY07_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY08_D",
+   "file": "BANK_PL_CITY08_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY08_N",
+   "file": "BANK_PL_CITY08_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY09_D",
+   "file": "BANK_PL_CITY09_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY09_N",
+   "file": "BANK_PL_CITY09_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY10_D",
+   "file": "BANK_PL_CITY10_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY10_N",
+   "file": "BANK_PL_CITY10_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY11_D",
+   "file": "BANK_PL_CITY11_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_CITY11_N",
+   "file": "BANK_PL_CITY11_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_01",
+   "file": "BANK_PL_D_01.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_02",
+   "file": "BANK_PL_D_02.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_03",
+   "file": "BANK_PL_D_03.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_04",
+   "file": "BANK_PL_D_04.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_05",
+   "file": "BANK_PL_D_05.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_06",
+   "file": "BANK_PL_D_06.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_AGITO",
+   "file": "BANK_PL_D_AGITO.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_GINLOBBY",
+   "file": "BANK_PL_D_GINLOBBY.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_KOUEN",
+   "file": "BANK_PL_D_KOUEN.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_LAKE",
+   "file": "BANK_PL_D_LAKE.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_LEAGUE",
+   "file": "BANK_PL_D_LEAGUE.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_MOUNT1",
+   "file": "BANK_PL_D_MOUNT1.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_MOUNT2",
+   "file": "BANK_PL_D_MOUNT2.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_RYAYHY",
+   "file": "BANK_PL_D_RYAYHY.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_D_SAFARI",
+   "file": "BANK_PL_D_SAFARI.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_FS",
+   "file": "BANK_PL_FS.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_GYM",
+   "file": "BANK_PL_GYM.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_KENKYUJO",
+   "file": "BANK_PL_KENKYUJO.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_PC_01",
+   "file": "BANK_PL_PC_01.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_PC_02",
+   "file": "BANK_PL_PC_02.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_A_D",
+   "file": "BANK_PL_ROAD_A_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_A_N",
+   "file": "BANK_PL_ROAD_A_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_BZA_D",
+   "file": "BANK_PL_ROAD_BZA_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_BZA_N",
+   "file": "BANK_PL_ROAD_BZA_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_B_D",
+   "file": "BANK_PL_ROAD_B_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_B_N",
+   "file": "BANK_PL_ROAD_B_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_C_D",
+   "file": "BANK_PL_ROAD_C_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_C_N",
+   "file": "BANK_PL_ROAD_C_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_D_D",
+   "file": "BANK_PL_ROAD_D_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_D_N",
+   "file": "BANK_PL_ROAD_D_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_E_D",
+   "file": "BANK_PL_ROAD_E_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_E_N",
+   "file": "BANK_PL_ROAD_E_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_F_D",
+   "file": "BANK_PL_ROAD_F_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_F_N",
+   "file": "BANK_PL_ROAD_F_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_SNOW_D",
+   "file": "BANK_PL_ROAD_SNOW_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_ROAD_SNOW_N",
+   "file": "BANK_PL_ROAD_SNOW_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_SILENCE_FIELD",
+   "file": "BANK_PL_SILENCE_FIELD.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_THE_EVENT04",
+   "file": "BANK_PL_THE_EVENT04.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_DUNGEON",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN01_D",
+   "file": "BANK_PL_TOWN01_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN01_N",
+   "file": "BANK_PL_TOWN01_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN02_D",
+   "file": "BANK_PL_TOWN02_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN02_N",
+   "file": "BANK_PL_TOWN02_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN03_D",
+   "file": "BANK_PL_TOWN03_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN03_N",
+   "file": "BANK_PL_TOWN03_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN06_D",
+   "file": "BANK_PL_TOWN06_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN06_N",
+   "file": "BANK_PL_TOWN06_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN07_D",
+   "file": "BANK_PL_TOWN07_D.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  },
+  {
+   "name": "BANK_PL_TOWN07_N",
+   "file": "BANK_PL_TOWN07_N.sbnk",
+   "wa": [
+    "WAVE_ARC_BASIC",
+    "WAVE_ARC_PL_BGM_FIELD",
+    "WAVE_ARC_PL_BASIC",
+    "WAVE_ARC_PL_BASIC_LITE"
+   ]
+  }
+ ],
+ "wavarcs": [
+  {
+   "name": "WAVE_ARC_PL_BASIC",
+   "file": "WAVE_ARC_PL_BASIC.swar",
+   "single_load": true
+  },
+  {
+   "name": "WAVE_ARC_PL_BGM_DUNGEON",
+   "file": "WAVE_ARC_PL_BGM_DUNGEON.swar",
+   "single_load": true
+  },
+  {
+   "name": "WAVE_ARC_PL_BGM_FIELD",
+   "file": "WAVE_ARC_PL_BGM_FIELD.swar",
+   "single_load": true
+  },
+  {
+   "name": "WAVE_ARC_PL_BASIC_LITE",
+   "file": "WAVE_ARC_PL_BASIC_LITE.swar",
+   "single_load": true
+  }
+ ],
+ "map": {
+  "SEQ_AUS": "SEQ_PL_AUS",
+  "SEQ_BLD_CON": "SEQ_PL_BLD_CON",
+  "SEQ_BLD_DENDO": "SEQ_PL_BLD_DENDO",
+  "SEQ_BLD_GAME": "SEQ_PL_BLD_GAME",
+  "SEQ_BLD_TV": "SEQ_PL_BLD_TV",
+  "SEQ_CITY01_D": "SEQ_PL_CITY01_D",
+  "SEQ_CITY01_N": "SEQ_PL_CITY01_N",
+  "SEQ_CITY02_D": "SEQ_PL_CITY02_D",
+  "SEQ_CITY02_N": "SEQ_PL_CITY02_N",
+  "SEQ_CITY03_D": "SEQ_PL_CITY03_D",
+  "SEQ_CITY03_N": "SEQ_PL_CITY03_N",
+  "SEQ_CITY04_D": "SEQ_PL_CITY04_D",
+  "SEQ_CITY04_N": "SEQ_PL_CITY04_N",
+  "SEQ_CITY05_D": "SEQ_PL_CITY05_D",
+  "SEQ_CITY05_N": "SEQ_PL_CITY05_N",
+  "SEQ_CITY06_D": "SEQ_PL_CITY06_D",
+  "SEQ_CITY06_N": "SEQ_PL_CITY06_N",
+  "SEQ_CITY07_D": "SEQ_PL_CITY07_D",
+  "SEQ_CITY07_N": "SEQ_PL_CITY07_N",
+  "SEQ_CITY08_D": "SEQ_PL_CITY08_D",
+  "SEQ_CITY08_N": "SEQ_PL_CITY08_N",
+  "SEQ_CITY09_D": "SEQ_PL_CITY09_D",
+  "SEQ_CITY09_N": "SEQ_PL_CITY09_N",
+  "SEQ_CITY10_D": "SEQ_PL_CITY10_D",
+  "SEQ_CITY10_N": "SEQ_PL_CITY10_N",
+  "SEQ_CITY11_D": "SEQ_PL_CITY11_D",
+  "SEQ_CITY11_N": "SEQ_PL_CITY11_N",
+  "SEQ_D_01": "SEQ_PL_D_01",
+  "SEQ_D_02": "SEQ_PL_D_02",
+  "SEQ_D_03": "SEQ_PL_D_03",
+  "SEQ_D_04": "SEQ_PL_D_04",
+  "SEQ_D_05": "SEQ_PL_D_05",
+  "SEQ_D_06": "SEQ_PL_D_06",
+  "SEQ_D_AGITO": "SEQ_PL_D_AGITO",
+  "SEQ_D_GINLOBBY": "SEQ_PL_D_GINLOBBY",
+  "SEQ_D_KOUEN": "SEQ_PL_D_KOUEN",
+  "SEQ_D_LAKE": "SEQ_PL_D_LAKE",
+  "SEQ_D_LEAGUE": "SEQ_PL_D_LEAGUE",
+  "SEQ_D_MOUNT1": "SEQ_PL_D_MOUNT1",
+  "SEQ_D_MOUNT2": "SEQ_PL_D_MOUNT2",
+  "SEQ_D_RYAYHY": "SEQ_PL_D_RYAYHY",
+  "SEQ_D_SAFARI": "SEQ_PL_D_SAFARI",
+  "SEQ_FS": "SEQ_PL_FS",
+  "SEQ_GYM": "SEQ_PL_GYM",
+  "SEQ_KENKYUJO": "SEQ_PL_KENKYUJO",
+  "SEQ_PC_01": "SEQ_PL_PC_01",
+  "SEQ_PC_02": "SEQ_PL_PC_02",
+  "SEQ_ROAD_A_D": "SEQ_PL_ROAD_A_D",
+  "SEQ_ROAD_A_N": "SEQ_PL_ROAD_A_N",
+  "SEQ_ROAD_BZA_D": "SEQ_PL_ROAD_BZA_D",
+  "SEQ_ROAD_BZA_N": "SEQ_PL_ROAD_BZA_N",
+  "SEQ_ROAD_B_D": "SEQ_PL_ROAD_B_D",
+  "SEQ_ROAD_B_N": "SEQ_PL_ROAD_B_N",
+  "SEQ_ROAD_C_D": "SEQ_PL_ROAD_C_D",
+  "SEQ_ROAD_C_N": "SEQ_PL_ROAD_C_N",
+  "SEQ_ROAD_D_D": "SEQ_PL_ROAD_D_D",
+  "SEQ_ROAD_D_N": "SEQ_PL_ROAD_D_N",
+  "SEQ_ROAD_E_D": "SEQ_PL_ROAD_E_D",
+  "SEQ_ROAD_E_N": "SEQ_PL_ROAD_E_N",
+  "SEQ_ROAD_F_D": "SEQ_PL_ROAD_F_D",
+  "SEQ_ROAD_F_N": "SEQ_PL_ROAD_F_N",
+  "SEQ_ROAD_SNOW_D": "SEQ_PL_ROAD_SNOW_D",
+  "SEQ_ROAD_SNOW_N": "SEQ_PL_ROAD_SNOW_N",
+  "SEQ_SILENCE_FIELD": "SEQ_PL_SILENCE_FIELD",
+  "SEQ_THE_EVENT04": "SEQ_PL_THE_EVENT04",
+  "SEQ_TOWN01_D": "SEQ_PL_TOWN01_D",
+  "SEQ_TOWN01_N": "SEQ_PL_TOWN01_N",
+  "SEQ_TOWN02_D": "SEQ_PL_TOWN02_D",
+  "SEQ_TOWN02_N": "SEQ_PL_TOWN02_N",
+  "SEQ_TOWN03_D": "SEQ_PL_TOWN03_D",
+  "SEQ_TOWN03_N": "SEQ_PL_TOWN03_N",
+  "SEQ_TOWN06_D": "SEQ_PL_TOWN06_D",
+  "SEQ_TOWN06_N": "SEQ_PL_TOWN06_N",
+  "SEQ_TOWN07_D": "SEQ_PL_TOWN07_D",
+  "SEQ_TOWN07_N": "SEQ_PL_TOWN07_N"
+ }
+}

@@ -693,7 +693,7 @@ SCR_SEQ_OBJ_DIR := $(BUILD)/scr_seq
 SCR_SEQ_NARC := $(BUILD_NARC)/scr_seq.narc
 SCR_SEQ_TARGET := $(FILESYS)/a/0/1/2
 SCR_SEQ_DEPENDENCIES_DIR := data/scr_seq
-SCR_SEQ_DEPS := $(SCRIPT_INCLUDES) $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/*.inc)
+SCR_SEQ_DEPS := $(SCRIPT_INCLUDES) $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/*.inc) $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/include/*.inc)
 
 # the five digit scripts are hg-engine's own common and trainer scripts and are always built
 # keep in sync with ENGINE_MANAGED_SCRIPTS in tools/source/dumptools/dump_event_scripts.py

@@ -27,7 +27,7 @@ Añade el tipo Hada, los Pokémon y movimientos hasta la Gen 9, y un viaje de po
    - [x] Cabeceras de mapa dinámicas (sin el límite de 540 de HGSS).
    - [x] 463 mapas de Sinnoh (todo menos Subsuelo, Mundo Distorsión, Frente Batalla, salas Wi-Fi,
          concursos y mapas sin uso de Platino), con sus warps.
-   - [ ] Música de Sinnoh.
+   - [x] Música de Sinnoh (75 canciones de Platino; ver «Música»).
 4. [ ] Encuentros, entrenadores, gimnasios y Liga de Sinnoh.
 5. [ ] Mapa del Pokégear, Pokédex de Sinnoh y caja de medallas de Platino.
 
@@ -91,6 +91,22 @@ tienen los IDs 540 en adelante.
   edificios de áreas exteriores se añaden a los exteriores de HGSS (340 + 159) y los de interiores
   a los interiores (222 + 247).
 
+### Música
+
+`python3 tools/sinnoh/sync_music.py /ruta/a/pokeplatinum` convierte las canciones de campo de
+Platino (con la herramienta `nitrosfx` del decomp) a `data/sinnoh/sound/`, y el importador las
+añade al SDAT en cada compilación.
+
+- HGSS tiene siempre cargado su propio `WAVE_ARC_BASIC` (431 KB) y el montón de sonido es de
+  780 KB, así que no cabe además el de Platino (458 KB). Cada canción lleva su propio banco de
+  instrumentos con solo los que usa; las ondas idénticas en los dos juegos (33) se toman del BASIC
+  de HGSS y el resto de `WAVE_ARC_PL_BASIC`, que se carga onda a onda (carga individual de hg-engine).
+- Con una canción de HGSS cargada quedan unos 165 KB libres. Las canciones que necesitan más de
+  120 KB de ondas (`BUDGET` en `sync_music.py`) usan una copia del BASIC de Platino a la mitad de
+  frecuencia: suenan algo más apagadas, pero dejan unos 40 KB libres para gritos y efectos.
+- hg-engine trata los bancos de sonido 2-494 y desde el 778 como gritos de Pokémon, así que los
+  bancos y archivos de ondas nuevos ocupan huecos libres entre el 495 y el 777.
+
 ### Probar los mapas sin barco
 
 ```sh
@@ -108,3 +124,5 @@ opcionalmente `mapa:warp`). Al compilar sin la variable, las puertas vuelven a s
 - Sin NPCs, carteles, objetos ni Pokémon salvajes todavía (fase 4).
 - Las puertas no tienen animación de apertura (los warps sí funcionan).
 - Los ascensores y otros mapas que en Platino dependen de scripts propios no funcionan todavía.
+- Las canciones de evento, combate y Pokémon legendarios de Platino no están importadas (solo las
+  de los mapas).
