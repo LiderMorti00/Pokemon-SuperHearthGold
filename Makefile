@@ -357,6 +357,8 @@ all: $(OUTPUT) $(OVERLAY_OUTPUTS) $(TOOLS) $(BASE)/arm9.bin
 	$(PYTHON) scripts/make.py $(CFLAGS)
 # TODO: find a convenient way to not have this be a separate $(MAKE)
 	$(MAKE) move_narc
+	@echo "Sinnoh:"
+	$(PYTHON) tools/sinnoh/import_sinnoh.py
 	$(ARMIPS) armips/global.s $(ARMIPS_FLAGS)
 	$(NARCHIVE) create $(FILESYS)/a/0/2/8 $(BUILD)/a028/ -nf
 	@echo "Making ROM..."

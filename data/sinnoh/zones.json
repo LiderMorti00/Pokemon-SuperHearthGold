@@ -1,0 +1,77 @@
+{
+  "_comment": "Zonas de Sinnoh importadas desde Platino. hg_map es el ID de cabecera de HGSS que ocupa cada una (de momento se reutilizan cabeceras sin uso de HGSS; ver SUPERHEARTHGOLD.md).",
+  "zones": [
+    {
+      "platinum_header": "MAP_HEADER_CANALAVE_CITY",
+      "hg_map": 254,
+      "mapsec": 7,
+      "map_type": "MAP_TYPE_CITY_TOWN",
+      "battle_bg": "BATTLE_BG_CITY",
+      "music": 1024,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_ROUTE_218",
+      "hg_map": 255,
+      "mapsec": 33,
+      "map_type": "MAP_TYPE_ROUTE",
+      "battle_bg": "BATTLE_BG_GENERAL",
+      "music": 1036,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_JUBILIFE_CITY",
+      "hg_map": 256,
+      "mapsec": 6,
+      "map_type": "MAP_TYPE_CITY_TOWN",
+      "battle_bg": "BATTLE_BG_CITY",
+      "music": 1022,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_ROUTE_202",
+      "hg_map": 257,
+      "mapsec": 17,
+      "map_type": "MAP_TYPE_ROUTE",
+      "battle_bg": "BATTLE_BG_GENERAL",
+      "music": 1034,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_ROUTE_203",
+      "hg_map": 258,
+      "mapsec": 18,
+      "map_type": "MAP_TYPE_ROUTE",
+      "battle_bg": "BATTLE_BG_GENERAL",
+      "music": 1036,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_ROUTE_204_SOUTH",
+      "hg_map": 259,
+      "mapsec": 19,
+      "map_type": "MAP_TYPE_ROUTE",
+      "battle_bg": "BATTLE_BG_GENERAL",
+      "music": 1036,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_ROUTE_204_NORTH",
+      "hg_map": 260,
+      "mapsec": 19,
+      "map_type": "MAP_TYPE_ROUTE",
+      "battle_bg": "BATTLE_BG_GENERAL",
+      "music": 1036,
+      "fly": true
+    },
+    {
+      "platinum_header": "MAP_HEADER_OREBURGH_CITY",
+      "hg_map": 261,
+      "mapsec": 8,
+      "map_type": "MAP_TYPE_CITY_TOWN",
+      "battle_bg": "BATTLE_BG_CITY",
+      "music": 1026,
+      "fly": true
+    }
+  ]
+}
