@@ -44,7 +44,7 @@ MAP_NONE = 0xFFFF
 # NARC -> número de archivos en la ROM original de HeartGold (USA)
 VANILLA_COUNT = {
     "a/0/6/5": 676, "a/0/4/1": 288, "a/0/4/2": 106, "a/0/4/4": 106, "a/0/4/3": 104, "a/0/7/0": 104,
-    "a/0/4/0": 340, "a/1/0/7": 340, "a/1/4/8": 222, "a/1/0/8": 222,
+    "a/0/4/0": 340, "a/1/0/7": 340, "a/1/4/8": 222, "a/1/0/8": 222, "a/1/0/6": 273,
 }
 ALIASES = {  # HGSS guarda los modelos de edificio dos veces con el mismo contenido
     "a/0/4/0": ["fielddata/build_model/bm_field.narc"],
@@ -57,6 +57,30 @@ BUILDING_SETS = {  # clase de área -> NARC de modelos, tabla material/forma, an
                      anim="a/1/0/8", area_type=0, light=0),
 }
 NO_ANIMATION = bytes.fromhex("ffff000000000000ffffffffffffffffffffffffffffffff")
+BM_ANIME = "a/1/0/6"  # archivos de animación de edificios (BTA0/BTP0/BCA0/BMA0) de HGSS
+
+
+def convert_animation(pt_entry, anim_remap):
+    """Entrada de animación de un edificio de Platino (20 bytes: tiene, flags, cuesta de bici,
+    relleno, 4 IDs) al formato de HGSS (24 bytes). Por lo visto en las entradas de HGSS:
+      * flags 3 = puerta: [1, 3, 0, 1, tipo de puerta, 0, 1, 2] + 2 animaciones (abrir, cerrar)
+      * flags 0 = animación en bucle: [1, 0, 0, 0, 0, 0, n, 1] + n animaciones
+    Las demás (cuestas de bici, etc.) se dejan sin animación."""
+    if pt_entry[0] == 0xFF:
+        return NO_ANIMATION
+    ids = [i for i in struct.unpack_from("<4i", pt_entry, 4) if i >= 0]
+    if not ids or any(i not in anim_remap for i in ids):
+        return NO_ANIMATION
+    ids = [anim_remap[i] for i in ids]
+    flags = pt_entry[1]
+    if flags == 3 and len(ids) >= 2:
+        head = bytes([1, 3, 0, 1, 1, 0, 1, 2])
+        ids = ids[:2]
+    elif flags == 0:
+        head = bytes([1, 0, 0, 0, 0, 0, len(ids), 1])
+    else:
+        return NO_ANIMATION
+    return head + struct.pack("<4i", *(ids + [-1] * (4 - len(ids))))
 
 MAP_TYPES = {"MAP_TYPE_CITY_TOWN": 1, "MAP_TYPE_ROUTE": 2, "MAP_TYPE_CAVE": 3, "MAP_TYPE_INTERIOR": 4}
 FOLLOW = {"PREVENT": 0, "HEIGHT_RESTRICT": 1, "ALLOW": 2}
@@ -236,9 +260,13 @@ def music_mapper(table):
 
 # --- eventos ----------------------------------------------------------------------------------
 
-def pack_object(local_id, gfx, script, direction, x, z, movement=0):
-    """Objeto (NPC) de un archivo de eventos de HGSS: 14 hwords + y (word)."""
-    return struct.pack("<14HI", local_id, gfx, movement, 0, 0, script, direction, 0, 0, 0, 0, 0, x, z, 0)
+def pack_object(local_id, gfx, script, direction, x, z, movement=0, trainer_type=0, sight=0,
+                range_x=0, range_z=0, y=0):
+    """Objeto (NPC) de un archivo de eventos de HGSS: id, sprite, movimiento, tipo de entrenador,
+    flag oculto, script, dirección, 3 parámetros (el primero es el alcance de vista de un
+    entrenador), rango x/z, x, z (hwords) e y (word)."""
+    return struct.pack("<14HI", local_id, gfx, movement, trainer_type, 0, script, direction, sight, 0, 0,
+                       range_x, range_z, x, z, y & 0xFFFFFFFF)
 
 
 def append_objects(event_file, objects):
@@ -347,6 +375,14 @@ def main():
                  for p in sorted((SINNOH / "props" / "model_sets").glob("*.json"))}
     pt_locs, pt_ids = read_matshp((SINNOH / "props" / "build_model_matshp.dat").read_bytes())
     prop_remap = {}  # clase -> {modelo de Platino: ID en HGSS}
+    # animaciones de Platino: se añaden todas al final del archivo de animaciones de HGSS
+    bm_anime = vanilla_narc(BM_ANIME)
+    anim_remap = {}
+    for f in sorted((SINNOH / "props" / "animations").glob("prop_animation_*")):
+        anim_remap[int(f.stem.rsplit("_", 1)[1])] = len(bm_anime.files)
+        bm_anime.files.append(f.read_bytes())
+    save(BM_ANIME, bm_anime)
+    pt_anim_list = ndspy.narc.NARC((SINNOH / "props" / "bm_anime_list.narc").read_bytes()).files
     for cls, bs in BUILDING_SETS.items():
         models = vanilla_narc(bs["models"])
         locs, ids = read_matshp(vanilla_file(bs["matshp"]))
@@ -359,7 +395,7 @@ def main():
             count, start = pt_locs[pt]
             locs.append((count, len(ids)))
             ids.extend(pt_ids[start:start + count])
-            anim.files.append(NO_ANIMATION)
+            anim.files.append(convert_animation(pt_anim_list[pt], anim_remap) if pt < len(pt_anim_list) else NO_ANIMATION)
         if len(models.files) > MAX_BUILDING_MODELS:
             sys.exit(f"demasiados modelos de edificio {cls}: {len(models.files)} > {MAX_BUILDING_MODELS}")
         save(bs["models"], models)
@@ -473,6 +509,8 @@ def main():
         events.files[bank] = append_objects(vanilla_events.files[bank], [sailor])
 
     music = music_mapper(add_music())
+    trainers_json = SINNOH / "trainers.json"
+    trainer_objects = json.loads(trainers_json.read_text())["objects"] if trainers_json.exists() else {}
     headers = ndspy.narc.NARC(vanilla_file(MAP_HEADER_NARC))
     arm9 = vanilla_arm9()
     headers.files = [arm9[HG_MAP_HEADERS_ARM9 + 24 * i:HG_MAP_HEADERS_ARM9 + 24 * (i + 1)] for i in range(NUM_HG_HEADERS)]
@@ -480,6 +518,11 @@ def main():
         warps = [(*to_hg(z["group"], x, zz), y, dest, dw) for x, zz, y, dest, dw in z["warps"]]
         objects = [pack_object(i, o["graphics_id"], o["script"], o["dir"], *to_hg(z["group"], o["x"], o["z"]))
                    for i, o in enumerate(z.get("objects", []))]
+        for t in trainer_objects.get(z["stem"], []):
+            x, zz = to_hg(z["group"], t["x"], t["z"])
+            objects.append(pack_object(len(objects), t["graphics_id"], t["script"], t["dir"], x, zz,
+                                       movement=t["movement_type"], trainer_type=t["trainer_type"],
+                                       sight=t["sight"], range_x=t["range_x"], range_z=t["range_z"], y=t["y"]))
         events_bank = len(events.files)
         events.files.append(build_events(warps, objects))
         cls = area_class[z["area"]]

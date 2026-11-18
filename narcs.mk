@@ -274,7 +274,7 @@ NARC_FILES += $(TRAINERTEXT_NARC)
 REQUIRED_DIRECTORIES += $(TRAINERTEXT_DIR) $(TRAINERTEXT_DIR_2) $(BUILD)/rawtext/728
 MSGDATA_COMPILETIME_DEPENDENCIES += $(BUILD)/rawtext/728.txt
 
-$(BUILD)/trainers/.generated: data/Trainers.c include/trainer_data.h include/constants/trainerclass.h include/constants/pokemon.h $(TRAINERDATAGEN)
+$(BUILD)/trainers/.generated: data/Trainers.c data/sinnoh/trainers.h data/sinnoh/trainer_text_order.h include/trainer_data.h include/constants/trainerclass.h include/constants/pokemon.h $(TRAINERDATAGEN)
 	mkdir -p $(BUILD)/trainers
 	mkdir -p $(BUILD_NARC)
 	rm -rf $(TRAINERDATA_DIR) $(TRAINERDATA_DIR_2) $(TRAINERTEXT_DIR) $(TRAINERTEXT_DIR_2) $(BUILD)/rawtext/728 $(BUILD)/rawtext/729

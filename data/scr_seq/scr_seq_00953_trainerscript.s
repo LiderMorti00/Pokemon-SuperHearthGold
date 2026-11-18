@@ -766,6 +766,9 @@
 
 // to add new trainers, just keep the list going here with more normalTrainer entries.
 
+// Pokémon SuperHearthGold: entrenadores de Sinnoh (tools/sinnoh/sync_trainers.py)
+.include "data/sinnoh/trainer_scrdefs.inc"
+
 scrdef_end
 
 scr_seq_0953_normalTrainer:

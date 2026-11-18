@@ -673,3 +673,8 @@ arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
 
 # --- Pokémon SuperHearthGold: cabeceras de mapa dinámicas (src/shg_map_headers.c) ---
 arm9 ShgMapHeader_Load 0203B268 3
+
+# --- Pokémon SuperHearthGold: banderas de entrenadores de Sinnoh (src/shg_trainer_flags.c) ---
+arm9 ShgTrainerFlagCheck 02040514 2
+arm9 ShgTrainerFlagSet 0204052C 2
+arm9 ShgTrainerFlagClear 02040544 2

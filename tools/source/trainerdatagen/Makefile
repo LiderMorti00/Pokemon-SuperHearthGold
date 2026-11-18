@@ -23,7 +23,7 @@ $(DEPDIR): ; @mkdir -p $@
 %.o: %.c $(DEPDIR)/%.d | $(DEPDIR)
 	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
 
-$(DATA_OBJ): $(DATA_SRC) ../../../include/trainer_data.h
+$(DATA_OBJ): $(DATA_SRC) ../../../data/sinnoh/trainers.h ../../../data/sinnoh/trainer_text_order.h ../../../include/trainer_data.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:

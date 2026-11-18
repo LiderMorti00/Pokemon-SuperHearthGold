@@ -936,3 +936,8 @@ sub_0207294C = 0x0207294C | 1;
 sub_02017068 = 0x02017068 | 1;
 MapObjectManager_RestoreFromSave = 0x0205E648 | 1;
 Save_MapObjects_Get = 0x0203B9D0 | 1;
+/* Pokémon SuperHearthGold (src/shg_trainer_flags.c) */
+Save_VarsFlags_Get = 0x020503D0 | 1;
+Save_VarsFlags_CheckFlagInArray = 0x020503DC | 1;
+Save_VarsFlags_SetFlagInArray = 0x02050408 | 1;
+Save_VarsFlags_ClearFlagInArray = 0x02050430 | 1;

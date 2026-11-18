@@ -169,7 +169,7 @@ static void WriteTrainerHeaderMember(const char *dir, int index, const TrainerDa
     int partyCount;
     int i;
 
-    snprintf(path, sizeof(path), "%s/5_%03d", dir, index);
+    snprintf(path, sizeof(path), "%s/5_%04d", dir, index);
     file = OpenBinaryForWrite(path);
     partyCount = GetTrainerPartyMonCount(entry);
 
@@ -200,7 +200,7 @@ static void WriteTrainerPartyMember(const char *dir, int index, const TrainerDat
     int i;
     int j;
 
-    snprintf(path, sizeof(path), "%s/6_%03d", dir, index);
+    snprintf(path, sizeof(path), "%s/6_%04d", dir, index);
     file = OpenBinaryForWrite(path);
     partyCount = GetTrainerPartyMonCount(entry);
 

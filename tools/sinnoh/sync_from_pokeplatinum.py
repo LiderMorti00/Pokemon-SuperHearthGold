@@ -205,6 +205,15 @@ def main():
     for m in sorted(used_models):
         shutil.copy(field / "props" / "models" / m, DEST / "props" / "models")
 
+    # animaciones de edificios (puertas, fuentes, molinos...): lista por modelo y archivos
+    anim_dir = DEST / "props" / "animations"
+    if anim_dir.exists():
+        shutil.rmtree(anim_dir)
+    anim_dir.mkdir(parents=True)
+    shutil.copy(plat / "res" / "prebuilt" / "arc" / "bm_anime_list.narc", DEST / "props")
+    for f in sorted((field / "props" / "animations").glob("prop_animation_*.nsb*")):
+        shutil.copy(f, anim_dir)
+
     (DEST / "zones.json").write_text(json.dumps(
         {"_comment": "Generado por tools/sinnoh/sync_from_pokeplatinum.py; los ajustes a mano van en zone_overrides.json.",
          "zones": zones}, indent=1, ensure_ascii=False) + "\n")

@@ -31160,6 +31160,8 @@ const TrainerData sTrainerData[] = {
         },
     },
 
+    // Pokémon SuperHearthGold: entrenadores de Sinnoh (tools/sinnoh/sync_trainers.py)
+#include "sinnoh/trainers.h"
 };
 
 const u16 sTrainerTextOrder[] = {
@@ -31799,6 +31801,9 @@ const u16 sTrainerTextOrder[] = {
     628,
     629,
     630,
+
+    // Pokémon SuperHearthGold: textos de los entrenadores de Sinnoh
+#include "sinnoh/trainer_text_order.h"
 };
 
 const u32 sTrainerDataCount = sizeof(sTrainerData) / sizeof(sTrainerData[0]);
