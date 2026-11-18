@@ -1,0 +1,11 @@
+{
+ "id": "Elevator",
+ "name": "m_ev01_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_280"
+  ]
+ ]
+}

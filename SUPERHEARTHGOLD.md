@@ -22,12 +22,12 @@ Añade el tipo Hada, los Pokémon y movimientos hasta la Gen 9, y un viaje de po
 ## Fases
 
 1. [x] Base hg-engine + tipo Hada verificado con pruebas de combate (`data/battle_tests/fairy/`).
-2. [ ] Herramientas de conversión Platino → HGSS y primer tramo caminable.
-   - [x] Importador de mapas (`tools/sinnoh/import_sinnoh.py`): terreno, matriz, texturas,
-         edificios y cabeceras. Canal, Ruta 218, Jubileo, rutas 202–204 y Pirita.
-   - [x] Barco desde Olivo/Carmín hasta Canal (ver «El viaje a Sinnoh»).
-   - [ ] Ampliar la tabla de cabeceras de mapa (ahora se reutilizan cabeceras sin uso de HGSS).
-3. [ ] Resto del mapa de Sinnoh.
+2. [x] Herramientas de conversión Platino → HGSS, barco desde Olivo/Carmín hasta Canal.
+3. [ ] Todo Sinnoh: exteriores e interiores y su música.
+   - [x] Cabeceras de mapa dinámicas (sin el límite de 540 de HGSS).
+   - [x] 463 mapas de Sinnoh (todo menos Subsuelo, Mundo Distorsión, Frente Batalla, salas Wi-Fi,
+         concursos y mapas sin uso de Platino), con sus warps.
+   - [ ] Música de Sinnoh.
 4. [ ] Encuentros, entrenadores, gimnasios y Liga de Sinnoh.
 5. [ ] Mapa del Pokégear, Pokédex de Sinnoh y caja de medallas de Platino.
 
@@ -62,36 +62,49 @@ Los textos nuevos están en inglés, como el resto de la ROM.
 
 ## Cómo funciona la importación de Sinnoh
 
-- `data/sinnoh/` guarda los recursos de Platino que se usan (terreno, texturas, edificios,
-  cabeceras y la matriz de Sinnoh). Se regeneran con
-  `python3 tools/sinnoh/sync_from_pokeplatinum.py /ruta/a/pokeplatinum`.
-- `data/sinnoh/zones.json` dice qué zonas se importan, qué cabecera de HGSS ocupa cada una,
-  su nombre de lugar (HGSS ya trae los nombres de Sinnoh), su música y su tipo de mapa.
+- `python3 tools/sinnoh/sync_from_pokeplatinum.py /ruta/a/pokeplatinum` genera `data/sinnoh/`:
+  `zones.json` (una entrada por mapa importado: ID de HGSS, nombre de lugar, tipo, música,
+  área, matriz y warps ya traducidos), las matrices, el terreno, las texturas y los edificios.
+  También genera `include/superhearthgold_maps.h` y `data/scr_seq/include/sinnoh_maps.inc`
+  (constantes `MAP_SHG_*`). Todo eso se versiona, así que compilar no necesita pokeplatinum.
+- Los ajustes a mano (NPCs, scripts propios de una zona) van en `data/sinnoh/zone_overrides.json`.
 - `make` ejecuta `tools/sinnoh/import_sinnoh.py` después de preparar los NARC de hg-engine.
   El importador parte siempre de los archivos de `rom.nds`, así que se puede compilar las veces
   que haga falta.
 
-Detalles técnicos que hubo que resolver:
+### Cabeceras de mapa dinámicas
+
+HGSS guarda sus 540 cabeceras en una tabla fija de arm9. `src/shg_map_headers.c` sustituye la
+función que valida el ID de mapa (0x0203B268) por una que carga la cabecera pedida desde
+`a/0/5/0` (un archivo por cabecera, sin uso en HGSS; es el mismo sitio que el parche de DSPRE),
+y las funciones `MapHeader_Get*` leen de ese búfer (`hooks` y `repoints`). Los mapas de Sinnoh
+tienen los IDs 540 en adelante.
+
+### Detalles técnicos que hubo que resolver
 
 - El terreno de Platino solo necesita una sección de sonido ambiente vacía para HGSS.
 - HGSS admite matrices de 799 celdas como máximo; la de Sinnoh (30×30) se recorta a 30×25 y las
   coordenadas de eventos se desplazan 5 celdas hacia arriba.
-- Cada modelo de edificio necesita su entrada en `bm_field_matshp.dat` y en `a/1/0/7`
-  (animaciones); sin ellas el juego se cuelga al cargar el mapa.
+- Cada modelo de edificio necesita su entrada en la tabla material/forma (`bm_*_matshp.dat`) y
+  en la de animaciones (`a/1/0/7` o `a/1/0/8`); sin ellas el juego se cuelga al cargar el mapa.
+- El gestor de áreas guarda los modelos en una tabla de 550 entradas indexada por ID, así que los
+  edificios de áreas exteriores se añaden a los exteriores de HGSS (340 + 159) y los de interiores
+  a los interiores (222 + 247).
 
 ### Probar los mapas sin barco
 
 ```sh
 SINNOH_DEBUG_WARP=1 make -j$(nproc)
+SINNOH_DEBUG_WARP=1 SINNOH_DEBUG_TARGETS="snowpoint_city,pokemon_league,eterna_forest" make -j$(nproc)
 ```
 
-En esa ROM, tres puertas de Ciudad Cerezo llevan a Sinnoh: la del Centro Pokémon a Ciudad Canal
-la de la Tienda a Jubileo y la de la casa del suroeste a Pirita; la cuarta casa lleva al puerto de
-Ciudad Olivo para probar el barco. Al compilar sin la variable, las puertas
-vuelven a ser las normales.
+En esa ROM cuatro puertas de Ciudad Cerezo llevan a Sinnoh: la del Centro Pokémon, la de la Tienda
+y la de la casa del suroeste a los Centros Pokémon de Canal, Jubileo y Pirita, y la cuarta casa al
+puerto de Ciudad Olivo. `SINNOH_DEBUG_TARGETS` cambia esos destinos (nombres de `zones.json`,
+opcionalmente `mapa:warp`). Al compilar sin la variable, las puertas vuelven a ser las normales.
 
 ### Limitaciones actuales
 
-- Sin NPCs, carteles ni entradas a edificios todavía (las puertas no llevan a ningún sitio y no
-  se abren).
-- La música es de HGSS (HGSS no incluye las canciones de Sinnoh).
+- Sin NPCs, carteles, objetos ni Pokémon salvajes todavía (fase 4).
+- Las puertas no tienen animación de apertura (los warps sí funcionan).
+- Los ascensores y otros mapas que en Platino dependen de scripts propios no funcionan todavía.

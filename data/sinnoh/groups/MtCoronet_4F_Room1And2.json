@@ -1,0 +1,12 @@
+{
+ "id": "MtCoronet_4F_Room1And2",
+ "name": "m_dun0506_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_363",
+   "MAP_364"
+  ]
+ ]
+}

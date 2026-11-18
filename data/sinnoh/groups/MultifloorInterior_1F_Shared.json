@@ -1,0 +1,11 @@
+{
+ "id": "MultifloorInterior_1F_Shared",
+ "name": "m_buil01_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_199"
+  ]
+ ]
+}

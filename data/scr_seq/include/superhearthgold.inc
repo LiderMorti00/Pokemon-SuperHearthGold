@@ -18,8 +18,8 @@
 // Flag que pone el combate contra Red en la cima del Monte Plateado
 .equ FLAG_SHG_DEFEATED_RED, FLAG_UNK_25F
 
-// Mapas de Sinnoh (cabeceras de HGSS, ver data/sinnoh/zones.json)
-.equ MAP_SHG_CANALAVE_CITY, 254
+// IDs de HGSS de los mapas de Sinnoh (MAP_SHG_*), generados con los datos de Platino
+.include "data/scr_seq/include/sinnoh_maps.inc"
 
 // Llegada en barco al muelle de Ciudad Canal (coordenadas de la matriz de Sinnoh recortada;
 // en Platino es (45, 749)) y regreso a los puertos de Olivo y Carmín.

@@ -1,0 +1,11 @@
+{
+ "id": "HearthomeGym_Entrance",
+ "name": "m_gym0501_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_230"
+  ]
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "id": "PastoriaGym",
+ "name": "m_gym01_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_223"
+  ],
+  [
+   "MAP_224"
+  ]
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "id": "ConnectingGate_CyclingRoad_South",
+ "name": "m_gatepl04_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_328"
+  ]
+ ]
+}

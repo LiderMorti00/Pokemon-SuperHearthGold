@@ -1,0 +1,9 @@
+{
+  "_comment": "Ajustes a mano sobre data/sinnoh/zones.json (que se genera). Las coordenadas son las de Platino. scripts: archivo de scripts propio de la zona (data/scr_seq/scr_seq_NNNNN_*.s); objects: NPCs.",
+  "canalave_city": {
+    "scripts": 965,
+    "objects": [
+      {"_comment": "marinero del muelle (barco a Olivo/Carmín)", "graphics_id": 348, "script": 1, "dir": 0, "x": 45, "z": 751}
+    ]
+  }
+}

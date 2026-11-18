@@ -1,0 +1,11 @@
+{
+ "id": "ContestHall_Lobby",
+ "name": "m_cont01_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_241"
+  ]
+ ]
+}

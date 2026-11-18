@@ -1,0 +1,11 @@
+{
+ "id": "ConnectingGate_AmitySquare",
+ "name": "m_gate01_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_219"
+  ]
+ ]
+}

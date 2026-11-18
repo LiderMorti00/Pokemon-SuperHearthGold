@@ -1,0 +1,14 @@
+{
+ "id": "MtCoronet_2F_South",
+ "name": "m_dun0502_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_352"
+  ],
+  [
+   "MAP_353"
+  ]
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "id": "PalPark_Entrance",
+ "name": "m_gate05_",
+ "headers": [],
+ "altitudes": [],
+ "maps": [
+  [
+   "MAP_274"
+  ]
+ ]
+}

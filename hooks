@@ -670,3 +670,6 @@ arm9 ScrCmd_CreateRoamer 02045264 1
 0012 PlayerTrainerVictoryBGM_hook 0224DA9E 3
 
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
+
+# --- Pokémon SuperHearthGold: cabeceras de mapa dinámicas (src/shg_map_headers.c) ---
+arm9 ShgMapHeader_Load 0203B268 3

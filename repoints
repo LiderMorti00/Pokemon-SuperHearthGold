@@ -131,3 +131,33 @@ arm9 sPokeathlonShop_NatdexThursday 0210FA30
 arm9 sPokeathlonShop_NatdexFriday 0210FA34
 arm9 sPokeathlonShop_NatdexSaturday 0210FA38
 #endif
+
+# --- Pokémon SuperHearthGold: cabeceras de mapa dinámicas (src/shg_map_headers.c) ---
+# los punteros a sMapHeaders (0x020F6BE0 + campo) de las funciones MapHeader_Get* pasan a gShgMapHeaderBuf
+arm9 gShgMapHeaderBuf+1 0203B28C
+arm9 gShgMapHeaderBuf+0 0203B2A8
+arm9 gShgMapHeaderBuf+4 0203B2BC
+arm9 gShgMapHeaderBuf+A 0203B2D0
+arm9 gShgMapHeaderBuf+6 0203B2E4
+arm9 gShgMapHeaderBuf+8 0203B2F8
+arm9 gShgMapHeaderBuf+C 0203B30C
+arm9 gShgMapHeaderBuf+E 0203B320
+arm9 gShgMapHeaderBuf+0 0203B340
+arm9 gShgMapHeaderBuf+0 0203B354
+arm9 gShgMapHeaderBuf+10 0203B368
+arm9 gShgMapHeaderBuf+0 0203B384
+arm9 gShgMapHeaderBuf+0 0203B3A4
+arm9 gShgMapHeaderBuf+0 0203B3C4
+arm9 gShgMapHeaderBuf+0 0203B3E0
+arm9 gShgMapHeaderBuf+0 0203B3FC
+arm9 gShgMapHeaderBuf+0 0203B418
+arm9 gShgMapHeaderBuf+0 0203B434
+arm9 gShgMapHeaderBuf+0 0203B450
+arm9 gShgMapHeaderBuf+0 0203B46C
+arm9 gShgMapHeaderBuf+0 0203B488
+arm9 gShgMapHeaderBuf+0 0203B4A4
+arm9 gShgMapHeaderBuf+0 0203B4C0
+arm9 gShgMapHeaderBuf+0 0203B4D8
+arm9 gShgMapHeaderBuf+0 0203B4F4
+arm9 gShgMapHeaderBuf+0 0203B514
+arm9 gShgMapHeaderBuf+0 0203B53C
