@@ -941,3 +941,7 @@ Save_VarsFlags_Get = 0x020503D0 | 1;
 Save_VarsFlags_CheckFlagInArray = 0x020503DC | 1;
 Save_VarsFlags_SetFlagInArray = 0x02050408 | 1;
 Save_VarsFlags_ClearFlagInArray = 0x02050430 | 1;
+
+/* Pokémon SuperHearthGold (src/shg_trainer_card.c) */
+IC_InvalidateRange = 0x020D28D0;
+DC_FlushRange = 0x020D2894;

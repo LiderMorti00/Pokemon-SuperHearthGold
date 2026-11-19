@@ -684,3 +684,7 @@ arm9 ShgGetFlagAddr 0205045C 2
 
 # --- Pokémon SuperHearthGold: plantas de los ascensores de Sinnoh (src/shg_elevators.c) ---
 0001 ShgMapNumToFloorNo 021EE81C 1
+
+# --- Pokémon SuperHearthGold: caja de medallas de Platino en Sinnoh (src/shg_trainer_card.c) ---
+arm9 ShgTrainerCardBadges 0206940C 3
+0051 ShgTrainerCardSetBanks 021E60D4 1

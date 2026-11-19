@@ -399,6 +399,120 @@ def apply_debug_doors(events, hg_ids, enable):
 
 # --- principal --------------------------------------------------------------------------------
 
+# --- caja de medallas de Platino (ficha de entrenador en Sinnoh, ver src/shg_trainer_card.c) -----
+TRAINER_CARD_NARC = "a/0/4/9"
+TRAINER_CARD_VANILLA_COUNT = 78
+BADGE_CASE = SINNOH / "badge_case"
+PLATINUM_BADGES = ["coal", "forest", "cobble", "fen", "relic", "mine", "icicle", "beacon"]
+
+
+def _jasc(path):
+    vals = path.read_text().split()[3:]
+    return [tuple(int(v) for v in vals[i:i + 3]) for i in range(0, len(vals), 3)]
+
+
+def _bgr555(rgb):
+    r, g, b = rgb
+    return (r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10)
+
+
+def _with_colors(nclr, colors, first):
+    """NCLR (plantilla de HGSS) con `colors` a partir del color `first`."""
+    data = bytearray(nclr)
+    pltt = struct.unpack_from("<H", data, 12)[0] + 8 + 16    # bloque PLTT + cabecera
+    for i, c in enumerate(colors):
+        struct.pack_into("<H", data, pltt + 2 * (first + i), _bgr555(c))
+    return bytes(data)
+
+
+def _with_char(ncgr, char):
+    """NCGR (plantilla de HGSS) con otros datos de gráficos."""
+    off = struct.unpack_from("<H", ncgr, 12)[0]
+    old_size = struct.unpack_from("<I", ncgr, off + 4)[0]
+    rest = ncgr[off + old_size:]                                # otros bloques (CPOS)
+    head = bytearray(ncgr[:off + 32])
+    struct.pack_into("<I", head, off + 4, 32 + len(char))       # tamaño del bloque CHAR
+    struct.pack_into("<I", head, off + 8 + 16, len(char))       # tamaño de los datos
+    struct.pack_into("<I", head, 8, off + 32 + len(char) + len(rest))   # tamaño del archivo
+    return bytes(head) + char + rest
+
+
+def _with_screen(nscr, entries):
+    off = struct.unpack_from("<H", nscr, 12)[0]
+    data = bytearray(nscr)
+    for i, e in enumerate(entries):
+        struct.pack_into("<H", data, off + 8 + 12 + 2 * i, e)
+    return bytes(data)
+
+
+def _tiles_4bpp(img, x0, y0, w, h, index_of):
+    """Gráficos 4bpp en casillas de 8x8, en orden de filas."""
+    out = bytearray()
+    px = img.load()
+    for ty in range(y0, y0 + h, 8):
+        for tx in range(x0, x0 + w, 8):
+            for y in range(8):
+                for x in range(0, 8, 2):
+                    out.append(index_of(px[tx + x, ty + y]) | (index_of(px[tx + x + 1, ty + y]) << 4))
+    return bytes(out)
+
+
+def build_badge_case():
+    from PIL import Image
+    narc = vanilla_narc(TRAINER_CARD_NARC)
+    assert len(narc.files) == TRAINER_CARD_VANILLA_COUNT
+    files = narc.files
+
+    # fondo: casillas de la caja (la 0 se deja en blanco) y pantalla con la paleta 1
+    tiles_png = Image.open(BADGE_CASE / "badge_case_tiles.png")
+    case_tiles = _tiles_4bpp(tiles_png, 0, 0, tiles_png.width, tiles_png.height, lambda v: v & 15)
+    char = bytes(32) + case_tiles
+    char += bytes(32 * 1024 - len(char))
+    files.append(_with_char(files[43], char))                                   # 78
+    pt = (BADGE_CASE / "badge_case.NSCR").read_bytes()
+    pt_off = struct.unpack_from("<H", pt, 12)[0] + 8 + 12
+    entries = [struct.unpack_from("<H", pt, pt_off + 2 * i)[0] for i in range(32 * 24)]
+    entries = [((e & 0x3FF) + 1) | (e & 0x0C00) | (1 << 12) for e in entries]
+    files.append(_with_screen(files[51], entries))                              # 79
+    files.append(_with_screen(files[50], [0] * (32 * 32)))                      # 80
+    case_pal = _jasc(BADGE_CASE / "case_platinum.pal")[:16]
+    files.append(_with_colors(files[28], case_pal, 16))                         # 81
+
+    # medallas: sprites de 64x64 de Platino, cada una con su paleta
+    sprites = Image.open(BADGE_CASE / "badge_case_sprites.png")
+    badge_char = b""
+    badge_pals = []
+    for b, name in enumerate(PLATINUM_BADGES):
+        # 4 filas de 16 colores: de más brillante a más sucia (igual que en HGSS)
+        badge_pals.append(_jasc(BADGE_CASE / f"{name}_badge.pal")[:64])
+        # el PNG está indexado y cada medalla usa un grupo de 16 colores (el de su fondo, que es
+        # el color más común); el resto (líneas de separación del PNG y restos de la medalla
+        # anterior) es transparente
+        block = sprites.crop((0, 64 * b, 64, 64 * b + 64))
+        group = max(set(block.getdata()), key=list(block.getdata()).count) // 16
+        badge_char += _tiles_4bpp(sprites, 0, 64 * b, 64, 64,
+                                  lambda v, g=group: v & 15 if v // 16 == g else 0)
+    files.append(_with_char(files[46], badge_char))                             # 82
+    # celdas: las de HGSS (14 por medalla, una animación por medalla) con un OAM de 64x64
+    cells = bytearray(files[58])
+    cebk = struct.unpack_from("<H", cells, 12)[0] + 8
+    count = struct.unpack_from("<H", cells, cebk)[0]
+    data_ofs = cebk + struct.unpack_from("<I", cells, cebk + 4)[0]
+    oam_base = data_ofs + 8 * count
+    for c in range(count):
+        noam, _, oofs = struct.unpack_from("<HHI", cells, data_ofs + 8 * c)
+        o = oam_base + oofs
+        a0, a1, a2 = struct.unpack_from("<HHH", cells, o)
+        a0 = (a0 & 0x3F00) | (0xE0)                       # y = -32, forma cuadrada
+        a1 = (a1 & 0x3E00) | (0x1E0) | (3 << 14)          # x = -32, 64x64
+        a2 = (a2 & 0xFC00) | ((c // 14) % 8) * 16          # medalla de la secuencia
+        struct.pack_into("<HHH", cells, o, a0, a1, a2)
+    files.append(bytes(cells))                                                  # 83
+    for pal in badge_pals:
+        files.append(_with_colors(files[32], pal, 0))                           # 84-91
+    save(TRAINER_CARD_NARC, narc)
+
+
 def main():
     zones = json.loads((SINNOH / "zones.json").read_text())["zones"]
     overrides = json.loads((SINNOH / "zone_overrides.json").read_text())
@@ -636,6 +750,7 @@ def main():
         assert z["hg_map"] == len(headers.files)
         headers.files.append(encode_header(z, area_remap[z["area"]], matrix_remap[(z["group"], cls)], events_bank, music))
     save("a/0/3/2", events)
+    build_badge_case()
     save(MAP_HEADER_NARC, headers)
 
     print(f"Sinnoh: {len(zones)} mapas (cabeceras {NUM_HG_HEADERS}-{len(headers.files) - 1}), "
