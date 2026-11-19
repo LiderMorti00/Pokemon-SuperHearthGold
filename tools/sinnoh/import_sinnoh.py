@@ -403,6 +403,7 @@ def apply_debug_doors(events, hg_ids, enable):
 TRAINER_CARD_NARC = "a/0/4/9"
 TRAINER_CARD_VANILLA_COUNT = 78
 BADGE_CASE = SINNOH / "badge_case"
+LID_TILE_BASE = 136          # casilla de 256 colores donde empieza la tapa (tras las de la caja)
 PLATINUM_BADGES = ["coal", "forest", "cobble", "fen", "relic", "mine", "icicle", "beacon"]
 
 
@@ -463,20 +464,33 @@ def build_badge_case():
     assert len(narc.files) == TRAINER_CARD_VANILLA_COUNT
     files = narc.files
 
-    # fondo: casillas de la caja (la 0 se deja en blanco) y pantalla con la paleta 1
+    # Pantalla táctil (la ficha se ve arriba): BG2 = la caja abierta (4bpp, paleta 15) y
+    # BG3 = la tapa con las caras de los líderes (256 colores, colores 0-159), por encima de las
+    # medallas; src/shg_trainer_card.c la abre y la cierra con el botón de la caja.
     tiles_png = Image.open(BADGE_CASE / "badge_case_tiles.png")
     case_tiles = _tiles_4bpp(tiles_png, 0, 0, tiles_png.width, tiles_png.height, lambda v: v & 15)
     char = bytes(32) + case_tiles
-    char += bytes(32 * 1024 - len(char))
+    assert len(char) <= LID_TILE_BASE * 64
+    char += bytes(LID_TILE_BASE * 64 - len(char))
+    lid_png = Image.open(BADGE_CASE / "badge_case_lid_tiles.png")
+    lid_px = lid_png.load()
+    for ty in range(lid_png.height // 8):
+        for tx in range(lid_png.width // 8):
+            char += bytes(lid_px[tx * 8 + x, ty * 8 + y] for y in range(8) for x in range(8))
+    char += bytes(-len(char) % 0x8000)
     files.append(_with_char(files[43], char))                                   # 78
     pt = (BADGE_CASE / "badge_case.NSCR").read_bytes()
     pt_off = struct.unpack_from("<H", pt, 12)[0] + 8 + 12
     entries = [struct.unpack_from("<H", pt, pt_off + 2 * i)[0] for i in range(32 * 24)]
-    entries = [((e & 0x3FF) + 1) | (e & 0x0C00) | (1 << 12) for e in entries]
+    entries = [((e & 0x3FF) + 1) | (e & 0x0C00) | (15 << 12) for e in entries]
     files.append(_with_screen(files[51], entries))                              # 79
-    files.append(_with_screen(files[50], [0] * (32 * 32)))                      # 80
+    lid = (BADGE_CASE / "badge_case_lid.NSCR").read_bytes()   # mapa de 8 bits (BG afín)
+    lid_off = struct.unpack_from("<H", lid, 12)[0] + 8 + 12
+    files.append(_with_screen(files[50], [LID_TILE_BASE + k for k in lid[lid_off:lid_off + 1024]]))  # 80
+    lid_pal = lid_png.getpalette()
+    lid_colors = [tuple(lid_pal[3 * i:3 * i + 3]) for i in range(160)]
     case_pal = _jasc(BADGE_CASE / "case_platinum.pal")[:16]
-    files.append(_with_colors(files[28], case_pal, 16))                         # 81
+    files.append(_with_colors(_with_colors(files[28], lid_colors, 0), case_pal, 240))  # 81
 
     # medallas: sprites de 64x64 de Platino, cada una con su paleta
     sprites = Image.open(BADGE_CASE / "badge_case_sprites.png")

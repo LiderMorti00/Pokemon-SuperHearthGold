@@ -194,13 +194,14 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
   comandos; `src/shg_elevators.c` añade las plantas de los ascensores de Sinnoh a
   `get_dynamic_warp_floor_no`. Los warps «volver al anterior» (4095) llevan el ancla 256 para que
   HGSS recuerde desde dónde se entró.
-- **Caja de medallas**: en Sinnoh (mapas 540 en adelante) la ficha de entrenador muestra la caja de
-  Platino con las 8 medallas de Sinnoh; la ficha y el personaje siguen siendo los de HGSS. En Johto
-  y Kanto no cambia nada. `import_sinnoh.py` convierte los gráficos de Platino
-  (`data/sinnoh/badge_case/`) y los añade como archivos 78-91 de `a/0/4/9`;
+- **Caja de medallas**: en Sinnoh (mapas 540 en adelante) la ficha de entrenador se ve como en
+  Platino: la ficha (la de HGSS, con su personaje) arriba y la caja de Platino en la pantalla
+  táctil, con la tapa de los líderes de gimnasio; el botón de la caja abre la tapa y enseña las 8
+  medallas de Sinnoh. En Johto y Kanto no cambia nada. `import_sinnoh.py` convierte los gráficos
+  de Platino (`data/sinnoh/badge_case/`) y los añade como archivos 78-91 de `a/0/4/9`;
   `src/shg_trainer_card.c` elige las medallas que se marcan y, al abrir la ficha en Sinnoh, cambia
-  en la RAM del overlay 51 los archivos que carga, las posiciones de las medallas y el emblema de
-  «8 medallas» de HGSS (que no tiene sentido en la caja de Platino).
+  en la RAM del overlay 51 los archivos que carga, las posiciones de las medallas, el fondo BG3
+  (la tapa, de 256 colores) y el orden de las pantallas, y se encarga del botón de la tapa.
 - `tools/narcpy.py` ordena los archivos por número y descarta duplicados (con más de 1000 archivos
   se mezclaban nombres de 3 y 4 cifras).
 
@@ -210,8 +211,10 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
   mueven agua, plataformas, engranajes y el reloj. Aquí todos los líderes son accesibles, pero sin
   esos mecanismos.
 - Mapa del Pokégear y Pokédex de Sinnoh: pendientes.
-- Caja de medallas de Sinnoh: las medallas brillan o se ensucian con el estado de pulido de las 8
-  medallas de Johto (HGSS guarda uno por hueco), y no tienen la animación de destellos de Platino.
+- Ficha en Sinnoh: como la ficha queda en la pantalla de arriba, se gira con ←/→ y se cierra con
+  B; no se puede firmar (hay que hacerlo en Johto o Kanto). Las medallas brillan o se ensucian con
+  el estado de pulido de las 8 medallas de Johto (HGSS guarda uno por hueco), no se pueden pulir y
+  no tienen la animación de destellos de Platino; la tapa se abre sin animación.
 - Los diálogos con menús largos o funciones de Platino sin equivalente (tutores, intercambios...)
   se quedan en el texto.
 - No se ha visto en el emulador la animación de apertura de las puertas (los warps sí funcionan).

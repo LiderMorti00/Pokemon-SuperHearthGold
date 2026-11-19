@@ -688,3 +688,5 @@ arm9 ShgGetFlagAddr 0205045C 2
 # --- Pokémon SuperHearthGold: caja de medallas de Platino en Sinnoh (src/shg_trainer_card.c) ---
 arm9 ShgTrainerCardBadges 0206940C 3
 0051 ShgTrainerCardSetBanks 021E60D4 1
+0051 ShgTrainerCardTouch 021E6AAC 2
+0051 ShgTrainerCardFreeStrings 021E6038 1

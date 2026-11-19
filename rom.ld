@@ -945,3 +945,7 @@ Save_VarsFlags_ClearFlagInArray = 0x02050430 | 1;
 /* Pokémon SuperHearthGold (src/shg_trainer_card.c) */
 IC_InvalidateRange = 0x020D28D0;
 DC_FlushRange = 0x020D2894;
+GfGfx_EngineATogglePlanes = 0x02022C60 | 1;
+System_GetTouchNew = 0x02025358 | 1;
+TouchscreenHitbox_TouchNewIsIn = 0x02025320 | 1;
+FontID_Release = 0x02002DB4 | 1;
