@@ -498,7 +498,8 @@ def build_badge_case():
     badge_pals = []
     for b, name in enumerate(PLATINUM_BADGES):
         # 4 filas de 16 colores: de más brillante a más sucia (igual que en HGSS)
-        badge_pals.append(_jasc(BADGE_CASE / f"{name}_badge.pal")[:64])
+        # en Sinnoh siempre relucientes: el pulido que guarda HGSS es el de las medallas de Johto
+        badge_pals.append(_jasc(BADGE_CASE / f"{name}_badge.pal")[:16] * 4)
         # el PNG está indexado y cada medalla usa un grupo de 16 colores (el de su fondo, que es
         # el color más común); el resto (líneas de separación del PNG y restos de la medalla
         # anterior) es transparente
@@ -519,11 +520,14 @@ def build_badge_case():
         a0, a1, a2 = struct.unpack_from("<HHH", cells, o)
         a0 = (a0 & 0x3F00) | (0xE0)                       # y = -32, forma cuadrada
         a1 = (a1 & 0x3E00) | (0x1E0) | (3 << 14)          # x = -32, 64x64
-        a2 = (a2 & 0xFC00) | ((c // 14) % 8) * 16          # medalla de la secuencia
+        b = (c // 14) % 8
+        a2 = (a2 & 0x0C00) | (b << 12) | b * 16             # medalla: gráficos y paleta propios
         struct.pack_into("<HHH", cells, o, a0, a1, a2)
     files.append(bytes(cells))                                                  # 83
     for pal in badge_pals:
         files.append(_with_colors(files[32], pal, 0))                           # 84-91
+    # 92: las 8 paletas juntas (una fila por medalla), la paleta de los sprites de las medallas
+    files.append(_with_colors(files[30], [c for pal in badge_pals for c in pal[:16]], 0))
     save(TRAINER_CARD_NARC, narc)
 
 

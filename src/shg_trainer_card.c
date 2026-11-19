@@ -22,6 +22,7 @@ void *LONG_CALL Save_VarsFlags_Get(void *saveData);
 BOOL LONG_CALL Save_VarsFlags_CheckFlagInArray(void *varsFlags, u16 flag);
 void LONG_CALL IC_InvalidateRange(void *start, u32 size);
 void LONG_CALL GfGfx_EngineATogglePlanes(u32 planes, u32 enable);
+void LONG_CALL GfGfx_EngineBTogglePlanes(u32 planes, u32 enable);
 BOOL LONG_CALL System_GetTouchNew(void);
 void LONG_CALL PlaySE(u16 se);
 void LONG_CALL String_Delete(void *string);
@@ -79,6 +80,7 @@ void LONG_CALL ShgTrainerCardBadges(void *profile, u8 *fieldSystem, u8 *card)
 #define BADGE_CHAR      82
 #define BADGE_CELLS     83
 #define BADGE_PALETTES  84   // 84-91
+#define BADGE_PALETTE_ALL 92
 
 static void PatchImm8(u32 addr, u8 value)
 {
@@ -117,6 +119,7 @@ void LONG_CALL ShgTrainerCardSetBanks(void)
         gShgLidOpen = FALSE;
         u8 *sprites = (u8 *)0x021E7FC4;          // gráficos, paleta, celdas y animaciones
         sprites[0] = BADGE_CHAR;
+        sprites[1] = BADGE_PALETTE_ALL;          // las 8 paletas (una por medalla)
         sprites[2] = BADGE_CELLS;
         u32 *palettes = (u32 *)0x021E7FDC;
         u32 *positions = (u32 *)0x021E801C;
@@ -125,7 +128,7 @@ void LONG_CALL ShgTrainerCardSetBanks(void)
             positions[2 * i] = sSinnohBadgePos[i][0];
             positions[2 * i + 1] = sSinnohBadgePos[i][1];
         }
-        DC_FlushRange((void *)0x021E7FC0, 0x100);
+        DC_FlushRange((void *)0x021E7FA0, 0x120);
     }
     // cuerpo original: copia la configuración de bancos de VRAM y la aplica
     u32 banks[10];
@@ -139,7 +142,9 @@ void LONG_CALL ShgTrainerCardSetBanks(void)
 #define SEQ_SE_DP_CARD11       1688
 #define SEQ_SE_DP_SELECT       1500
 #define SEQ_SE_GS_GEARCANCEL   (0x25 << 6)
+#define GX_PLANEMASK_BG0       1
 #define GX_PLANEMASK_BG3       8
+#define GX_PLANEMASK_OBJ       16
 #define REG_POWCNT1            (*(vu16 *)0x04000304)
 #define GSYSTEM_TOUCH_X        (*(u16 *)(0x021D110C + 0x60))
 #define GSYSTEM_TOUCH_Y        (*(u16 *)(0x021D110C + 0x62))
@@ -152,6 +157,11 @@ BOOL LONG_CALL TouchscreenHitbox_TouchNewIsIn(const void *hitbox);
  */
 int LONG_CALL ShgTrainerCardTouch(u8 *app, int *touched)
 {
+    if (gShgSinnohCard) {
+        // la ficha está arriba: sin la barra de "Touch Card to flip." ni los botones de abajo
+        // (sprites del motor B) ni sus textos (BG0 del motor B)
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0 | GX_PLANEMASK_OBJ, FALSE);
+    }
     if (!System_GetTouchNew()) {
         return 0;
     }

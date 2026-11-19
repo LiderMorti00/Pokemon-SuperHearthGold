@@ -22,6 +22,8 @@ A town where hot-blooded Trainers\nhone their battling skills.
 A path that winds along sheer cliffs\nby the sea’s pounding waves.
 A rough path raked by a sandstorm\nblown in from the sea.
 This mountainous road leads from Mt.\nCoronet.
+A sacred mountain that is capped the\nyear round with snow.
+Where the best Trainers gather to\ntest their skill.
 A tiny port city where Trainers who\nlove battling more than eating gather.
 A sea route that stretches from west\nto east.
 A seaside path through wildly\ngrowing trees and plants.
@@ -72,8 +74,6 @@ A small town with the fresh scent of\nnew leaves in the air.
 A beautiful white-sand beach only five\nseconds on foot from Sandgem Town.
 The sea here is perfect for swimming,\nwith gentle winds and tides.
 A straight path hemmed by green grass\nand sparse stands of trees.
-                       
-                       
                        
                        
                        

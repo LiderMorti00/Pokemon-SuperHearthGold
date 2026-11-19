@@ -46,6 +46,9 @@ BLANK_FLAVOR = 9             # mensaje en blanco del banco 273 de HGSS
 FIRST_FLAVOR = 10            # los mensajes 10-117 son descripciones en HGSS
 LAST_FLAVOR = 117
 
+# áreas del Mapa de Platino cuyas celdas no tienen cabecera en la matriz: mapa del que se toma el nombre
+AREA_MAPS = {"mount_coronet": "mt_coronet_1f_south", "battle_frontier": "battle_frontier"}
+
 # descripciones de Platino demasiado largas para las 2 líneas del Pokégear
 SHORT_DESCRIPTIONS = {
     "route_203": "A path near a big city that keeps\nits relaxed, natural atmosphere.",
@@ -204,6 +207,10 @@ def main():
 
     # descripciones: área de Platino de cada celda (bloques del Mapa de Platino)
     cell_area = {(b["x"], b["z"]): b["area"] for b in tmdata["blocks"] if b["area"]}
+    # celdas sin cabecera propia en la matriz (MAP_HEADER_EVERYWHERE) pero con área en el Mapa
+    for cell, area in cell_area.items():
+        if cell not in cell_map and area in AREA_MAPS:
+            cell_map[cell] = by_stem[AREA_MAPS[area]]["hg_map"]
     flavor_of_area = {}
     messages = (REPO / "tools" / "sinnoh" / "pokegear_map_base.txt").read_text().split("\n")[:LAST_FLAVOR + 1]
     messages[1] = "Sinnoh"

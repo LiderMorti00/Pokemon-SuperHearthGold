@@ -955,3 +955,4 @@ ShgOverlayManager_CreateAndGetData = 0x02007280 | 1;
 ShgHeap_Create = 0x0201A910 | 1;
 ShgMemset = 0x020E5B44;
 FieldSystem_InitPokegearArgs = 0x02092BE8 | 1;
+GfGfx_EngineBTogglePlanes = 0x02022CC8 | 1;
