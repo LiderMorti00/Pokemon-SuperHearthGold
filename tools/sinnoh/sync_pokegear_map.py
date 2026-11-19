@@ -127,23 +127,32 @@ def platinum_map(tmap):
 
 
 def build_image(tmap):
-    src = platinum_map(tmap)
-    colors = jasc(tmap / "top_screen_map.pal")[:32]
-    img = Image.new("P", (WIDTH * 8, HEIGHT * 8), PALETTE_BASE + 4)   # verde claro del borde
+    """Mapa de Platino (data/sinnoh/pokegear_map/platinum_town_map.png: la zona de 216x168 del Mapa
+    de la pantalla de arriba, con sus colores del juego) reescalado a 8x8 por celda."""
+    ref = Image.open(OUT_DIR / "platinum_town_map.png").convert("RGB")
+    q = ref.quantize(colors=32, method=Image.Quantize.MEDIANCUT)
+    qpx = q.load()
+    qpal = q.getpalette()[:96]
+    img = Image.new("P", (WIDTH * 8, HEIGHT * 8), PALETTE_BASE)
     pal = [0, 0, 0] * 256
-    for i, c in enumerate(colors):
-        pal[3 * (PALETTE_BASE + i):3 * (PALETTE_BASE + i) + 3] = c
+    pal[3 * PALETTE_BASE:3 * PALETTE_BASE + 96] = qpal
     img.putpalette(pal)
     px = img.load()
+    border = qpx[0, ref.height - 1]     # color del borde (mar) para las casillas fuera del mapa
+    for y in range(img.height):
+        for x in range(img.width):
+            px[x, y] = PALETTE_BASE + border
     for z in range(Z_MIN, Z_MAX + 1):
         for x in range(X_MIN, X_MAX + 1):
-            # celda (x, z) de Platino: 7x7 píxeles centrados en (7x + 25, 7z - 34)
-            sx0, sy0 = 7 * x + 22, 7 * z - 37
+            # celda (x, z) de Platino: 7x7 píxeles centrados en (7x + 25, 7z - 34) de la pantalla;
+            # la imagen empieza en el píxel (16, 0)
+            sx0, sy0 = 7 * x + 22 - 16, 7 * z - 37
             col, row = x + COL_OFFSET, z + ROW_OFFSET
             for y in range(8):
                 for xx in range(8):
-                    v = src[min(191, max(0, sy0 + y * 7 // 8))][min(255, max(0, sx0 + xx * 7 // 8))]
-                    px[col * 8 + xx, row * 8 + y] = PALETTE_BASE + v
+                    rx = min(ref.width - 1, max(0, sx0 + xx * 7 // 8))
+                    ry = min(ref.height - 1, max(0, sy0 + y * 7 // 8))
+                    px[col * 8 + xx, row * 8 + y] = PALETTE_BASE + qpx[rx, ry]
     OUT_DIR.mkdir(exist_ok=True)
     img.save(OUT_DIR / "map.png")
 
