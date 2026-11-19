@@ -695,3 +695,11 @@ arm9 ShgTrainerCardBadges 0206940C 3
 arm9 ShgPokegearArgsPhone 02092D80 2
 arm9 ShgPokegearArgsMap 02092D8C 2
 0101 ShgPokegearMapInit 021E7740 2
+0101 ShgFlyMapInit 021ED7F8 2
+arm9 ShgGetFlyWarpData 0203BA74 2
+arm9 ShgGetDeathWarpData 0203BAAC 2
+arm9 ShgGetSpecialSpawnWarpData 0203BAE8 2
+arm9 ShgGetSpawnIdForDeathWarp 0203BB20 1
+arm9 ShgGetSpawnIdForFlyMap 0203BB50 1
+arm9 ShgFlypointFlagAction 0203BB70 2
+arm9 ShgSaveFlypointFlagAction 02066930 3

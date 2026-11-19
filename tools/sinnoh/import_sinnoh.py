@@ -583,6 +583,7 @@ def build_pokegear_map():
     colors = [tuple(pal[3 * i:3 * i + 3]) for i in range(176, 208)]
     for frame in range(6):
         files.append(_with_colors(files[20 + frame], colors, 176))         # 72-77: paletas
+    files.append(_with_colors(files[63], colors, 176))                     # 78: paleta del mapa de Volar
     save(POKEGEAR_MAP_NARC, narc)
     print(f"mapa del Pokégear: {len(tiles)} casillas")
 

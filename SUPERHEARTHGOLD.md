@@ -210,6 +210,11 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
   el número con dos instrucciones). `src/shg_pokegear.c` calcula la posición y, al abrir el mapa,
   cambia en la RAM del overlay 101 los gráficos (archivos 70-77 de `a/1/4/4`), el tamaño, los
   textos y la lista de zonas.
+- **Volar y reaparición en Sinnoh**: los 20 puntos de Platino (`spawn_locations.c`) se añaden a la
+  tabla de HGSS con identificadores 0x41 en adelante; sus banderas de Volar son las ampliadas
+  0x12E0-0x12FF (se ponen al entrar en el pueblo). Volar en Sinnoh abre el mapa de Sinnoh y lleva
+  delante del Centro Pokémon; al perder un combate se vuelve al último Centro de Sinnoh visitado.
+  Lo genera `sync_pokegear_map.py` y lo usan las funciones de `src/shg_pokegear.c`.
 - `tools/narcpy.py` ordena los archivos por número y descarta duplicados (con más de 1000 archivos
   se mezclaban nombres de 3 y 4 cifras).
 
@@ -219,8 +224,8 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
   mueven agua, plataformas, engranajes y el reloj. Aquí todos los líderes son accesibles, pero sin
   esos mecanismos.
 - Pokédex: en Sinnoh se usa la Nacional, como en Kanto.
-- Mapa del Pokégear en Sinnoh: sin miniatura de cada ciudad ni marcas de Volar; Volar desde Sinnoh
-  sigue mostrando el mapa de Johto y Kanto.
+- Mapa del Pokégear en Sinnoh: sin miniatura de cada ciudad. En el mapa de Volar los sitios ya
+  visitados no se marcan (se ve el nombre al pasar por encima y solo se puede volar a ellos).
 - Ficha en Sinnoh: como la ficha queda en la pantalla de arriba, se gira con ←/→ y se cierra con
   B; no se puede firmar (hay que hacerlo en Johto o Kanto). Las medallas brillan o se ensucian con
   el estado de pulido de las 8 medallas de Johto (HGSS guarda uno por hueco), no se pueden pulir y

@@ -42,6 +42,7 @@ PALETTE_BASE = 176           # colores 176-207 de la paleta del fondo del Pokég
 
 TEXT_BANK = 1208             # 151 << 3: se carga con "movs r2, #151; lsls r2, #3"
 FIRST_FREE_BANK = 1202
+SINNOH_FLYPOINT_BASE = 0x40  # puntos de Volar de Sinnoh: banderas 0x12E0 + (n - 0x40) (src/shg_spawns.c)
 BLANK_FLAVOR = 9             # mensaje en blanco del banco 273 de HGSS
 FIRST_FLAVOR = 10            # los mensajes 10-117 son descripciones en HGSS
 LAST_FLAVOR = 117
@@ -300,6 +301,45 @@ def main():
         lines.append(f"    {{ {map_id}, {x}, {z} }},")
     lines += ["};", ""]
     (SINNOH / "pokegear_map.h").write_text("\n".join(lines))
+
+    # puntos de Volar y de reaparición (Pokémon Center) de Platino (src/spawn_locations.c)
+    spawn_src = (plat / "src" / "spawn_locations.c").read_text()
+    spawns = []
+    for m in re.finditer(r"\{ MAP_HEADER_(\w+), (0x[0-9A-F]+|\d+), (0x[0-9A-F]+|\d+), MAP_HEADER_(\w+), "
+                         r"(0x[0-9A-F]+|\d+), (0x[0-9A-F]+|\d+), (0x[01]|\d), (0x[01]|\d), (\w+) \}", spawn_src):
+        black, bx, bz, fly, fx, fz, is_warp, _, _ = m.groups()
+        black_zone, fly_zone = by_stem.get(black.lower()), by_stem.get(fly.lower())
+        if not fly_zone:
+            continue
+        spawns.append(dict(black=black_zone["hg_map"] if black_zone else 0, bx=int(bx, 0), bz=int(bz, 0),
+                           fly=fly_zone["hg_map"], fx=int(fx, 0) - crop_col * 32, fz=int(fz, 0) - crop_row * 32,
+                           warp=int(is_warp, 0) if black_zone else 0))
+    flypoints = []
+    for i, sp in enumerate(spawns):
+        if any(f["fly"] == sp["fly"] for f in flypoints):
+            continue
+        cells = [c for c, v in cell_map.items() if v == sp["fly"]]
+        xs, zs = [c[0] for c in cells], [c[1] for c in cells]
+        flypoints.append(dict(fly=sp["fly"], flag=SINNOH_FLYPOINT_BASE + i, x=min(xs) + COL_OFFSET,
+                              y=min(zs) + ROW_OFFSET - 2, w=max(xs) - min(xs) + 1, h=max(zs) - min(zs) + 1))
+    assert len(flypoints) <= 27 and len(spawns) <= 31
+    extra = [
+        "// reaparición y Volar en Sinnoh (spawn_locations.c de Platino; coordenadas de la matriz de HGSS)",
+        f"#define SHG_NUM_SINNOH_SPAWNS {len(spawns)}",
+        "static const struct ShgSpawn sShgSinnohSpawns[SHG_NUM_SINNOH_SPAWNS] = {",
+    ]
+    for sp in spawns:
+        extra.append(f"    {{ {sp['black']}, {sp['bx']}, {sp['bz']}, {sp['fly']}, {sp['fx']}, {sp['fz']}, {sp['warp']} }},")
+    extra += ["};", "",
+              "// puntos de Volar del mapa del Pokégear (= MapFlypointParam de HGSS; 27 como en HGSS)",
+              "static const struct ShgFlypoint sShgSinnohFlypoints[27] = {"]
+    for f in flypoints:
+        extra.append(f"    {{ {f['fly']}, {f['fly']}, 0x{f['flag']:02X}, 0xFF, {f['x']}, {f['y']}, 0, 0, "
+                     f"{f['w']} | ({f['h']} << 4), 0, 0 }},")
+    for _ in range(27 - len(flypoints)):
+        extra.append("    { 0, 0, 0x5F, 0xFF, 0, 0, 0, 0, 0, 0, 0 },   // sin usar (bandera que nunca se pone)")
+    extra += ["};", ""]
+    (SINNOH / "pokegear_map.h").write_text((SINNOH / "pokegear_map.h").read_text() + "\n".join(extra))
 
     text_dir = REPO / "data" / "text"
     events = json.loads((SINNOH / "events.json").read_text())
