@@ -1,0 +1,7 @@
+If you’d share your Shards with me,\nI can teach some moves.\rWould you like me to teach a move?
+Which Pokémon should I teach?
+Which move should be taught to\n{STRVAR_1 1, 0, 0}?
+See you, then!
+{STRVAR_1 1, 0, 0} learned\n{STRVAR_1 6, 1, 0}!
+I started living here where no one\ncould reach me without using Rock Climb.\rI came because I got sick and tired of\nseeing people.\rBut when I stopped seeing people,\nI began looking forward to visitors.\rWhere one lives can change people and\nPokémon, that’s what I’m saying.
+Red Shards emphasize power.\nBlue Shards are for special effects.\fYellow Shards are for status problems.\rRed Shards are what I like!

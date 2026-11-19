@@ -1,0 +1,4 @@
+Dr. Footstep: Pokémon are quite easy\nfor me to read.\rI need only to see their footprints,\nand their innermost thoughts are\frevealed to me!\rOh?\nYou are skeptical of my claim?\rThen, let your {STRVAR_1 0, 0, 0} walk\nin front of me, right here.\rFrom its footprints, I will determine\nhow it feels about you.
+Dr. Footstep: Do you want to check\nthe feelings of your Pokémon again?\rThen, let your {STRVAR_1 0, 0, 0} walk\nin front of me, right here.\rFrom its footprints, I will determine\nhow it feels about you.
+Sssshhnnn...\n...\f...Ssshhhnnn...\f...\fSsshhhnnn...\f...
+Dr. Footstep: ...Hmm... {STRVAR_1 0, 0, 0}\nhappens to be quite the silent type!

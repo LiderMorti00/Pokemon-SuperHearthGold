@@ -1,0 +1,2 @@
+Oh! {STRVAR_1 3, 0, 0}!\nYou’ve taken care of the Gym Leader!\rSo, did my advice come in handy\nor what?\rIf my advice was useful, it’d be\ngreat if you’d become my fan!
+Oreburgh City Pokémon Gym\nLeader: Roark\rCertified Trainers:\n{STRVAR_1 3, 0, 0}\f{STRVAR_1 3, 1, 0}

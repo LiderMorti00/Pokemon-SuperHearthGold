@@ -1,0 +1,8 @@
+Backlot: ...It’s true, I tell you!\nNo lies ever leave these lips!\rThere really are cute {STRVAR_1 0, 0, 0}\nin my trophy garden! Honest truth!
+Butler: Did you see them? There were\nsome {STRVAR_1 0, 0, 0}, weren’t there?\rBut that’s only to be expected.\nIt’s Master’s trophy garden.
+Butler: Master is a truly wonderful\nand generous person!\rIt’s on his orders that the garden,\nhis pride and joy, is open to all,\feven Trainers.
+It’s a very expensive-looking Pokémon\nstatue...\r...!\nYou got fingerprints on it...
+It’s a very expensive-looking book\non Pokémon.\rWould you like to read it?
+MANAPHY\rAn extremely rare Pokémon that has\nnever been seen, let alone captured,\fin Sinnoh.
+Information on MANAPHY was added to\nthe Pokédex.
+{STRVAR_1 3, 0, 0} put the book back.

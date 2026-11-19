@@ -1,0 +1,12 @@
+Excuse me, but do you got that\nPokémon named BUIZEL?\rWanna trade it for my CHATOT?
+Did that CHATOT I traded you totally\nlearn that Chatter move?\rIt will mimic your speech if you use\nthat move outside of battle.\rIt’ll forget any speech you taught it\nif you stick it in a PC Box, though.
+Oh, OK. Totally got it.\nIt’s all right if you don’t want to.\rBut if you change your mind,\nlet’s totally trade some Pokémon.
+What I totally want is a BUIZEL...
+I’m...building...superintendent...\n...maintain...24-hour watch... Zzz...
+Hi! I’m the building superintendent.\nI maintain a vigilant 24-hour watch!
+Hello, hello!\nI am the official Name Rater!\rWant me to rate the nicknames of\nyour Pokémon?
+Which Pokémon’s nickname should\nI critique?
+{STRVAR_1 1, 0, 0}, is it?\nThat’s a decent nickname!\rBut would you like to give it\nan even better name?\rHow about it?
+I see.\nPlease come visit again.
+Ah, good. Then, what shall the new\nnickname be?
+Done! From now on, this Pokémon\nshall be known as {STRVAR_1 1, 0, 0}!\rIt is a better name than before!\nHow fortunate for you!

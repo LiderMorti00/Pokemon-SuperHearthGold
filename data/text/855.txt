@@ -1,0 +1,19 @@
+When you walk with your Pokémon,\nthey gradually grow friendlier.
+Hiya, where’d you come from?\r...\rTwinleaf Town, huh...\nIt’s a nice place. Quiet and all.\rJubilife City is a big place, so it\nmight be a bit of a shock to you.
+The way you look...\nYou’re obviously a Trainer!\rCan you tell me what type of Pokémon\nyou like?
+You chose the Grass type?\nNo wonder you look so calm.\rI think you need to watch out you don’t\nget burned by fire.
+Did you see me on TV?\nI was in an interview!
+Hello, Trainer!\nDo you know much about Pokémon?
+Ah, I see!\nYou are knowledgeable!\rI imagine you wouldn’t see the need\nto visit the Trainers’ School, then.\rBut do visit if you have the time.\nYou may discover something new!
+Oh, you’re not knowledgeable...\nBut not to worry!\fThere’s the Trainers’ School.\rThe school will teach you the\nbasics of Pokémon.
+OK, set six Poké Balls in my\nbelt...\rYeah, that’ll do it. At most, you\ncan have six Pokémon with you.
+Hello! Let me ask you, have you paid\na visit to the TV station?\rIf you’ve never been, you owe it to\nyourself to make the trip.\rAnd, if you’ve been there before,\nit never hurts to visit again.\rAfter all, you can be a star!\nOr at least dream of being one!
+Past here is the Global Terminal.\nIt lets you trade with the whole world!\rTrading Pokémon means connecting\nwith friends, both old and new.\rThat’s awesome!
+I’m trading Pokémon with my buddy!
+I made my Pokémon hold an item before\ntrading it.\rThat will make the other Trainer\ndouble happy!
+Jubilife City\nCity of Joy
+Jubilife Condominiums\nTenants Wanted!
+The Pokétch Company\nPokémon Watches for the World!
+Jubilife TV\nThe Fun-and-Games TV Station!
+Trainers’ School\nThe First Step for Trainers!
+The Global Terminal\nYour Gateway to the Whole World!

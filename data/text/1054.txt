@@ -1,0 +1,3 @@
+Team Galactic Warp Panels!\rThe green warp panel returns you\nto the ground floor.\rOnward to a new universe!\n-Team Galactic
+Team Galactic Report
+Which report would you like to read?

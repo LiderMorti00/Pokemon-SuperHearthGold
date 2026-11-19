@@ -678,3 +678,6 @@ arm9 ShgMapHeader_Load 0203B268 3
 arm9 ShgTrainerFlagCheck 02040514 2
 arm9 ShgTrainerFlagSet 0204052C 2
 arm9 ShgTrainerFlagClear 02040544 2
+
+# --- Pokémon SuperHearthGold: flags ampliadas 0x1000-0x12FF (src/shg_flags.c) ---
+arm9 ShgGetFlagAddr 0205045C 2

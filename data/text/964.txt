@@ -1,0 +1,2 @@
+Oh! {STRVAR_1 3, 0, 0}!\nDid you beat the Gym Leader?\fWell, of course you did!\rBut, you know what?\nYou haven’t made it in my mind yet!\rDo you know why?\rBecause you and your Pokémon are\ncapable of achieving so much more!\rBut, I am proud of you!\nEight Sinnoh Badges!\fWay to go, kiddo!
+Sunyshore City Pokémon Gym\rLeader: Volkner\nCertified Trainers:\f{STRVAR_1 3, 0, 0}\f{STRVAR_1 3, 1, 0}

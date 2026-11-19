@@ -35,6 +35,9 @@ void LONG_CALL InitStoredMons(struct SAVE_MISC_DATA *saveMiscData)
 void LONG_CALL Sav2_Misc_init_new_fields(struct SAVE_MISC_DATA *saveMiscData)
 {
     InitStoredMons(saveMiscData);
+#ifdef ALLOW_SAVE_CHANGES
+    memset(saveMiscData->shgFlags, 0, sizeof(saveMiscData->shgFlags));
+#endif
 }
 
 // convenience flag/var access functions

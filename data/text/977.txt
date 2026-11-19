@@ -1,0 +1,10 @@
+Hello, hello. Would you like to hear\na trendy saying?
+Very well...\rThe trendy thing to say for you\nwould be...\r{STRVAR_1 28, 0, 0}!\rThat’s a trendy sort of thing\nto say.
+I hope you’ll use trendy sayings\nin a trendy way.
+Oh, come on now. With an attitude like\nthat, you’ll fall behind the times!
+Hello, hello. Are you using trendy\nsayings?
+Share colored Shards with me, and I’ll\nteach your Pokémon some moves.\rWant me to teach a move?
+Which Pokémon will it be?
+Teach which move to\n{STRVAR_1 1, 0, 0}?
+Be seeing you, then!
+{STRVAR_1 1, 0, 0} learned\n{STRVAR_1 6, 1, 0}.

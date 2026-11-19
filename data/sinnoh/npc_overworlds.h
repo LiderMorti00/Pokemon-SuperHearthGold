@@ -1,0 +1,34 @@
+// Generado por tools/sinnoh/sync_sprites.py: sprites de NPC de Platino que HGSS no tiene.
+#define SHG_NEW_NPC_COUNT (30)
+#define SHG_NEW_NPC_ENTRIES \
+    NEW_NPC_ENTRY(0) /* TEALA */ \
+    NEW_NPC_ENTRY(1) /* SKIER_M */ \
+    NEW_NPC_ENTRY(2) /* TUBER_F */ \
+    NEW_NPC_ENTRY(3) /* TUBER_M */ \
+    NEW_NPC_ENTRY(4) /* SNOWPOINT_NPC_M */ \
+    NEW_NPC_ENTRY(5) /* SNOWPOINT_NPC_F */ \
+    NEW_NPC_ENTRY(6) /* BABY_IN_PRAM */ \
+    NEW_NPC_ENTRY(7) /* MIDDLE_AGED_MAN */ \
+    NEW_NPC_ENTRY(8) /* MIDDLE_AGED_WOMAN */ \
+    NEW_NPC_ENTRY(9) /* AARON */ \
+    NEW_NPC_ENTRY(10) /* BERTHA */ \
+    NEW_NPC_ENTRY(11) /* FLINT */ \
+    NEW_NPC_ENTRY(12) /* LUCIAN */ \
+    NEW_NPC_ENTRY(13) /* RECEPTIONIST */ \
+    NEW_NPC_ENTRY(14) /* OLD_MAN */ \
+    NEW_NPC_ENTRY(15) /* OLD_WOMAN */ \
+    NEW_NPC_ENTRY(16) /* JASMINE */ \
+    NEW_NPC_ENTRY(17) /* GYM_GUIDE */ \
+    NEW_NPC_ENTRY(18) /* PALMER */ \
+    NEW_NPC_ENTRY(19) /* MAID */ \
+    NEW_NPC_ENTRY(20) /* KID_WITH_NDS */ \
+    NEW_NPC_ENTRY(21) /* THORTON */ \
+    NEW_NPC_ENTRY(22) /* ARGENTA */ \
+    NEW_NPC_ENTRY(23) /* DARACH */ \
+    NEW_NPC_ENTRY(24) /* DAHLIA */ \
+    NEW_NPC_ENTRY(25) /* CAITLIN */ \
+    NEW_NPC_ENTRY(26) /* FRONTIER_SINGLE_ATTENDANT */ \
+    NEW_NPC_ENTRY(27) /* FRONTIER_MULTI_ATTENDANT */ \
+    NEW_NPC_ENTRY(28) /* FRONTIER_BOOTH_ATTENDANT */ \
+    NEW_NPC_ENTRY(29) /* GAME_DIRECTOR */ \
+

@@ -25,6 +25,10 @@ import re
 import struct
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import nitro_tex  # noqa: E402
+
+
 import ndspy.narc
 import ndspy.rom
 import ndspy.codeCompression
@@ -87,7 +91,6 @@ FOLLOW = {"PREVENT": 0, "HEIGHT_RESTRICT": 1, "ALLOW": 2}
 ENCDATA_NA = 0xFF
 MOVE_MODEL_BANK = 15
 SCRIPTS_EVERYWHERE = 139
-SERVICES_SCRIPTS = 967  # data/scr_seq/scr_seq_00967_shg_sinnoh_league.s: enfermera, tienda y Liga
 SCRIPT_HEADER_EVERYWHERE = 399
 MSG_EVERYWHERE = 3
 
@@ -145,6 +148,32 @@ def read_matshp(data):
     return locs, ids
 
 
+def sign_matshp(nsbmd):
+    """Pares (material, forma) de un modelo, en el orden de su bytecode (comandos MAT 0x04 y SHP 0x05)."""
+    mdl = struct.unpack_from("<I", nsbmd, 16)[0]
+    dic = mdl + 8
+    data = dic + struct.unpack_from("<H", nsbmd, dic + 6)[0]
+    model = mdl + struct.unpack_from("<I", nsbmd, data + 4)[0]
+    sbc = model + struct.unpack_from("<I", nsbmd, model + 4)[0]
+    end = model + struct.unpack_from("<I", nsbmd, model + 8)[0]
+    pairs, mat, i = [], None, sbc
+    sizes = {0x00: 1, 0x01: 1, 0x02: 3, 0x03: 2, 0x04: 2, 0x05: 2, 0x06: 4, 0x07: 2, 0x08: 2, 0x09: 0,
+             0x0B: 1, 0x0C: 3, 0x0D: 3}
+    while i < end:
+        op = nsbmd[i]
+        cmd = op & 0x1F
+        if cmd == 0x04:
+            mat = nsbmd[i + 1]
+        elif cmd == 0x05 and mat is not None:
+            pairs.append((mat, nsbmd[i + 1]))
+        elif cmd == 0x01:
+            break
+        if cmd == 0x09:  # ENVELOPE: longitud variable (no aparece en los carteles)
+            break
+        i += sizes.get(cmd, 1)
+    return sorted(set(pairs))
+
+
 def write_matshp(locs, ids):
     return (struct.pack("<HH", len(locs), len(ids)) + b"".join(struct.pack("<HH", *l) for l in locs)
             + b"".join(struct.pack("<HH", *i) for i in ids))
@@ -178,7 +207,7 @@ def encode_header(zone, area_bank, matrix_id, events_bank, music):
     return struct.pack(
         "<BBHHHHHHHHHI",
         zone.get("wild", ENCDATA_NA), area_bank, MOVE_MODEL_BANK, matrix_id,
-        zone.get("scripts", SCRIPTS_EVERYWHERE), SCRIPT_HEADER_EVERYWHERE, MSG_EVERYWHERE,
+        zone.get("scripts", SCRIPTS_EVERYWHERE), SCRIPT_HEADER_EVERYWHERE, zone.get("msgs", MSG_EVERYWHERE),
         music(zone["music_day"]), music(zone["music_night"]), events_bank, mapsec_word, flags,
     )
 
@@ -270,38 +299,12 @@ def music_mapper(table):
 
 # --- eventos ----------------------------------------------------------------------------------
 
-# Los sprites de Platino (OBJ_EVENT_GFX_*) tienen el mismo índice que en HGSS salvo los que HGSS quitó
-# de su tabla (overlay 1); un objeto con uno de esos índices deja la pantalla en negro.
-HG_MISSING_SPRITES = {26, 27, 28, 32, 46, 47, 48, 49, 57, 58, 61, 64, 65, 66, 67, *range(72, 84),
-                      *range(88, 97), *range(100, 126), *range(134, 141), 147, 149}
-SPRITE_REMAP = {
-    32: 68,    # esquiador -> SPRITE_MAN5 (Entrenador Guay de nieve)
-    46: 342,   # nadador -> SPRITE_GSSWIMMERM
-    47: 343,   # nadadora -> SPRITE_GSSWIMMERW
-    48: 316,   # chica flotador -> SPRITE_GSBABYGIRL1
-    49: 315,   # chico flotador -> SPRITE_GSBABYBOY1
-    134: 5,    # Alecrán (Aaron) -> SPRITE_BOY3 (cazabichos)
-    135: 18,   # Gaia (Bertha) -> SPRITE_OLDWOMAN1
-    136: 11,   # Fausto (Flint) -> SPRITE_MAN3
-    137: 36,   # Delos (Lucian) -> SPRITE_GENTLEMAN
-    138: 422,  # Cintia -> SPRITE_CHAMPION (la Cintia de HGSS)
-}
-
-
-def hg_sprite(gfx):
-    if gfx in HG_MISSING_SPRITES:
-        if gfx not in SPRITE_REMAP:
-            print(f"AVISO: sprite {gfx} sin equivalente en HGSS; se usa SPRITE_MAN3")
-        return SPRITE_REMAP.get(gfx, 11)
-    return gfx
-
-
 def pack_object(local_id, gfx, script, direction, x, z, movement=0, trainer_type=0, sight=0,
                 range_x=0, range_z=0, y=0, flag=0):
     """Objeto (NPC) de un archivo de eventos de HGSS: id, sprite, movimiento, tipo de entrenador,
     flag oculto, script, dirección, 3 parámetros (el primero es el alcance de vista de un
     entrenador), rango x/z, x, z (hwords) e y (word)."""
-    return struct.pack("<14HI", local_id, hg_sprite(gfx), movement, trainer_type, flag, script, direction, sight, 0, 0,
+    return struct.pack("<14HI", local_id, gfx, movement, trainer_type, flag, script, direction, sight, 0, 0,
                        range_x, range_z, x, z, y & 0xFFFFFFFF)
 
 
@@ -314,8 +317,13 @@ def append_objects(event_file, objects):
     return bytes(ev[:insert_at]) + b"".join(objects) + bytes(ev[insert_at:])
 
 
-def build_events(warps, objects=()):
-    data = struct.pack("<I", 0)                       # carteles y objetos ocultos
+def pack_bg(script, kind, x, z, y, direction):
+    """Evento de fondo (cartel, objeto oculto...): script, tipo, x, z, y (words) y dirección."""
+    return struct.pack("<HHiiiI", script, kind, x, z, y, direction)
+
+
+def build_events(warps, objects=(), bgs=()):
+    data = struct.pack("<I", len(bgs)) + b"".join(bgs)   # carteles y objetos ocultos
     data += struct.pack("<I", len(objects)) + b"".join(objects)
     data += struct.pack("<I", len(warps))
     for x, z, y, dest, dest_warp in warps:
@@ -416,6 +424,7 @@ def main():
                  for p in sorted((SINNOH / "props" / "model_sets").glob("*.json"))}
     pt_locs, pt_ids = read_matshp((SINNOH / "props" / "build_model_matshp.dat").read_bytes())
     prop_remap = {}  # clase -> {modelo de Platino: ID en HGSS}
+    sign_models = {"exterior": {}, "interior": {}}  # clase -> {cartel: ID en HGSS}
     # animaciones de Platino: se añaden todas al final del archivo de animaciones de HGSS
     bm_anime = vanilla_narc(BM_ANIME)
     anim_remap = {}
@@ -437,6 +446,15 @@ def main():
             locs.append((count, len(ids)))
             ids.extend(pt_ids[start:start + count])
             anim.files.append(convert_animation(pt_anim_list[pt], anim_remap) if pt < len(pt_anim_list) else NO_ANIMATION)
+        # carteles: en Platino son objetos con modelo 3D; aquí se colocan como edificios
+        for f in sorted((SINNOH / "props" / "signs").glob("*.nsbmd")):
+            data = f.read_bytes()
+            sign_models[cls][f.stem] = len(models.files)
+            models.files.append(data)
+            pairs = sign_matshp(data)
+            locs.append((len(pairs), len(ids)))
+            ids.extend(pairs)
+            anim.files.append(NO_ANIMATION)
         if len(models.files) > MAX_BUILDING_MODELS:
             sys.exit(f"demasiados modelos de edificio {cls}: {len(models.files)} > {MAX_BUILDING_MODELS}")
         save(bs["models"], models)
@@ -445,16 +463,21 @@ def main():
         prop_remap[cls] = remap
 
     bm_list, bm_tex = vanilla_narc("a/0/4/3"), vanilla_narc("a/0/7/0")
+    sign_textures = [nitro_tex.parse_tex0(f.read_bytes()) for f in sorted((SINNOH / "props" / "signs").glob("*.nsbmd"))]
     list_index = {}  # (set de Platino, clase) -> índice en a/0/4/3 y a/0/7/0
     for a, d in areas.items():
         key = (d["mapPropSet"], area_class[a])
         if key in list_index:
             continue
         ids = [prop_remap[area_class[a]][m] for m in prop_sets[d["mapPropSet"]]]
+        ids += list(sign_models[area_class[a]].values())
         list_index[key] = len(bm_list.files)
         bm_list.files.append(struct.pack(f"<H{len(ids)}H", len(ids), *ids))
         tex = d["mapPropSet"].replace("prop_model_set", "prop_texture_set")
-        bm_tex.files.append((SINNOH / "props" / "texture_sets" / f"{tex}.nsbtx").read_bytes())
+        btx = (SINNOH / "props" / "texture_sets" / f"{tex}.nsbtx").read_bytes()
+        for sign_tex in sign_textures:   # los edificios se dibujan con las texturas del área
+            btx = nitro_tex.merge_into_btx(btx, sign_tex)
+        bm_tex.files.append(btx)
     save("a/0/4/3", bm_list)
     save("a/0/7/0", bm_tex)
 
@@ -496,12 +519,36 @@ def main():
                 off = perm + 48 * i
                 pt_model = struct.unpack_from("<I", body, off)[0]
                 struct.pack_into("<I", body, off, prop_remap[cls].get(pt_model, 0))
+            # carteles de esta celda: edificio en el centro de la casilla y casilla bloqueada
+            extra = b""
+            for model, lx, lz, y in signs_by_land.get(pt_land, []):
+                extra += struct.pack("<I3i3i3i2I", sign_models[cls][model],
+                                     int(((lx + 0.5) * 16 - 256) * 4096), y << 16, int(((lz + 0.5) * 16 - 256) * 4096),
+                                     0, 0, 0, 4096, 4096, 4096, 0, 0)
+                off = 2 * (lz * 32 + lx)
+                struct.pack_into("<H", body, off, struct.unpack_from("<H", body, off)[0] | 0x8000)
+            if extra:
+                body = body[:perm + bldg] + extra + body[perm + bldg:]
+                header = bytearray(data[:16])
+                struct.pack_into("<I", header, 4, bldg + len(extra))
+            else:
+                header = data[:16]
             land_remap[key] = len(land.files)
             # HGSS añade tras la cabecera una sección de sonido ambiente (aquí vacía)
-            land.files.append(data[:16] + struct.pack("<HH", 0x1234, 0) + bytes(body))
+            land.files.append(bytes(header) + struct.pack("<HH", 0x1234, 0) + bytes(body))
         return land_remap[key]
 
     groups = {p.stem: json.loads(p.read_text()) for p in sorted((SINNOH / "groups").glob("*.json"))}
+    events_json = SINNOH / "events.json"
+    zone_events = json.loads(events_json.read_text())["zones"] if events_json.exists() else {}
+    signs_by_land = {}  # terreno de Platino -> [(cartel, x, z locales, altura)]
+    for z in zones:
+        for prop in zone_events.get(z["stem"], {}).get("props", []):
+            cell = groups[z["group"]]["maps"][prop["z"] // TILES_PER_CELL][prop["x"] // TILES_PER_CELL]
+            if cell != "MAP_NONE":
+                entry = (prop["model"], prop["x"] % TILES_PER_CELL, prop["z"] % TILES_PER_CELL, prop["y"])
+                if entry not in signs_by_land.setdefault(num(cell), []):
+                    signs_by_land[num(cell)].append(entry)
     matrix = vanilla_narc("a/0/4/1")
     matrix_remap = {}  # (grupo, clase) -> índice en a/0/4/1
     crop = {}          # grupo -> (fila, columna) de origen tras recortar
@@ -555,34 +602,31 @@ def main():
         events.files[bank] = append_objects(vanilla_events.files[bank], [sailor])
 
     music = music_mapper(add_music())
-    trainers_json = SINNOH / "trainers.json"
-    trainer_objects = json.loads(trainers_json.read_text())["objects"] if trainers_json.exists() else {}
-    services_json = SINNOH / "services.json"
-    service_objects = json.loads(services_json.read_text())["objects"] if services_json.exists() else {}
+    no_trainers = os.environ.get("SINNOH_DEBUG_NO_TRAINERS") == "1"
     headers = ndspy.narc.NARC(vanilla_file(MAP_HEADER_NARC))
     arm9 = vanilla_arm9()
     headers.files = [arm9[HG_MAP_HEADERS_ARM9 + 24 * i:HG_MAP_HEADERS_ARM9 + 24 * (i + 1)] for i in range(NUM_HG_HEADERS)]
     for z in zones:
         warps = [(*to_hg(z["group"], x, zz), y, dest, dw) for x, zz, y, dest, dw in z["warps"]]
-        # y: altura en casillas como en los JSON de Platino; en el archivo de eventos va en fx32 (<< 16)
-        # flag: flag que oculta el objeto mientras está activo (0 = siempre visible)
-        objects = [pack_object(i, o["graphics_id"], o["script"], o["dir"], *to_hg(z["group"], o["x"], o["z"]),
-                               movement=o.get("movement_type", 0), y=o.get("y", 0) << 16, flag=o.get("flag", 0))
-                   for i, o in enumerate(z.get("objects", []))]
-        # enfermeras y dependientes (scripts comunes de servicios)
-        for o in service_objects.get(z["stem"], []):
-            objects.append(pack_object(len(objects), o["graphics_id"], o["script"], o["dir"],
-                                       *to_hg(z["group"], o["x"], o["z"]), movement=o["movement_type"],
-                                       y=o["y"] << 16))
-            z.setdefault("scripts", SERVICES_SCRIPTS)
-        for t in ([] if os.environ.get("SINNOH_DEBUG_NO_TRAINERS") == "1" else trainer_objects.get(z["stem"], [])):
-            x, zz = to_hg(z["group"], t["x"], t["z"])
-            objects.append(pack_object(len(objects), t["graphics_id"], t["script"], t["dir"], x, zz,
-                                       movement=t["movement_type"], trainer_type=t["trainer_type"],
-                                       sight=t["sight"], range_x=t["range_x"], range_z=t["range_z"],
-                                       y=0 if z.get("flatten_y") else t["y"] << 16))
+        # objetos, carteles y objetos ocultos de data/sinnoh/events.json (tools/sinnoh/sync_events.py)
+        zev = zone_events.get(z["stem"], {})
+        if "scripts" in zev:
+            z["scripts"], z["msgs"] = zev["scripts"], zev["msgs"]
+        objects = []
+        for o in zev.get("objects", []):
+            if no_trainers and o["trainer_type"]:
+                continue
+            x, zz = to_hg(z["group"], o["x"], o["z"])
+            # y: altura en casillas como en los JSON de Platino; en el archivo de eventos va en fx32
+            y = 0 if z.get("flatten_y") else o["y"] << 16
+            objects.append(pack_object(len(objects), o["graphics_id"], o["script"], o["dir"], x, zz,
+                                       movement=o["movement_type"], trainer_type=o["trainer_type"],
+                                       sight=o["sight"], range_x=o["range_x"], range_z=o["range_z"],
+                                       y=y, flag=o["flag"]))
+        bgs = [pack_bg(b["script"], b["type"], *to_hg(z["group"], b["x"], b["z"]), b["y"] << 16, b["dir"])
+               for b in zev.get("bgs", [])]
         events_bank = len(events.files)
-        events.files.append(build_events(warps, objects))
+        events.files.append(build_events(warps, objects, bgs))
         cls = area_class[z["area"]]
         assert z["hg_map"] == len(headers.files)
         headers.files.append(encode_header(z, area_remap[z["area"]], matrix_remap[(z["group"], cls)], events_bank, music))

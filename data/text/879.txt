@@ -1,0 +1,7 @@
+Um...\nWho did you say I was again?\r...\n...\rOh, yes, I remember now!\nI’m the Move Deleter!
+You’ve come to make me force your\nPokémon to forget some moves?
+Which Pokémon should forget a move?
+Remember me if there are moves that\nneed to be forgotten.
+OK, then.\nWhich move should be forgotten?
+Hm! The move {STRVAR_1 6, 0, 0}?\nShould that move be forgotten?
+It worked perfectly!\rYour Pokémon has forgotten the move\n{STRVAR_1 6, 0, 0} completely.

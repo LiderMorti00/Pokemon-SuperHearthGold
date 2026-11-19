@@ -1,0 +1,8 @@
+I’m {STRVAR_1 3, 0, 0}’s father.\rI’ll be happy to assist you on your\nquest for the professor.\rHahaha. Eh...\nI’m sure we can count on you!
+Professor Rowan invented a new\nPokédex while working alongside a\fprofessor from the Kanto region.\rOh, my name is Roseanne.\rIt’s an honor to be an assistant to\nour professor!
+Adventure Rule No. 1\nThe X Button opens the menu.
+Adventure Rule No. 2\nRecord your progress with SAVE.
+It’s crammed full of books with all\nsorts of Pokémon information.
+There’s a lot of reference material\nand research reports on Pokémon.
+{STRVAR_1 3, 0, 0} checked the PC.\rThe screen is filled with special terms\nand academic writing that is impossible\fto figure out.
+The refrigerator is filled with\ntasty sweets! Mmm...

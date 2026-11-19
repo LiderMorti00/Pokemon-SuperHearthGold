@@ -1,0 +1,5 @@
+Team Galactic took my Pokémon away.\nThey took other people’s, too.\rSomething should be done, but Team\nGalactic creeps everyone out...\rWhat are they doing to my Pokémon?
+I got my Pokémon back!\rI’m so happy, I feel like riding my Bike\ndown Cycling Road together with it!
+When a Pokémon faints, it just means\nit doesn’t have the power to battle.\rBut it can still use hidden moves\noutside of battle!
+Hi, you cute little Trainer!\nWhat kinds of Pokémon are with you?\rOh, your {STRVAR_1 0, 0, 0}...
+It seems to like you.\nIt must be happy being with you.

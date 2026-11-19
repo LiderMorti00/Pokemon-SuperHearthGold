@@ -1,0 +1,6 @@
+Your quest for power has brought\nyou here...\r...Very well.\rLet me reward your passion with some\nabsolutely astounding moves.\rThey’re the ultimate moves!\nShall I teach them to your Pokémon?
+The ultimate moves!\nShall I teach them to your Pokémon?
+To which Pokémon should I teach\na move?
+Hmm... Well, that is fine, as well.\nVisit if you have a change of heart.
+I should teach Frenzy Plant to\nyour {STRVAR_1 0, 0, 0}?
+To the Pokémon listed here,\nthe ultimate moves may be taught!\rThe blazing fire Pokémon\nCHARIZARD TYPHLOSION\fBLAZIKEN INFERNAPE\rThe restless water Pokémon\nBLASTOISE FERALIGATR\fSWAMPERT EMPOLEON\rThe quiet grass Pokémon\nVENUSAUR MEGANIUM\fSCEPTILE TORTERRA

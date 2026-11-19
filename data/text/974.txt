@@ -1,0 +1,2 @@
+Oh! {STRVAR_1 3, 0, 0}!\nYou’ve beaten the Gym Leader!\rYou were more focused than her,\nand your Pokémon picked up on it!
+Snowpoint City Pokémon Gym\nLeader: Candice\rCertified Trainers:\n{STRVAR_1 3, 0, 0}\f{STRVAR_1 3, 1, 0}

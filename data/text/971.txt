@@ -1,0 +1,3 @@
+The Vista Lighthouse represents\nsafety and protection to us Sailors.
+I love how far away you can see with\nthe binoculars.\rI’m going to go that far away with\nmy Pokémon one day!
+{STRVAR_1 3, 0, 0} took a look through\nthe binoculars.

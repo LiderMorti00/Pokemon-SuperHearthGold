@@ -9,7 +9,6 @@ Genera:
   data/sinnoh/trainers.h            entradas de sTrainerData que data/Trainers.c incluye al final
   data/sinnoh/trainer_scrdefs.inc   una entrada por entrenador en el script de entrenadores (2_953)
   data/sinnoh/trainers.json         NPCs entrenador de cada mapa y entrenadores de gimnasio y Liga
-  data/sinnoh/services.json         enfermeras y dependientes (scripts de scr_seq_00967)
 
 IDs: hg-engine usa 0-737 y la entrada 739 del script de entrenadores es especial, así que los de
 Sinnoh empiezan en el 741 (ver SHG_FIRST_TRAINER en src/shg_trainer_flags.c).
@@ -80,14 +79,6 @@ def scale(level):
 def c_string(lines):
     text = "".join(lines)
     return text.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\\\n").replace("\r", "\\\\r").replace("\f", "\\\\f")
-
-
-# sprite de Platino -> (sprite de HGSS o None para el mismo índice, script de servicios)
-SERVICE_GFX = {
-    "OBJ_EVENT_GFX_POKECENTER_NURSE": (335, 1),  # SPRITE_PCWOMAN1 (la enfermera de HGSS)
-    "OBJ_EVENT_GFX_CASHIER_F": (None, 2),
-    "OBJ_EVENT_GFX_CASHIER_M": (None, 2),
-}
 
 
 def main():
@@ -222,25 +213,6 @@ def main():
          "leaders": leaders, "league": league, "objects": objects}, indent=1) + "\n")
     print(f"{len(entries)} entrenadores (IDs {FIRST_ID}-{last}) en {len(objects)} mapas; "
           f"no importados: {len(skipped)}")
-
-    # Servicios: enfermeras de los Centros Pokémon y dependientes de las tiendas. Usan los scripts
-    # comunes de data/scr_seq/scr_seq_00967_shg_sinnoh_services.s (1 = enfermera, 2 = tienda).
-    services = {}
-    for z in zones:
-        ev = json.loads((maps_dir / z["stem"] / "events.json").read_text())
-        for o in ev.get("object_events", []):
-            kind = SERVICE_GFX.get(o["graphics_id"])
-            if kind is None or o.get("hidden_flag", "0") != "0":
-                continue
-            gfx, script = kind
-            services.setdefault(z["stem"], []).append({
-                "graphics_id": gfx if gfx is not None else gfx_order.index(o["graphics_id"]),
-                "movement_type": move_types.index(o["movement_type"]), "script": script,
-                "dir": dirs[o["initial_dir"]], "x": o["x"], "z": o["z"], "y": o.get("y", 0)})
-    (REPO / "data" / "sinnoh" / "services.json").write_text(json.dumps(
-        {"_comment": "Generado por tools/sinnoh/sync_trainers.py: enfermeras y dependientes de Sinnoh",
-         "objects": services}, indent=1) + "\n")
-    print(f"servicios en {len(services)} mapas")
 
 
 if __name__ == "__main__":

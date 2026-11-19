@@ -1,0 +1,11 @@
+Where departed Pokémon sleep...\nThis is the Lost Tower.
+Hmm!\n{STRVAR_1 8, 0, 0} is really good!\rWouldn’t you agree?
+Try fishing wherever there is\na body of water.\rOh, incidentally, do you need me to\nexplain how to use that fishing rod?
+Hmm!\nWe’re of identical minds!\rHmm!\nTake this {STRVAR_1 8, 0, 0}!
+You don’t like to fish?
+First, you face any body of water,\nthen you use your fishing rod.\rNext, you must focus!\nIf a Pokémon bites, “!” appears.\fThat’s your cue to reel it in!
+When you’re fishing for Pokémon,\nthe first hurdle is getting a bite.\rWhen you start to reel that Pokémon\nin, you’ve got to battle it.\rSo, fishing gives you twice the fun!
+Rt. 209\nHearthome City
+Rt. 209\nSolaceon Town
+Trainer Tips\rYou may register one of the Key\nItems in your Bag for instant use.\rSimply press the Y Button to use the\nregistered item instantly.
+Yulaaah!

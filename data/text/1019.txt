@@ -1,0 +1,13 @@
+Your {STRVAR_1 1, 0, 0} looks quite pleased\nfollowing you around.\rIt really is adorable!
+These ruins are from a long, long\ntime ago.
+DRIFLOON: Foon!
+HAPPINY appears to be drowsy.
+I come here with my HAPPINY\nevery single day!\rI can let it run free without any\nworries at all.
+Ooh, I just can’t believe it!\nI’m so overjoyed with my PIKACHU!\rWherever I go, my PIKACHU follows\nme without hesitation!\rAhaha! It’s just the two of us!\nWoohoo!
+PIKACHU: Pikka pika!
+You should talk to your Pokémon.\nIt can occasionally find things.
+There is something shiny in CLEFAIRY’s\nhands...
+Hello, how do you do!\rI love this park.\nIt’s why I try to keep it neat and tidy.\rI don’t mind the cleaning at all.\nI find all sorts of items doing so.\rIt’s quite fun, even exciting.\nOh, I know.
+Hahahah!\nPerhaps I’ll see you again tomorrow!
+Do you know the item {STRVAR_1 8, 0, 0}?\nI found some. Would you like them?
+Oh, it’s no problem to me.\nThey’re yours if you want, OK?

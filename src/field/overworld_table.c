@@ -23,8 +23,11 @@
 #define NEW_NPC_ENTRY(num) \
     { .tag = NEW_NPC_TAG_START + num, .gfx = NEW_NPC_GFX_START + num, .callback_params = 0 },
 
+// Pokémon SuperHearthGold: sprites de NPC de Platino (tools/sinnoh/sync_sprites.py)
+#include "../../data/sinnoh/npc_overworlds.h"
+
 // adjust this depending on the amount of new npc's that you have added
-#define MON_OVERWORLD_GFX_START (297)
+#define MON_OVERWORLD_GFX_START (297 + SHG_NEW_NPC_COUNT)
 
 #define MON_FOLLOWER_ENTRY(species, cbparams) \
     { .tag = MON_OVERWORLD_TAG_START + species, .gfx = MON_OVERWORLD_GFX_START + species, .callback_params = cbparams },
@@ -373,6 +376,9 @@ struct OVERWORLD_TAG gOWTagToFileNum[] = // skip down a bit to see the parts tha
         { .tag = 1047, .gfx = MON_OVERWORLD_GFX_START + SPECIES_MEGANIUM, .callback_params = OVERWORLD_SIZE_SMALL },
         { .tag = 1048, .gfx = MON_OVERWORLD_GFX_START + SPECIES_TYPHLOSION, .callback_params = OVERWORLD_SIZE_SMALL },
         { .tag = 1049, .gfx = MON_OVERWORLD_GFX_START + SPECIES_FERALIGATR, .callback_params = OVERWORLD_SIZE_SMALL },
+
+        // Pokémon SuperHearthGold: sprites de NPC de Platino
+        SHG_NEW_NPC_ENTRIES
 
         // pokémon follower specific overworlds start here... left off on gfx 1451 - galarian stunfisk which was inserted after all the others
 

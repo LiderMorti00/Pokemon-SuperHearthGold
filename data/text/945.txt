@@ -1,0 +1,5 @@
+Oh! {STRVAR_1 3, 0, 0}!\nYou’ve beaten the Gym Leader!\rOf course, I thought you’d win.
+Veilstone City Pokémon Gym\nLeader: Maylene\rCertified Trainers:\n{STRVAR_1 3, 0, 0}\f{STRVAR_1 3, 1, 0}
+One day at a time.
+A good deed for every day.
+Treasure every encounter,\nfor it is unique.

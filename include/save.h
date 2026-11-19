@@ -117,6 +117,8 @@ struct SAVE_MISC_DATA {
     // expanded fields - offset 0x2E0 and up
     struct PartyPokemon storedMons[NUM_OF_STORED_MONS];
     u8 isMonStored[NUM_OF_STORED_MONS];
+    // Pokémon SuperHearthGold: flags ampliadas 0x1000-0x12FF (src/shg_flags.c)
+    u8 shgFlags[768 / 8];  // el bloque 0 del guardado solo tenía 96 bytes libres
 
 #endif
 };

@@ -1,12 +1,11 @@
 {
-  "_comment": "Ajustes a mano sobre data/sinnoh/zones.json (que se genera). Las coordenadas son las de Platino. scripts: archivo de scripts propio de la zona (data/scr_seq/scr_seq_NNNNN_*.s); objects: NPCs. Gimnasios: scripts 966 (scr_seq_00966_shg_sinnoh_gyms.s), el líder usa el script 1-8.",
+  "_comment": "Cambios a mano sobre lo importado de Platino. objects: objetos extra (script = etiqueta de un script de data/scr_seq/include/shg_*.inc, 0 = sin script; flag = flag que lo oculta). warp_targets: {índice: 'mapa:warp'}. flatten_y: objetos a altura 0.",
   "canalave_city": {
-    "scripts": 965,
     "objects": [
       {
         "_comment": "marinero del muelle (barco a Olivo/Carmín)",
         "graphics_id": 348,
-        "script": 1,
+        "script": "scr_seq_shg_canalave_sailor",
         "dir": 0,
         "x": 45,
         "z": 751
@@ -14,13 +13,12 @@
     ]
   },
   "oreburgh_city_gym": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Roark)",
         "graphics_id": 126,
         "movement_type": 15,
-        "script": 1,
+        "script": "scr_seq_shg_gym_roark",
         "dir": 1,
         "x": 5,
         "z": 3,
@@ -29,13 +27,12 @@
     ]
   },
   "eterna_city_gym": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Gardenia)",
         "graphics_id": 127,
         "movement_type": 15,
-        "script": 2,
+        "script": "scr_seq_shg_gym_gardenia",
         "dir": 1,
         "x": 11,
         "z": 3,
@@ -44,13 +41,12 @@
     ]
   },
   "hearthome_city_gym_leader_room": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Fantina)",
         "graphics_id": 130,
         "movement_type": 15,
-        "script": 3,
+        "script": "scr_seq_shg_gym_fantina",
         "dir": 1,
         "x": 4,
         "z": 10,
@@ -59,13 +55,12 @@
     ]
   },
   "veilstone_city_gym": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Maylene)",
         "graphics_id": 129,
         "movement_type": 15,
-        "script": 4,
+        "script": "scr_seq_shg_gym_maylene",
         "dir": 1,
         "x": 12,
         "z": 4,
@@ -74,13 +69,12 @@
     ]
   },
   "pastoria_city_gym": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Crasher_Wake)",
         "graphics_id": 128,
         "movement_type": 15,
-        "script": 5,
+        "script": "scr_seq_shg_gym_wake",
         "dir": 1,
         "x": 11,
         "z": 39,
@@ -90,13 +84,12 @@
     "_comment": "Los niveles del agua dependen de botones con scripts de Platino: Mananti espera junto a la entrada (en Platino está en (13, 4)); los entrenadores del estanque no son accesibles."
   },
   "canalave_city_gym": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Byron)",
         "graphics_id": 132,
         "movement_type": 15,
-        "script": 6,
+        "script": "scr_seq_shg_gym_byron",
         "dir": 1,
         "x": 16,
         "z": 3,
@@ -107,13 +100,12 @@
     "_comment": "Sin ascensores: el jugador no cambia de piso como en Platino, así que líder y entrenadores van a altura 0 (el juego los coloca sobre el terreno)."
   },
   "snowpoint_city_gym": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Candice)",
         "graphics_id": 131,
         "movement_type": 15,
-        "script": 7,
+        "script": "scr_seq_shg_gym_candice",
         "dir": 1,
         "x": 11,
         "z": 3,
@@ -122,13 +114,12 @@
     ]
   },
   "sunyshore_city_gym_room_3": {
-    "scripts": 966,
     "objects": [
       {
         "_comment": "líder (Volkner)",
         "graphics_id": 133,
         "movement_type": 15,
-        "script": 8,
+        "script": "scr_seq_shg_gym_volkner",
         "dir": 1,
         "x": 11,
         "z": 3,
@@ -138,11 +129,10 @@
   },
   "pokemon_league_aaron_room": {
     "_comment": "Alto Mando (Aaron): objeto 0; el 1 tapa la salida hasta vencerle. La salida lleva directa a la sala siguiente (sin ascensor).",
-    "scripts": 967,
     "objects": [
       {
         "graphics_id": 134,
-        "script": 4,
+        "script": "scr_seq_shg_e4_aaron",
         "dir": 1,
         "x": 8,
         "z": 5
@@ -162,11 +152,10 @@
   },
   "pokemon_league_bertha_room": {
     "_comment": "Alto Mando (Bertha): objeto 0; el 1 tapa la salida hasta vencerle. La salida lleva directa a la sala siguiente (sin ascensor).",
-    "scripts": 967,
     "objects": [
       {
         "graphics_id": 135,
-        "script": 5,
+        "script": "scr_seq_shg_e4_bertha",
         "dir": 1,
         "x": 8,
         "z": 5
@@ -186,11 +175,10 @@
   },
   "pokemon_league_flint_room": {
     "_comment": "Alto Mando (Flint): objeto 0; el 1 tapa la salida hasta vencerle. La salida lleva directa a la sala siguiente (sin ascensor).",
-    "scripts": 967,
     "objects": [
       {
         "graphics_id": 136,
-        "script": 6,
+        "script": "scr_seq_shg_e4_flint",
         "dir": 1,
         "x": 8,
         "z": 5
@@ -210,11 +198,10 @@
   },
   "pokemon_league_lucian_room": {
     "_comment": "Alto Mando (Lucian): objeto 0; el 1 tapa la salida hasta vencerle. La salida lleva directa a la sala siguiente (sin ascensor).",
-    "scripts": 967,
     "objects": [
       {
         "graphics_id": 137,
-        "script": 7,
+        "script": "scr_seq_shg_e4_lucian",
         "dir": 1,
         "x": 8,
         "z": 5
@@ -234,11 +221,10 @@
   },
   "pokemon_league_champion_room": {
     "_comment": "Cintia espera en el centro; al vencerla se vuelve al Centro Pokémon norte (sin Salón de la Fama).",
-    "scripts": 967,
     "objects": [
       {
         "graphics_id": 138,
-        "script": 8,
+        "script": "scr_seq_shg_cynthia",
         "dir": 1,
         "x": 8,
         "z": 11
@@ -250,7 +236,7 @@
     "objects": [
       {
         "graphics_id": 11,
-        "script": 3,
+        "script": "scr_seq_shg_league_guard",
         "dir": 1,
         "x": 11,
         "z": 3

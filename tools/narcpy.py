@@ -27,7 +27,22 @@ elif args[0] == 'create':
         files.append(None)
 
     idx = 0
-    for entry in sorted(os.listdir(args[2])):
+    def entry_key(name):
+        # orden numérico por el sufijo (7_99 < 7_100 < 7_1000) aunque los nombres no tengan el mismo ancho
+        stem, _, num = name.rpartition('_')
+        return (stem, int(num)) if num.isdigit() else (name, -1)
+
+    # si hay dos archivos con el mismo número (p. ej. 7_855 de msgenc y 7_0855 extraído de la narc
+    # anterior) vale el más reciente
+    newest = {}
+    for entry in os.listdir(args[2]):
+        key = entry_key(entry)
+        mtime = os.path.getmtime(os.path.join(args[2], entry))
+        if key not in newest or mtime > newest[key][0]:
+            newest[key] = (mtime, entry)
+    files = [None] * len(newest)
+
+    for entry in [newest[k][1] for k in sorted(newest)]:
         with open(os.path.join(args[2], entry), 'rb') as f:
             files[idx] = f.read()
         idx += 1

@@ -1,0 +1,8 @@
+Starting tomorrow, please visit and\ntell me stories about your travels.
+Julia: Oh, hello.\nYou’re quite the nifty Trainer.\rMy husband is a Sailor, and he’s off\nworking somewhere far away.\rI long for the day he comes back\nto me.\rAll that waiting gets to be very\nboring every day, though...\rI know! How about you visit me and\ntell me stories every so often?
+Julia: Please tell me another story\ntomorrow.
+Julia: Yawn...\nToday’s Saturday...\fI’m feeling lazy and sleepy...\rI wish I had a pillow...\nBut what kind of a pillow?
+{STRVAR_1 28, 0, 0} snuggle pillow...\n...\rIt... It surprisingly may give me\na good night’s sleep!\rI wonder if I can buy one somewhere.
+Thank you!\nPlease give this to your Pokémon.
+{STRVAR_1 3, 2, 0} received\nthe {STRVAR_1 39, 3, 0}.
+{STRVAR_1 3, 2, 0} put\nthe {STRVAR_1 39, 3, 0}\fon {STRVAR_1 0, 1, 0}.

@@ -1,0 +1,8 @@
+Oh, wow!\nPokémon are so cool!\rYou can make yours battle and make\nthem stronger!\rI wish I had some!\nIt’s so cool!
+That thing you have!\rIt’s a Pokédex, isn’t it?!\rYou’re off to see all kinds of\nPokémon now! Lucky you!
+So I don’t forget what’s happened,\ntill now, I’d better save this...\rThere!\nNow I can take a break.
+Pokémon Research Lab
+{STRVAR_1 3, 0, 0}’s House
+Sandgem Town\nTown of Sand!
+Heal Your Pokémon!\nPokémon Center
+All Your Item Needs Fulfilled!\nPokémon Mart

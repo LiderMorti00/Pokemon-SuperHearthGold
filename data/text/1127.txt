@@ -1,0 +1,4 @@
+It’s a Wii!\nIt’s controlled by a Wii Remote!
+{STRVAR_1 3, 0, 0} checked the PC.\rPokémon Basics...\rPeople live alongside Pokémon in\nthis world.\rThe people that battle Pokémon are\ncalled Pokémon Trainers.
+The X Button\nopens the menu!
+Mom bought this TV as a gift.

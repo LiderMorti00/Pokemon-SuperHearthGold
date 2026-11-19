@@ -1,0 +1,2 @@
+The surface is unmarked.\nIt is polished like a mirror.
+{STRVAR_1 28, 1, 0}, to whom I give\nmy thanks.

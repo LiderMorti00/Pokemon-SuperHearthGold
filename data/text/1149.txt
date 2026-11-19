@@ -1,0 +1,9 @@
+OK! I’ll crank out a riveting story\nbased on this!\rOh, right! I’ll have another\nassignment for you tomorrow!
+Oh?\nWelcome!\rYou saw the notice outside about\nus hiring, right?\rIs that a Pokédex there?\nThen you must know Professor Rowan!\rYou’re just the Pokémon-searching\nexpert we’ve been looking for!
+Here you are!\nGood!\rWe’ve got a deadline to meet.\nHere’s your assignment.
+Whoops! What’s all this?\nYour Bag is stuffed full.\rI’ll hold on to these until\nthe next time.
+Oh, there you are! Here’s your\nreward for the last assignment!\rIt’s not much, but thanks!
+{STRVAR_1 0, 0, 0}.\nI want you to bring me one.\rYou must bring it today, or we’re not\ngonna be able to run our main article.\rI’ll pay you with a Heart Scale and some\nPoké Balls for it.
+The Sinnoh region’s newspaper is\ntiny, but it has many fans.\rThat newspaper is printed right\nhere!
+“Weekly Poké Ball Roundup”\nis the featured top story.\rIt’s a feature article on new types\nof Poké Balls.
+Which article would you like to read?

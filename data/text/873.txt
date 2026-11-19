@@ -1,0 +1,2 @@
+Oh! {STRVAR_1 3, 0, 0}!\nYou’ve beaten the Gym Leader!\rGood going!\nThat makes it six Gym Badges!\rI tell you what, you’re really turning\ninto one fine Trainer.\rIf you were to say you’re going to\ntry to become the Pokémon Champ...\rNo one’d laugh at you now!\nI’m in your corner, kiddo!
+Canalave City Pokémon Gym\nLeader: Byron\rCertified Trainers:\n{STRVAR_1 3, 0, 0}\f{STRVAR_1 3, 1, 0}

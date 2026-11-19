@@ -1,0 +1,3 @@
+Ah, so that Rowan fellow is back?\nHe’s quite the remarkable man.\rHe’s been studying Pokémon since way,\nway back.\rMy son and grandchild help Rowan\nwith his studies now.
+Who are you?\r...\rOh...\nYou’re {STRVAR_1 3, 0, 0}?\rHey, you’re doing that Pokédex thingy\nfor the professor!\rWow! That’s the same as my big\nsister! Go for it!
+Who are you?\r...\rOh...\nYou’re {STRVAR_1 3, 0, 0}?\rYou’re doing that Pokédex thingy\nfor the professor!\rWow! That’s the same as my big\nbrother! Go for it!

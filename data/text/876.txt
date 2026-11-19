@@ -1,0 +1,5 @@
+The books on the third floor are\neasy to read.\rThe ones down here are all too tough\nfor me to understand...
+That tremor...\nIt was wicked!\rI scrambled to find the book\n“Disaster Strikes Survival Guide!”
+”Sinnoh’s Beginning as Told on Plates.”\rThis is a collection of engravings from\nancient Plates found in Sinnoh.\r“The Original One breathed alone before\nthe universe came.”\r“When the universe was created,\nits shards became this Plate.”\r“The power of defeated giants\ninfuses this Plate.”\r“Two beings of time and space set\nfree from the Original One.”\r“Three beings were born to bind\ntime and space.”\r“Two make matter, and three make\nspirit, shaping the world.”\r“The powers of Plates are shared\namong Pokémon.”\r“The rightful bearer of a Plate\ndraws from the Plate it holds.”\r{STRVAR_1 3, 0, 0} returned the book to its\nplace.
+The shelves are lined with books\nworn from being read by many people.
+Please refrain from bringing food\nor beverages into the library.

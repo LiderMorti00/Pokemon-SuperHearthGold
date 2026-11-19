@@ -1,0 +1,8 @@
+Oh, you’re helping put together\na Pokédex?\rThat means you’re going to travel\nall over the place with Pokémon!\rThat sounds like a lot of fun!\nI’m a little envious, to be honest!
+Oh! A Pokémon!\nYou look good together!
+Technology just blows me away!\rI mean, now you can play with people\naround the world...wirelessly!
+Everyone goes off on adventures,\nand then they gradually grow up...
+{STRVAR_1 3, 0, 0}? He went tearing off\nin a huge rush a while ago.\r...Ouch. He ran right into me earlier.\nIt’s still hurting.\fThat kid’s growing up tough.
+Twinleaf Town\nFresh and Free!
+{STRVAR_1 3, 0, 0}’s House
+{STRVAR_1 3, 0, 0}’s House
