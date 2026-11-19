@@ -67,6 +67,7 @@ P_Route226House_TryTrade:
 	// Platino: FadeScreenIn 
 	// Platino: WaitFadeScreen 
 	// Platino: InitNPCTrade NPC_TRADE_FOPPA_MAGIKARP
+	setvar VAR_SPECIAL_x8004, 10000
 	// Platino: GetNPCTradeRequestedSpecies VAR_RESULT
 	goto P_Route226House_ThatIsNoFinneon
 

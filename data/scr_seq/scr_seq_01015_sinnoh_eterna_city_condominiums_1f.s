@@ -57,6 +57,7 @@ P_EternaCityCondominiums1F_TryTrade:
 	// Platino: FadeScreenIn 
 	// Platino: WaitFadeScreen 
 	// Platino: InitNPCTrade NPC_TRADE_CHARAP_CHATOT
+	setvar VAR_SPECIAL_x8004, 10000
 	// Platino: GetNPCTradeRequestedSpecies VAR_RESULT
 	goto P_EternaCityCondominiums1F_IWantBuizel
 
@@ -119,6 +120,7 @@ P_EternaCityCondominiums1F_TryGiveNickname:
 	// Platino: ReturnToField 
 	// Platino: FadeScreenIn 
 	// Platino: WaitFadeScreen 
+	setvar VAR_SPECIAL_x8005, 10000
 	// Platino: CheckIsPartyMonOutsider VAR_0x8005, VAR_RESULT
 	// Platino: BufferPartyMonNickname 0, VAR_0x8005
 	npc_msg 8

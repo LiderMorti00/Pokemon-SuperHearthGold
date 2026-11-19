@@ -35,6 +35,8 @@ P_Route225House_Worker:
 	faceplayer
 	goto_if_set 4755, P_Route225House_WellspringOfLife
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_FRESH_WATER
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_FRESH_WATER, 1, P_Route225House_BagIsFull
 	giveitem_no_check ITEM_FRESH_WATER, 1
 	setflag 4755

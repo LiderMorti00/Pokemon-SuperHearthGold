@@ -59,6 +59,8 @@ P_OreburghCityNorthwestHouse2F_Lass:
 	goto_if_set 4120, P_OreburghCityNorthwestHouse2F_DuskBallIsDesignedForDarkness
 	buffer_item_name 0, ITEM_DUSK_BALL
 	npc_msg 2
+	setvar VAR_SPECIAL_x8004, ITEM_DUSK_BALL
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_DUSK_BALL, 1, P_OreburghCityNorthwestHouse2F_BagIsFull
 	setflag 4120
 	giveitem_no_check ITEM_DUSK_BALL, 1

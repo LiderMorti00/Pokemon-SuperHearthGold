@@ -37,6 +37,7 @@ P_Route208House_OldMan:
 	faceplayer
 	goto_if_set 4491, P_Route208House_FeedBerriesToPokemon
 	npc_msg 0
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4491
 	closemsg
 	releaseall
@@ -88,15 +89,41 @@ P_Route208House_PokemonBreederF:
 	faceplayer
 	npc_msg 5
 	// Platino: ShowMoney 20, 2
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
-	// Platino: AddMenuEntryImm MenuEntries_Text_MulchShop_GrowthMulch, 0
-	// Platino: AddMenuEntryImm MenuEntries_Text_MulchShop_DampMulch, 1
-	// Platino: AddMenuEntryImm MenuEntries_Text_MulchShop_StableMulch, 2
-	// Platino: AddMenuEntryImm MenuEntries_Text_MulchShop_GooeyMulch, 3
-	// Platino: AddMenuEntryImm MenuEntries_Text_MulchShop_Exit, 4
-	// Platino: ShowMenu 
-	npc_msg 6
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	AddMultiOption 6, 0
+	AddMultiOption 7, 1
+	AddMultiOption 8, 2
+	AddMultiOption 9, 3
+	AddMultiOption 10, 4
+	ShowMulti
+	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_Route208House_TryBuyGrowthMulch
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_Route208House_TryBuyDampMulch
+	compare VAR_SPECIAL_x8008, 2
+	goto_if_eq P_Route208House_TryBuyStableMulch
+	compare VAR_SPECIAL_x8008, 3
+	goto_if_eq P_Route208House_TryBuyGooeyMulch
+	npc_msg 11
 	goto P_Route208House_PokemonBreederFEnd
+
+P_Route208House_TryBuyGrowthMulch:
+	setvar VAR_SPECIAL_x8001, ITEM_GROWTH_MULCH
+	goto P_Route208House_TryBuyMulch
+
+P_Route208House_TryBuyDampMulch:
+	setvar VAR_SPECIAL_x8001, ITEM_DAMP_MULCH
+	goto P_Route208House_TryBuyMulch
+
+P_Route208House_TryBuyStableMulch:
+	setvar VAR_SPECIAL_x8001, ITEM_STABLE_MULCH
+	goto P_Route208House_TryBuyMulch
+
+P_Route208House_TryBuyGooeyMulch:
+	setvar VAR_SPECIAL_x8001, ITEM_GOOEY_MULCH
+	goto P_Route208House_TryBuyMulch
 
 P_Route208House_PokemonBreederFEnd:
 	wait_button_or_walk_away
@@ -104,4 +131,14 @@ P_Route208House_PokemonBreederFEnd:
 	// Platino: HideMoney 
 	releaseall
 	end
+
+P_Route208House_TryBuyMulch:
+	// Platino: UpdateMoneyDisplay 
+	npc_msg 12
+	npc_msg 13
+	goto P_Route208House_PokemonBreederFEnd
+
+P_Route208House_YourBagAppearsToBeFull:
+	npc_msg 14
+	goto P_Route208House_PokemonBreederFEnd
 

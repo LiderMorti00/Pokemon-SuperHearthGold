@@ -59,6 +59,8 @@ P_SolaceonTownEastHouse_PokefanF:
 	faceplayer
 	goto_if_set 4715, P_SolaceonTownEastHouse_IllExplainHowSealsWork
 	npc_msg 2
+	setvar VAR_SPECIAL_x8004, ITEM_SEAL_CASE
+	setvar VAR_SPECIAL_x8005, 1
 	giveitem_no_check ITEM_SEAL_CASE, 1
 	setflag 4715
 	call P_SolaceonTownEastHouse_GiveRandomSeals

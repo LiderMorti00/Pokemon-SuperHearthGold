@@ -37,6 +37,8 @@ P_VeilstoneCityPrizeExchange_Receptionist:
 	faceplayer
 	npc_msg 0
 	// Platino: ShowCoins 21, 1
+	setvar VAR_SPECIAL_x8005, 0
+	setvar VAR_SPECIAL_x8006, 0
 	goto P_VeilstoneCityPrizeExchange_TryBuyPrize
 
 P_VeilstoneCityPrizeExchange_TryBuyPrize:
@@ -55,7 +57,9 @@ P_VeilstoneCityPrizeExchange_TryBuyPrize:
 	goto P_VeilstoneCityPrizeExchange_TryBuyPrize
 
 P_VeilstoneCityPrizeExchange_InitPrizeMenu:
-	// Platino: InitGlobalTextListMenu 1, 1, 0, VAR_RESULT
+	setvar VAR_SPECIAL_x8008, 0
+	setvar VAR_SPECIAL_x8009, 0
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	goto P_VeilstoneCityPrizeExchange_AddPrizeToMenu
 
 P_VeilstoneCityPrizeExchange_NotEnoughCoins:
@@ -69,7 +73,7 @@ P_VeilstoneCityPrizeExchange_NoRoomAvailable:
 P_VeilstoneCityPrizeExchange_AddPrizeToMenu:
 	// Platino: GetGameCornerPrizeData VAR_0x8008, VAR_0x8000, VAR_0x8001
 	// Platino: BufferVarPaddingDigits 1, VAR_0x8001, PADDING_MODE_SPACES, 5
-	// Platino: AddListMenuEntry MenuEntries_Text_PrizeExchange_Prize, VAR_0x8008
+	AddMultiOption 5, 910
 	goto P_VeilstoneCityPrizeExchange_AddPrizeToMenu
 
 P_VeilstoneCityPrizeExchange_Guitarist:
@@ -78,21 +82,21 @@ P_VeilstoneCityPrizeExchange_Guitarist:
 	faceplayer
 	goto_if_set 4180, P_VeilstoneCityPrizeExchange_AskTellHiddenPowerType
 	setflag 4180
-	npc_msg 5
-	yesno VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq P_VeilstoneCityPrizeExchange_IfYouWantAskMe
-	goto P_VeilstoneCityPrizeExchange_TryTellHiddenPowerType
-
-P_VeilstoneCityPrizeExchange_AskTellHiddenPowerType:
 	npc_msg 6
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq P_VeilstoneCityPrizeExchange_IfYouWantAskMe
 	goto P_VeilstoneCityPrizeExchange_TryTellHiddenPowerType
 
-P_VeilstoneCityPrizeExchange_IfYouWantAskMe:
+P_VeilstoneCityPrizeExchange_AskTellHiddenPowerType:
 	npc_msg 7
+	yesno VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq P_VeilstoneCityPrizeExchange_IfYouWantAskMe
+	goto P_VeilstoneCityPrizeExchange_TryTellHiddenPowerType
+
+P_VeilstoneCityPrizeExchange_IfYouWantAskMe:
+	npc_msg 8
 	goto P_VeilstoneCityPrizeExchange_GuitaristEnd
 
 P_VeilstoneCityPrizeExchange_TryTellHiddenPowerType:
@@ -107,7 +111,7 @@ P_VeilstoneCityPrizeExchange_TryTellHiddenPowerType:
 	// Platino: CalcHiddenPowerType VAR_0x8000, VAR_0x8004
 	// Platino: CheckPartyMonHasMove VAR_RESULT, MOVE_HIDDEN_POWER, VAR_0x8000
 	// Platino: BufferTypeName 0, VAR_0x8004
-	npc_msg 8
+	npc_msg 9
 	goto P_VeilstoneCityPrizeExchange_GuitaristEnd
 
 P_VeilstoneCityPrizeExchange_GuitaristEnd:
@@ -120,7 +124,7 @@ P_VeilstoneCityPrizeExchange_OldMan:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 9
+	npc_msg 10
 	wait_button_or_walk_away
 	closemsg
 	releaseall

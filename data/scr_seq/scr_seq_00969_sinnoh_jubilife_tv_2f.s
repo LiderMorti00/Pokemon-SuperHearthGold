@@ -49,6 +49,7 @@ P_JubilifeTV2F_GymGuide:
 	// Platino: GetPlayerStarterSpecies VAR_RESULT
 	// Platino: BufferAccessoryNameWithArticle 0, VAR_0x8004
 	npc_msg 1
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4100
 	closemsg
 	releaseall

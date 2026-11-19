@@ -67,6 +67,8 @@ P_PokemonMansionMaidsRoom_MaidMiddle:
 	faceplayer
 	goto_if_set 4542, P_PokemonMansionMaidsRoom_TrainerThatPokemonLove
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_SOOTHE_BELL
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_SOOTHE_BELL, 1, P_PokemonMansionMaidsRoom_BagIsFull
 	setflag 4542
 	giveitem_no_check ITEM_SOOTHE_BELL, 1

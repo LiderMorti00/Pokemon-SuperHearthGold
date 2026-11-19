@@ -151,6 +151,7 @@ P_PastoriaCity_ParasolLady:
 	// Platino: GetPlayerStarterSpecies VAR_RESULT
 	// Platino: BufferAccessoryName 0, VAR_0x8004
 	npc_msg 7
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4158
 	closemsg
 	releaseall

@@ -96,6 +96,8 @@ P_Route208_BlackBelt:
 	faceplayer
 	goto_if_set 4490, P_Route208_GoToRoute209
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_ODD_KEYSTONE
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_ODD_KEYSTONE, 1, P_Route208_BagIsFull
 	setflag 4490
 	giveitem_no_check ITEM_ODD_KEYSTONE, 1

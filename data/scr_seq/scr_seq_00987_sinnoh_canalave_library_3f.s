@@ -265,17 +265,44 @@ P_CanalaveLibrary3F_SinnohFolkStories:
 	lockall
 	npc_msg 26
 	npc_msg 27
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	// Platino: AddMenuEntry MenuEntries_Text_SinnohFolkStory_Part1, 0
 	// Platino: AddMenuEntry MenuEntries_Text_SinnohFolkStory_Part2, 1
 	// Platino: AddMenuEntry MenuEntries_Text_SinnohFolkStory_Part3, 2
 	// Platino: AddMenuEntry MenuEntries_Text_SinnohFolkStory_Exit, 3
-	// Platino: ShowMenu 
+	ShowMulti
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq P_CanalaveLibrary3F_SinnohFolkStory1
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq P_CanalaveLibrary3F_SinnohFolkStory2
+	compare VAR_SPECIAL_RESULT, 2
+	goto_if_eq P_CanalaveLibrary3F_SinnohFolkStory3
 	goto P_CanalaveLibrary3F_PutSinnohFolkStoriesBack
+
+P_CanalaveLibrary3F_SinnohFolkStory1:
+	npc_msg 28
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_CanalaveLibrary3F_SinnohFolkStory2:
+	npc_msg 29
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_CanalaveLibrary3F_SinnohFolkStory3:
+	npc_msg 30
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
 
 P_CanalaveLibrary3F_PutSinnohFolkStoriesBack:
 	buffer_players_name 0
-	npc_msg 28
+	npc_msg 31
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -284,7 +311,7 @@ P_CanalaveLibrary3F_PutSinnohFolkStoriesBack:
 P_CanalaveLibrary3F_BgSign:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 29
+	npc_msg 32
 	wait_button_or_walk_away
 	closemsg
 	releaseall

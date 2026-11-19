@@ -57,8 +57,10 @@ P_SurvivalAreaNorthHouse_TryTeachMove:
 	// Platino: BufferPartyMonNickname 0, VAR_0x8000
 	npc_msg 2
 	// Platino: ShowMoveTutorMoveSelectionMenu VAR_0x8000, TUTOR_LOCATION_SURVIVAL_AREA, VAR_RESULT
+	setvar VAR_SPECIAL_x8003, 10000
 	// Platino: CheckCanAffordMove VAR_0x8003, VAR_RESULT
 	// Platino: GetPartyMonMoveCount VAR_RESULT, VAR_0x8000
+	setvar VAR_SPECIAL_x8002, 10000
 	goto P_SurvivalAreaNorthHouse_TeachMove
 
 P_SurvivalAreaNorthHouse_SeeYouThen:

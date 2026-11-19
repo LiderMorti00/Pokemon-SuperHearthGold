@@ -74,6 +74,8 @@ P_Route211East_AceTrainerM:
 	// Platino: ApplyMovement VAR_LAST_TALKED, Route211East_Movement_ExclamationMark
 	// Platino: WaitMovement 
 	npc_msg 1
+	setvar VAR_SPECIAL_x8004, ITEM_TM077
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM077, 1, P_Route211East_BagIsFull
 	giveitem_no_check ITEM_TM077, 1
 	setflag 4532

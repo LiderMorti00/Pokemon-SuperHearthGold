@@ -166,6 +166,8 @@ P_OreburghCity_Worker2:
 	faceplayer
 	goto_if_set 4118, P_OreburghCity_PutsASmileOnMyFace
 	npc_msg 6
+	setvar VAR_SPECIAL_x8004, ITEM_SUPER_POTION
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_SUPER_POTION, 1, P_OreburghCity_BagIsFull
 	giveitem_no_check ITEM_SUPER_POTION, 1
 	setflag 4118

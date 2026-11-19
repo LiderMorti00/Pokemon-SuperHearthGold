@@ -38,10 +38,39 @@ P_RotomsRoom_ApplianceSpot:
 	lockall
 	// Platino: GetPartyRotomCountAndFirst VAR_0x8003, VAR_RESULT
 	npc_msg 0
-	// Platino: InitLocalTextMenu 31, 15, 0, VAR_RESULT
+	MultiLocalText 31, 15, 0, 1, VAR_SPECIAL_RESULT
 	// Platino: SetMenuXOriginToRight 
-	// Platino: AddMenuEntryImm RotomsRoom_Text_Recall, 0
-	// Platino: ShowMenu 
+	AddMultiOption 1, 0
+	ShowMulti
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_RotomsRoom_GetRotomForRecall
+	closemsg
+	releaseall
+	end
+
+P_RotomsRoom_GetRotomForRecall:
+	// Platino: GetPartyRotomCountAndFirst VAR_0x8003, VAR_RESULT
+	goto P_RotomsRoom_ChooseRotomForRecall
+
+P_RotomsRoom_ChooseRotomForRecall:
+	npc_msg 2
+	// Platino: FadeScreenOut 
+	// Platino: WaitFadeScreen 
+	closemsg
+	// Platino: SelectMoveTutorPokemon 
+	// Platino: GetSelectedPartySlot LOCAL_VAR_PARTY_SLOT
+	// Platino: ReturnToField 
+	// Platino: FadeScreenIn 
+	// Platino: WaitFadeScreen 
+	goto P_RotomsRoom_ThatPokemonCantEnter
+
+P_RotomsRoom_ThatPokemonCantEnter:
+	npc_msg 3
+	goto P_RotomsRoom_ApplianceEnd
+
+P_RotomsRoom_ApplianceEnd:
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

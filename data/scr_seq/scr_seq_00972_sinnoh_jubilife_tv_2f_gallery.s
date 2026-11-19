@@ -46,10 +46,12 @@ P_JubilifeTV2FGallery_Hiker:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
+	setvar VAR_SPECIAL_x8007, 0
 	call_if_unset 4101, P__006F
 	end
 
 P__006F:
+	setvar VAR_SPECIAL_x8007, 1
 	return
 
 P_JubilifeTV2FGallery_PokemonBreederM:

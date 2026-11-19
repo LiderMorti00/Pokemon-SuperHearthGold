@@ -46,6 +46,8 @@ P_CanalaveCitySoutheastHouse_AceTrainerF:
 	faceplayer
 	goto_if_set 4112, P_CanalaveCitySoutheastHouse_ExplainSkillSwap
 	npc_msg 1
+	setvar VAR_SPECIAL_x8004, ITEM_TM048
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM048, 1, P_CanalaveCitySoutheastHouse_BagIsFull
 	giveitem_no_check ITEM_TM048, 1
 	setflag 4112

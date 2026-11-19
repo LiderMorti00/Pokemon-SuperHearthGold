@@ -37,6 +37,8 @@ P_GrandLakeRoute213NorthwestHouse_Clown:
 	faceplayer
 	goto_if_set 4582, P_GrandLakeRoute213NorthwestHouse_ExplainTrickRoom
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_TM092
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM092, 1, P_GrandLakeRoute213NorthwestHouse_BagIsFull
 	giveitem_no_check ITEM_TM092, 1
 	setflag 4582

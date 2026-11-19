@@ -110,7 +110,10 @@ P_MiningMuseum_FossilResearcher:
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq P_MiningMuseum_DeclinedRevival
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_0x8003
+	setvar VAR_SPECIAL_x8001, 0
+	setvar VAR_SPECIAL_x8004, 0
+	setvar VAR_SPECIAL_x8005, 0
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_x8003
 	goto P_MiningMuseum_FossilMenuLoop
 
 P_MiningMuseum_ExtractingPokemon:
@@ -136,6 +139,7 @@ P_MiningMuseum_DeclinedRevival:
 	end
 
 P_MiningMuseum_FossilMenuLoop:
+	setvar VAR_SPECIAL_x8006, 2000
 	// Platino: AddMenuEntry VAR_0x8006, VAR_0x8004
 	goto P_MiningMuseum_FossilMenuContinue
 

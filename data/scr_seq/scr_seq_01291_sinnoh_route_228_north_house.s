@@ -60,6 +60,7 @@ P_Route228NorthHouse_TryTeachUltimateMove:
 	// Platino: FadeScreenIn 
 	// Platino: WaitFadeScreen 
 	call P_Route228NorthHouse_CheckFinalStageStarter
+	setvar VAR_SPECIAL_x8002, 10000
 	call P_Route228NorthHouse_CheckHasUltimateMove
 	// Platino: GetPartyMonFriendship VAR_RESULT, VAR_0x8000
 	// Platino: BufferPartyMonSpecies 0, VAR_0x8000

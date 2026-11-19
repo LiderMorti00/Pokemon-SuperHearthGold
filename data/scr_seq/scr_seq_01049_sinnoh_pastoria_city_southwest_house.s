@@ -36,6 +36,7 @@ P_PastoriaCitySouthwestHouse_PokemonBreederF:
 	faceplayer
 	goto_if_set 4160, P_PastoriaCitySouthwestHouse_PlantingIsGood
 	npc_msg 0
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4160
 	closemsg
 	releaseall

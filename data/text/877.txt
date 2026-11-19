@@ -26,5 +26,8 @@ Look not into the Pokémon’s eyes.\rIn but an instant, you’ll have no\nrecol
 {STRVAR_1 3, 0, 0} put the book back.
 This book is titled “Sinnoh Folk\nStories.”
 Which story would you like to read?
+“Sinnoh Folk Story 1”\rPick clean the bones of Pokémon\ncaught in the sea or stream.\rThank them for the meals they\nprovide, and pick their bones clean.\rWhen the bones are as clean as can\nbe, set them free in the water from\fwhich they came.\rThe Pokémon will return, fully\nfleshed, and it begins anew.
+“Sinnoh Folk Story 2”\rThere lived a Pokémon in a forest.\rIn the forest, the Pokémon shed its\nhide to sleep as a human.\rAwakened, the human dons the\nPokémon hide to roam villages.
+“Sinnoh Folk Story 3”\rThere once were Pokémon that\nbecame very close to humans.\rThere once were humans and Pokémon\nthat ate together at the same table.\rIt was a time when there existed no\ndifferences to distinguish the two.
 {STRVAR_1 3, 0, 0} put the book back.
 On this floor, you will find many\nbooks on the myths and legends of\fthe Sinnoh region.

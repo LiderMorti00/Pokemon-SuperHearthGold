@@ -165,6 +165,7 @@ P_Route209_Fisherman:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
+	setvar VAR_SPECIAL_x8004, ITEM_GOOD_ROD
 	// Platino: BufferItemNameWithArticle 0, VAR_0x8004
 	// Platino: CapitalizeFirstLetter 0
 	goto_if_set 4502, P_Route209_AskExplainHowToFish
@@ -187,6 +188,7 @@ P_Route209_AskExplainHowToFish:
 
 P_Route209_AcceptGoodRod:
 	npc_msg 3
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4502
 	goto P_Route209_AskExplainHowToFish
 

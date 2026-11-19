@@ -63,6 +63,8 @@ P_CelesticTownNorthwestHouse_GymGuide:
 P_CelesticTownNorthwestHouse_TryGiveWiseGlasses:
 	goto_if_set 4719, P_CelesticTownNorthwestHouse_ExplainWiseGlasses
 	npc_msg 1
+	setvar VAR_SPECIAL_x8004, ITEM_WISE_GLASSES
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_WISE_GLASSES, 1, P_CelesticTownNorthwestHouse_BagIsFull
 	giveitem_no_check ITEM_WISE_GLASSES, 1
 	setflag 4719

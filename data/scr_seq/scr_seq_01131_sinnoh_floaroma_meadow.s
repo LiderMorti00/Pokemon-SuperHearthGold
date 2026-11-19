@@ -264,16 +264,54 @@ P_FloaromaMeadow_PokefanM:
 	goto P_FloaromaMeadow_ShowMenuHoney
 
 P_FloaromaMeadow_ShowMenuHoney:
-	// Platino: InitLocalTextMenu 30, 11, 0, VAR_RESULT
+	MultiLocalText 30, 11, 0, 1, VAR_SPECIAL_RESULT
 	// Platino: SetMenuXOriginToRight 
-	// Platino: AddMenuEntryImm FloaromaMeadow_Text_Times1, 0
-	// Platino: AddMenuEntryImm FloaromaMeadow_Text_Times10, 1
-	// Platino: AddMenuEntryImm FloaromaMeadow_Text_NoThanks, 2
-	// Platino: ShowMenu 
+	AddMultiOption 1, 0
+	AddMultiOption 2, 1
+	AddMultiOption 3, 2
+	ShowMulti
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_FloaromaMeadow_TryBuy1Honey
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_FloaromaMeadow_TryBuy10Honey
+	compare VAR_SPECIAL_x8008, 2
+	goto_if_eq P_FloaromaMeadow_OopsyWellComeAgain
 	goto P_FloaromaMeadow_OopsyWellComeAgain
 
+P_FloaromaMeadow_TryBuy1Honey:
+	// Platino: GoToIfNotEnoughMoney 100, FloaromaMeadow_NotEnoughMoney
+	setvar VAR_SPECIAL_x8005, 1
+	setvar VAR_SPECIAL_x8006, 100
+	goto P_FloaromaMeadow_TryGiveHoney
+
+P_FloaromaMeadow_TryBuy10Honey:
+	// Platino: GoToIfNotEnoughMoney 1000, FloaromaMeadow_NotEnoughMoney
+	setvar VAR_SPECIAL_x8005, 10
+	setvar VAR_SPECIAL_x8006, 1000
+	goto P_FloaromaMeadow_TryGiveHoney
+
 P_FloaromaMeadow_OopsyWellComeAgain:
-	npc_msg 1
+	npc_msg 4
+	wait_button_or_walk_away
+	// Platino: HideMoney 
+	closemsg
+	releaseall
+	end
+
+P_FloaromaMeadow_TryGiveHoney:
+	setvar VAR_SPECIAL_x8004, ITEM_HONEY
+	goto_if_no_item_space ITEM_HONEY, 2000, P_FloaromaMeadow_CantBuyHoneyBagIsFull
+	// Platino: RemoveMoney2 VAR_0x8006
+	// Platino: UpdateMoneyDisplay 
+	giveitem_no_check ITEM_HONEY, 2000
+	// Platino: HideMoney 
+	closemsg
+	releaseall
+	end
+
+P_FloaromaMeadow_CantBuyHoneyBagIsFull:
+	npc_msg 5
 	wait_button_or_walk_away
 	// Platino: HideMoney 
 	closemsg

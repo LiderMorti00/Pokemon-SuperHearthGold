@@ -44,6 +44,7 @@ P_CanalaveCitySailorEldritchHouse_ScaryDreamDarkPokemon:
 	end
 
 P_CanalaveCitySailorEldritchHouse_PokefanF:
+	setvar VAR_SPECIAL_x8008, 3
 	goto P_CanalaveCitySailorEldritchHouse_CantThankYouEnough
 
 P_CanalaveCitySailorEldritchHouse_CantThankYouEnough:

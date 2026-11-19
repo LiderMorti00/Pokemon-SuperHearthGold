@@ -54,14 +54,14 @@ P_VeilstoneCitySoutheastHouse_ClownSpinNorth:
 
 P_VeilstoneCitySoutheastHouse_ChooseHand:
 	npc_msg 3
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_0x8000, NO_EXIT_ON_B
-	// Platino: AddMenuEntryImm MenuEntries_Text_CoinCaseClown_Right, 0
-	// Platino: AddMenuEntryImm MenuEntries_Text_CoinCaseClown_Left, 1
-	// Platino: ShowMenu 
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_x8000
+	AddMultiOption 4, 0
+	AddMultiOption 5, 1
+	ShowMulti
 	goto P_VeilstoneCitySoutheastHouse_PoorShow
 
 P_VeilstoneCitySoutheastHouse_PoorShow:
-	npc_msg 4
+	npc_msg 6
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -71,7 +71,7 @@ P_VeilstoneCitySoutheastHouse_BlackBelt:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg 7
 	wait_button_or_walk_away
 	closemsg
 	releaseall

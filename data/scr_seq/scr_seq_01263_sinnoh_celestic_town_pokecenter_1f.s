@@ -70,6 +70,8 @@ P_CelesticTownPokecenter1F_ItsAboutTrust:
 
 P_CelesticTownPokecenter1F_GiveGreatBall:
 	npc_msg 4
+	setvar VAR_SPECIAL_x8004, ITEM_GREAT_BALL
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_GREAT_BALL, 1, P_CelesticTownPokecenter1F_BagIsFull
 	giveitem_no_check ITEM_GREAT_BALL, 1
 	setflag 4718

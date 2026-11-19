@@ -97,13 +97,32 @@ P_JubilifeCity_SchoolKidM1:
 	lockall
 	faceplayer
 	npc_msg 2
-	// Platino: InitGlobalTextListMenu 29, 11, 0, VAR_RESULT, NO_EXIT_ON_B
+	MultiLocalText 29, 11, 0, 1, VAR_SPECIAL_RESULT
 	// Platino: SetMenuXOriginToRight 
-	// Platino: AddListMenuEntry MenuEntries_Text_TypePreferenceFire, 0
-	// Platino: AddListMenuEntry MenuEntries_Text_TypePreferenceWater, 1
-	// Platino: AddListMenuEntry MenuEntries_Text_TypePreferenceGrass, 2
-	// Platino: ShowListMenu 
-	npc_msg 3
+	AddMultiOption 3, 0
+	AddMultiOption 4, 1
+	AddMultiOption 5, 2
+	ShowMulti
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_JubilifeCity_FireMustHaveFieryPersonality
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_JubilifeCity_WaterMustBeCool
+	npc_msg 6
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_JubilifeCity_FireMustHaveFieryPersonality:
+	npc_msg 7
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_JubilifeCity_WaterMustBeCool:
+	npc_msg 8
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -113,7 +132,7 @@ P_JubilifeCity_Twin:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg 9
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -123,7 +142,7 @@ P_JubilifeCity_ExpertM1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg 10
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq P_JubilifeCity_YouAreKnowledgeable
@@ -132,14 +151,14 @@ P_JubilifeCity_ExpertM1:
 	end
 
 P_JubilifeCity_YouAreKnowledgeable:
-	npc_msg 6
+	npc_msg 11
 	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 P_JubilifeCity_YoureNotKnowledgeable:
-	npc_msg 7
+	npc_msg 12
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -149,7 +168,7 @@ P_JubilifeCity_SchoolKidM2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg 13
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -162,7 +181,7 @@ P_JubilifeCity_ExpertM2:
 	goto P_JubilifeCity_HaveYouVisitedTVStation
 
 P_JubilifeCity_HaveYouVisitedTVStation:
-	npc_msg 9
+	npc_msg 14
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -172,7 +191,7 @@ P_JubilifeCity_AceTrainerM3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 10
+	npc_msg 15
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -182,7 +201,7 @@ P_JubilifeCity_KidWithNDS1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 11
+	npc_msg 16
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -192,7 +211,7 @@ P_JubilifeCity_KidWithNDS2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 12
+	npc_msg 17
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -201,7 +220,7 @@ P_JubilifeCity_KidWithNDS2:
 P_JubilifeCity_MapSignpost:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 13
+	npc_msg 18
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -210,7 +229,7 @@ P_JubilifeCity_MapSignpost:
 P_JubilifeCity_SignboardJubilifeCondominiums:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 14
+	npc_msg 19
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -219,7 +238,7 @@ P_JubilifeCity_SignboardJubilifeCondominiums:
 P_JubilifeCity_SignboardPoketchCompany:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 15
+	npc_msg 20
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -228,7 +247,7 @@ P_JubilifeCity_SignboardPoketchCompany:
 P_JubilifeCity_SignboardJubilifeTV:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 16
+	npc_msg 21
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -237,7 +256,7 @@ P_JubilifeCity_SignboardJubilifeTV:
 P_JubilifeCity_SignboardTrainersSchool:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 17
+	npc_msg 22
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -246,7 +265,7 @@ P_JubilifeCity_SignboardTrainersSchool:
 P_JubilifeCity_SignboardGlobalTerminal:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 18
+	npc_msg 23
 	wait_button_or_walk_away
 	closemsg
 	releaseall

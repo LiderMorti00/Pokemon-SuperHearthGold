@@ -77,6 +77,8 @@ P_FloaromaTown_Beauty:
 	// Platino: FindPartySlotWithFatefulEncounterSpecies VAR_RESULT, SPECIES_SHAYMIN
 	// Platino: CheckPartyHasSpecies VAR_RESULT, SPECIES_SHAYMIN
 	npc_msg 3
+	setvar VAR_SPECIAL_x8004, ITEM_GRACIDEA
+	setvar VAR_SPECIAL_x8005, 1
 	giveitem_no_check ITEM_GRACIDEA, 1
 	closemsg
 	releaseall

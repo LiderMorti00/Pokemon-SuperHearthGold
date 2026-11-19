@@ -150,6 +150,8 @@ P_CelesticTownCave_DefeatedCyrus:
 	// Platino: WaitFadeScreen 
 	// Platino: GetPlayerMapPos VAR_0x8004, VAR_0x8005
 	npc_msg 19
+	setvar VAR_SPECIAL_x8004, ITEM_HM03
+	setvar VAR_SPECIAL_x8005, 1
 	giveitem_no_check ITEM_HM03, 1
 	setflag 4723
 	npc_msg 20

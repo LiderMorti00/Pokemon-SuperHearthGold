@@ -41,14 +41,23 @@ P_VeilstoneStore3F_Attendant:
 	faceplayer
 	// Platino: CheckIsDepartmentStoreRegular VAR_RESULT
 	npc_msg 0
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
-	// Platino: AddMenuEntryImm MenuEntries_Text_WhatIsRecommended, 1
-	// Platino: AddMenuEntryImm MenuEntries_Text_NothingThanks, 0
-	// Platino: ShowMenu 
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	AddMultiOption 1, 1
+	AddMultiOption 2, 0
+	ShowMulti
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq P_VeilstoneStore3F_AttendantFalseSwipe
 	goto P_VeilstoneStore3F_AttendantPleaseEnjoyYourself
 
+P_VeilstoneStore3F_AttendantFalseSwipe:
+	npc_msg 3
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
 P_VeilstoneStore3F_AttendantPleaseEnjoyYourself:
-	npc_msg 1
+	npc_msg 4
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -58,7 +67,7 @@ P_VeilstoneStore3F_Twin:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg 5
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -68,7 +77,7 @@ P_VeilstoneStore3F_Guitarist:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg 6
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -78,7 +87,7 @@ P_VeilstoneStore3F_Breeder:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg 7
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -87,7 +96,7 @@ P_VeilstoneStore3F_Breeder:
 P_VeilstoneStore3F_Directory:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 5
+	npc_msg 8
 	wait_button_or_walk_away
 	closemsg
 	releaseall

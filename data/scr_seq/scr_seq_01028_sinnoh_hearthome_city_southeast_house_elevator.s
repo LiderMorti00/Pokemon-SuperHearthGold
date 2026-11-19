@@ -33,6 +33,36 @@ P_HearthomeCitySoutheastHouseElevator_OnFrame_Init:
 	lockall
 	// Platino: ApplyMovement LOCALID_PLAYER, HearthomeCitySoutheastHouseElevator_Movement_PlayerWalkIn
 	// Platino: WaitMovement 
-	// Platino: GetFloorsAbove VAR_ELEVATOR_FLOORS_ABOVE
+	get_dynamic_warp_floor_no VAR_SPECIAL_x800A
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800A
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_HearthomeCitySoutheastHouseElevator_ElevatorUp
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_HearthomeCitySoutheastHouseElevator_ElevatorDown
 	end
+
+P_HearthomeCitySoutheastHouseElevator_ElevatorUp:
+	call P_HearthomeCitySoutheastHouseElevator_ElevatorAnimation
+	// Platino: FadeScreenOut 
+	// Platino: WaitFadeScreen 
+	// Platino: Warp MAP_HEADER_HEARTHOME_CITY_SOUTHEAST_HOUSE_2F, 18, 3, DIR_SOUTH
+	// Platino: FadeScreenIn 
+	// Platino: WaitFadeScreen 
+	end
+
+P_HearthomeCitySoutheastHouseElevator_ElevatorDown:
+	call P_HearthomeCitySoutheastHouseElevator_ElevatorAnimation
+	// Platino: FadeScreenOut 
+	// Platino: WaitFadeScreen 
+	// Platino: Warp MAP_HEADER_HEARTHOME_CITY_SOUTHEAST_HOUSE_1F, 18, 3, DIR_SOUTH
+	// Platino: FadeScreenIn 
+	// Platino: WaitFadeScreen 
+	end
+
+P_HearthomeCitySoutheastHouseElevator_ElevatorAnimation:
+	wait_se SEQ_SE_DP_SELECT
+	elevator_anim VAR_SPECIAL_x8004, 4
+	// Platino: ApplyMovement LOCALID_PLAYER, HearthomeCitySoutheastHouseElevator_Movement_PlayerWalkOut
+	// Platino: WaitMovement 
+	return
 

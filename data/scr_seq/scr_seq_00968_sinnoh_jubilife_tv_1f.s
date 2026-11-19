@@ -111,6 +111,7 @@ P_JubilifeTV1F_MatchedPCBoxedPokemon:
 	goto P_JubilifeTV1F_CheckMatchedDigits
 
 P_JubilifeTV1F_CheckMatchedDigits:
+	setvar VAR_SPECIAL_x8008, 6
 	end
 
 P_JubilifeTV1F_AceTrainerM:

@@ -42,6 +42,8 @@ P_SolaceonTownPokemonNewsPress_GymGuide:
 
 P_SolaceonTownPokemonNewsPress_TryGiveReward:
 	goto_if_no_item_space ITEM_HEART_SCALE, 1, P_SolaceonTownPokemonNewsPress_BagIsFull
+	setvar VAR_SPECIAL_x8004, 0
+	setvar VAR_SPECIAL_x8005, 3
 	goto P_SolaceonTownPokemonNewsPress_GiveReward
 
 P_SolaceonTownPokemonNewsPress_AnotherAssignmentTomorrow:
@@ -70,6 +72,8 @@ P_SolaceonTownPokemonNewsPress_BagIsFull:
 P_SolaceonTownPokemonNewsPress_GiveReward:
 	npc_msg 4
 	clearflag 4712
+	setvar VAR_SPECIAL_x8004, ITEM_HEART_SCALE
+	setvar VAR_SPECIAL_x8005, 1
 	giveitem_no_check ITEM_HEART_SCALE, 1
 	closemsg
 	releaseall
@@ -100,14 +104,51 @@ P_SolaceonTownPokemonNewsPress_PC:
 	lockall
 	npc_msg 7
 	npc_msg 8
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	// Platino: AddMenuEntry MenuEntries_Text_Article_DuskBall, 0
 	// Platino: AddMenuEntry MenuEntries_Text_Article_HealBall, 1
 	// Platino: AddMenuEntry MenuEntries_Text_Article_QuickBall, 2
 	// Platino: AddMenuEntry MenuEntries_Text_Article_DiveBall, 3
 	// Platino: AddMenuEntry MenuEntries_Text_Article_Exit, 4
-	// Platino: ShowMenu 
+	ShowMulti
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_SolaceonTownPokemonNewsPress_ArticleDuskBall
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_SolaceonTownPokemonNewsPress_ArticleHealBall
+	compare VAR_SPECIAL_x8008, 2
+	goto_if_eq P_SolaceonTownPokemonNewsPress_ArticleQuickBall
+	compare VAR_SPECIAL_x8008, 3
+	goto_if_eq P_SolaceonTownPokemonNewsPress_ArticleDiveBall
 	goto P_SolaceonTownPokemonNewsPress_PCEnd
+
+P_SolaceonTownPokemonNewsPress_ArticleDuskBall:
+	npc_msg 9
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_SolaceonTownPokemonNewsPress_ArticleHealBall:
+	npc_msg 10
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_SolaceonTownPokemonNewsPress_ArticleQuickBall:
+	npc_msg 11
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+P_SolaceonTownPokemonNewsPress_ArticleDiveBall:
+	npc_msg 12
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
 
 P_SolaceonTownPokemonNewsPress_PCEnd:
 	closemsg

@@ -186,6 +186,7 @@ P_HearthomeCity_MrGoods:
 P_HearthomeCity_TryGiveGlobe:
 	goto_if_set 4140, P_HearthomeCity_TryGiveGymStatue
 	npc_msg 12
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4140
 	closemsg
@@ -203,6 +204,7 @@ P_HearthomeCity_TryGiveGymStatue:
 	goto_if_set 4141, P_HearthomeCity_TryGiveCuteCup
 	// Platino: CountBadgesAcquired VAR_RESULT
 	npc_msg 14
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4141
 	closemsg
@@ -212,6 +214,7 @@ P_HearthomeCity_TryGiveGymStatue:
 P_HearthomeCity_TryGiveCuteCup:
 	goto_if_set 4142, P_HearthomeCity_TryGiveCoolCup
 	npc_msg 15
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4142
 	closemsg
@@ -221,6 +224,7 @@ P_HearthomeCity_TryGiveCuteCup:
 P_HearthomeCity_TryGiveCoolCup:
 	goto_if_set 4143, P_HearthomeCity_TryGiveBeautyCup
 	npc_msg 16
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4143
 	closemsg
@@ -230,6 +234,7 @@ P_HearthomeCity_TryGiveCoolCup:
 P_HearthomeCity_TryGiveBeautyCup:
 	goto_if_set 4144, P_HearthomeCity_TryGiveToughCup
 	npc_msg 17
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4144
 	closemsg
@@ -239,6 +244,7 @@ P_HearthomeCity_TryGiveBeautyCup:
 P_HearthomeCity_TryGiveToughCup:
 	goto_if_set 4145, P_HearthomeCity_TryGiveSmartCup
 	npc_msg 18
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4145
 	closemsg
@@ -248,6 +254,7 @@ P_HearthomeCity_TryGiveToughCup:
 P_HearthomeCity_TryGiveSmartCup:
 	goto_if_set 4146, P_HearthomeCity_TryGiveBlueCrystal
 	npc_msg 19
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4146
 	closemsg
@@ -258,6 +265,7 @@ P_HearthomeCity_TryGiveBlueCrystal:
 	goto_if_set 4147, P_HearthomeCity_TryGivePinkCrystal
 	// Platino: GetUndergroundTalkCounter VAR_RESULT
 	npc_msg 20
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4147
 	closemsg
@@ -268,6 +276,7 @@ P_HearthomeCity_TryGivePinkCrystal:
 	goto_if_set 4148, P_HearthomeCity_TryGiveRedCrystal
 	// Platino: GetUndergroundItemsGivenAway VAR_RESULT
 	npc_msg 21
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4148
 	closemsg
@@ -278,6 +287,7 @@ P_HearthomeCity_TryGiveRedCrystal:
 	goto_if_set 4149, P_HearthomeCity_TryGiveYellowCrystal
 	// Platino: GetUndergroundFossilsUnearthed VAR_RESULT
 	npc_msg 22
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4149
 	closemsg
@@ -288,6 +298,7 @@ P_HearthomeCity_TryGiveYellowCrystal:
 	goto_if_set 4150, P_HearthomeCity_NoGoodsToGive
 	// Platino: GetUndergroundTrapsSet VAR_RESULT
 	npc_msg 23
+	setvar VAR_SPECIAL_x8005, 1
 	// Platino: CheckHasRoomForGoodsInPC VAR_0x8004, VAR_0x8005, VAR_RESULT
 	setflag 4150
 	closemsg

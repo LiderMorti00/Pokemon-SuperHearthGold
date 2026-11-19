@@ -65,13 +65,32 @@ P_GalacticHQ4F_Report:
 
 P_GalacticHQ4F_ReadWhichReport:
 	npc_msg 2
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	// Platino: AddMenuEntry MenuEntries_Text_GalacticReport_CreationOfSpace, 0
 	// Platino: AddMenuEntry MenuEntries_Text_GalacticReport_MythicalPokemon, 1
 	// Platino: AddMenuEntry MenuEntries_Text_GalacticReport_RedChain, 2
 	// Platino: AddMenuEntry MenuEntries_Text_GalacticReport_Exit, 3
-	// Platino: ShowMenu 
+	ShowMulti
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_GalacticHQ4F_ReportCreationOfSpace
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_GalacticHQ4F_ReportMythicalPokemon
+	compare VAR_SPECIAL_x8008, 2
+	goto_if_eq P_GalacticHQ4F_ReportRedChain
 	goto P_GalacticHQ4F_ReportEnd
+
+P_GalacticHQ4F_ReportCreationOfSpace:
+	npc_msg 3
+	goto P_GalacticHQ4F_ReadWhichReport
+
+P_GalacticHQ4F_ReportMythicalPokemon:
+	npc_msg 4
+	goto P_GalacticHQ4F_ReadWhichReport
+
+P_GalacticHQ4F_ReportRedChain:
+	npc_msg 5
+	goto P_GalacticHQ4F_ReadWhichReport
 
 P_GalacticHQ4F_ReportEnd:
 	closemsg

@@ -58,6 +58,8 @@ P_OreburghCityNorthHouse2F_Collector:
 	goto_if_set 4122, P_OreburghCityNorthHouse2F_SoManyKindsOfPokemon
 	// Platino: CheckPartyHasSpecies VAR_RESULT, SPECIES_GEODUDE
 	npc_msg 2
+	setvar VAR_SPECIAL_x8004, ITEM_HEAL_BALL
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_HEAL_BALL, 1, P_OreburghCityNorthHouse2F_BagIsFull
 	setflag 4122
 	giveitem_no_check ITEM_HEAL_BALL, 1

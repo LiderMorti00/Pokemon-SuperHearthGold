@@ -57,6 +57,8 @@ P_PastoriaCityMiddleHouse_YoureGood:
 P_PastoriaCityMiddleHouse_HandlePartyCombeeGenderCount:
 	// Platino: CheckPartyCombeeGenderCount VAR_RESULT
 	npc_msg 3
+	setvar VAR_SPECIAL_x8004, ITEM_MACHO_BRACE
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_MACHO_BRACE, 1, P_PastoriaCityMiddleHouse_BagIsFull
 	setflag 4161
 	giveitem_no_check ITEM_MACHO_BRACE, 1

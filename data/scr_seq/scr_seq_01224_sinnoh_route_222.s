@@ -222,6 +222,8 @@ P_Route222_RichBoy:
 	faceplayer
 	goto_if_set 4655, P_Route222_ExplainFling
 	npc_msg 1
+	setvar VAR_SPECIAL_x8004, ITEM_TM056
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM056, 1, P_Route222_BagIsFull
 	giveitem_no_check ITEM_TM056, 1
 	setflag 4655

@@ -50,6 +50,7 @@ P_EternaForestOutside_PokemonBreederF:
 	goto_if_set 4209, P_EternaForestOutside_ITradeBerriesForAccessories
 	// Platino: BufferAccessoryName 0, VAR_0x8004
 	npc_msg 0
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4209
 	closemsg
 	releaseall

@@ -97,8 +97,10 @@ P_SnowpointCityEastHouse_TryTeachMove:
 	// Platino: BufferPartyMonNickname 0, VAR_0x8000
 	npc_msg 7
 	// Platino: ShowMoveTutorMoveSelectionMenu VAR_0x8000, TUTOR_LOCATION_SNOWPOINT_CITY, VAR_RESULT
+	setvar VAR_SPECIAL_x8003, 10000
 	// Platino: CheckCanAffordMove VAR_0x8003, VAR_RESULT
 	// Platino: GetPartyMonMoveCount VAR_RESULT, VAR_0x8000
+	setvar VAR_SPECIAL_x8002, 10000
 	goto P_SnowpointCityEastHouse_TeachMove
 
 P_SnowpointCityEastHouse_BeSeeingYou:

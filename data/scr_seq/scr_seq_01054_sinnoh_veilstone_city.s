@@ -201,6 +201,8 @@ P_VeilstoneCity_Roughneck2:
 	faceplayer
 	goto_if_set 4175, P_VeilstoneCity_EmbargoMakesItemsUnusable
 	npc_msg 7
+	setvar VAR_SPECIAL_x8004, ITEM_TM063
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM063, 1, P_VeilstoneCity_BagIsFull
 	giveitem_no_check ITEM_TM063, 1
 	setflag 4175

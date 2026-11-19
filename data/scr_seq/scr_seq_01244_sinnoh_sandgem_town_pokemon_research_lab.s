@@ -50,6 +50,7 @@ P_SandgemTownLab_ScientistM:
 	end
 
 P_SandgemTownLab_SetVarIfArrivedInSunyshoreCity:
+	setvar VAR_SPECIAL_x8006, 0
 	return
 
 P_SandgemTownLab_ScientistF:

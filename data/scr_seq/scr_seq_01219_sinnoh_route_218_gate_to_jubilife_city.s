@@ -44,6 +44,7 @@ P_Route218GateToJubilifeCity_Fisherman:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
+	setvar VAR_SPECIAL_x8004, ITEM_OLD_ROD
 	buffer_item_name 0, ITEM_OLD_ROD
 	goto_if_set 4630, P_Route218GateToJubilifeCity_DidYouNeedTips
 	npc_msg 1
@@ -65,6 +66,7 @@ P_Route218GateToJubilifeCity_DidYouNeedTips:
 
 P_Route218GateToJubilifeCity_AcceptOldRod:
 	npc_msg 3
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4630
 	goto P_Route218GateToJubilifeCity_DidYouNeedTips
 

@@ -37,6 +37,8 @@ P_HearthomeCitySoutheastHouse2F_AceTrainerF:
 	goto_if_set 4152, P_HearthomeCitySoutheastHouse2F_ExplainShellBell
 	buffer_item_name 0, ITEM_SHELL_BELL
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_SHELL_BELL
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_SHELL_BELL, 1, P_HearthomeCitySoutheastHouse2F_BagIsFull
 	setflag 4152
 	giveitem_no_check ITEM_SHELL_BELL, 1

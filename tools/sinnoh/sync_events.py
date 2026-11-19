@@ -66,7 +66,9 @@ OPS = {"Eq": ("eq", lambda a, b: a == b), "Ne": ("ne", lambda a, b: a != b), "Lt
 BG_DIRS = {"BG_EVENT_DIR_NORTH": 0, "BG_EVENT_DIR_EAST": 1, "BG_EVENT_DIR_WEST": 2, "BG_EVENT_DIR_SOUTH": 3,
            "BG_EVENT_DIR_ALL": 4, "BG_EVENT_DIR_WEST_EAST": 4, "BG_EVENT_DIR_NORTH_SOUTH": 4}
 DIRS = {"DIR_NORTH": 0, "DIR_SOUTH": 1, "DIR_WEST": 2, "DIR_EAST": 3}
-DYN_POOL = ["VAR_SPECIAL_x8008", "VAR_SPECIAL_x8009", "VAR_SPECIAL_x800A", "VAR_SPECIAL_x800B"]
+DYN_POOL = ["VAR_SPECIAL_x8008", "VAR_SPECIAL_x8009", "VAR_SPECIAL_x800B"]
+# variables de Platino que se guardan entre bloques del script (ascensores)
+GLOBAL_DYN = {"VAR_ELEVATOR_FLOORS_ABOVE": "VAR_SPECIAL_x800A"}
 
 
 # --- lectura de Platino -----------------------------------------------------------------------------
@@ -194,8 +196,9 @@ class Flags:
 # --- traducción de scripts --------------------------------------------------------------------------
 
 class ScriptConverter:
-    def __init__(self, labels, order, texts, items, local_ids, flags, dyn_flag_names, var_max):
+    def __init__(self, labels, order, texts, items, local_ids, flags, dyn_flag_names, var_max, maps=None):
         self.labels, self.order, self.texts = labels, order, texts
+        self.maps = maps or {}     # MAP_HEADER_X de Platino -> (mapa de HGSS, desplazamiento x, z)
         self.items, self.local_ids, self.flags = items, local_ids, flags
         self.dyn_flag_names, self.var_max = dyn_flag_names, var_max
         self.msgs = []           # textos usados, en orden
@@ -249,7 +252,7 @@ class ScriptConverter:
     def emit_block(self, plat):
         out = self.out
         out.append(f"P_{plat}:")
-        state, dyn = {}, {}
+        state, dyn = {}, dict(GLOBAL_DYN)
         terminated = False
         for cmd, a in self.labels[plat]:
             r = self.command(cmd, a, state, dyn)
@@ -264,7 +267,9 @@ class ScriptConverter:
         out.append("")
 
     def dyn_target(self, var, dyn):
-        if var == "VAR_RESULT":
+        if var in GLOBAL_DYN:
+            hg = GLOBAL_DYN[var]
+        elif var == "VAR_RESULT":
             hg = "VAR_SPECIAL_RESULT"
         elif re.match(r"VAR_0x80[0-9A-F]{2}$", var) and int(var[4:], 16) <= 0x800B:
             hg = "VAR_SPECIAL_x" + var[6:]
@@ -410,6 +415,21 @@ class ScriptConverter:
             o += ["\tplay_se SEQ_SE_DP_SELECT", "\tlockall", "\tfaceplayer", "\tcallstd std_mart_intro",
                   "\tholdmsg", "\tsetvar VAR_SPECIAL_x8004, 0", "\tcallstd std_pokemart", "\treleaseall"]
             return None
+        if cmd == "SetVar" and len(a) == 2 and a[0] in GLOBAL_DYN:
+            v = self.value(a[1], state)
+            if isinstance(v, int):
+                o.append(f"\tsetvar {GLOBAL_DYN[a[0]]}, {v & 0xFFFF}")
+            elif a[1] in dyn:
+                o.append(f"\tcopyvar {GLOBAL_DYN[a[0]]}, {dyn[a[1]]}")
+            return None
+        if cmd == "SetVar" and len(a) == 2 and re.match(r"VAR_0x800[0-9A-B]$", a[0]) and a[1] not in dyn:
+            v = self.value(a[1], state)
+            dyn.pop(a[0], None)
+            state[a[0]] = v
+            if isinstance(v, int) or (isinstance(v, str) and item_name(v, self.items)):
+                hgv = v & 0xFFFF if isinstance(v, int) else item_name(v, self.items)
+                o.append(f"\tsetvar VAR_SPECIAL_x{a[0][6:]}, {hgv}")
+            return None
         if cmd == "SetVar" and len(a) == 2:
             if a[1] in dyn:
                 hg = self.dyn_target(a[0], dyn)
@@ -495,6 +515,38 @@ class ScriptConverter:
             if item:
                 o.append(f"\tbuffer_item_name {a[0]}, {item}")
             return None
+        # ascensores
+        if cmd == "GetFloorsAbove":
+            o.append(f"\tget_dynamic_warp_floor_no {self.dyn_target(a[0], dyn)}")
+            return None
+        if cmd == "SetSpecialLocation":
+            dest = self.maps.get(a[0])
+            if dest:
+                hg_map, dx, dz = dest
+                o.append(f"\tset_dynamic_warp {hg_map}, {a[1]}, {int(a[2]) - dx}, {int(a[3]) - dz}, {DIRS.get(a[4], 0)}")
+            return None
+        if cmd == "PlayElevatorAnimation":
+            var = a[0]
+            hgv = dyn.get(var) or ("VAR_SPECIAL_x" + var[6:] if re.match(r"VAR_0x800[0-9A-B]$", var) else None)
+            if hgv:
+                o.append(f"\televator_anim {hgv}, {a[1]}")
+            return None
+        if cmd == "BufferFloorNumber":
+            o.append(f"\tbuffer_dept_store_floor_no {a[0]}, {a[1]}")
+            return None
+        # menús
+        if cmd in ("InitGlobalTextMenu", "InitGlobalTextListMenu", "InitLocalTextMenu", "InitLocalTextListMenu"):
+            o.append(f"\tMultiLocalText {a[0]}, {a[1]}, {a[2]}, 1, {self.dyn_target(a[3], dyn)}")
+            return None
+        if cmd in ("AddMenuEntryImm", "AddListMenuEntry"):
+            n = self.msg(a[0])
+            v = self.value(a[1], state)
+            if n is not None and isinstance(v, int):
+                o.append(f"\tAddMultiOption {n}, {v}")
+            return None
+        if cmd in ("ShowMenu", "ShowListMenu"):
+            o.append("\tShowMulti")
+            return None
         if cmd == "RemoveObject":
             lid = self.local_ids.get(a[0])
             if lid is not None:
@@ -533,6 +585,16 @@ def main():
     visible_items = visible_item_table(plat)
     dyn_flag_names = collect_dynamic_flags(plat, [z["stem"] for z in zones])
     flags = Flags()
+    menu_texts = load_texts(plat, "menu_entries")
+    # MAP_HEADER_X de Platino -> (mapa de HGSS, recorte x, z) para los warps dinámicos
+    groups = {p.stem: json.loads(p.read_text()) for p in (SINNOH / "groups").glob("*.json")}
+    crop = {}
+    for gname, g in groups.items():
+        rows = [r for r, row in enumerate(g["maps"]) if any(m != "MAP_NONE" for m in row)]
+        cols = [c for c in range(len(g["maps"][0])) if any(row[c] != "MAP_NONE" for row in g["maps"])]
+        crop[gname] = (cols[0] * 32, rows[0] * 32)
+    maps_info = {"MAP_HEADER_" + z["stem"].upper(): (z["hg_map"], *crop[z["group"]]) for z in zones}
+    elevator_floors = {}   # mapa de HGSS -> plantas por encima (GetFloorsAbove de Platino)
 
     # limpia lo generado antes
     old = json.loads((SINNOH / "events.json").read_text()) if (SINNOH / "events.json").exists() else {}
@@ -549,7 +611,8 @@ def main():
         ev = json.loads(ev_path.read_text()) if ev_path.exists() else {"object_events": [], "bg_events": []}
         scr_path = maps_dir / stem / "scripts.s"
         labels, order = parse_script_file(scr_path)
-        texts = load_texts(plat, text_bank_name(scr_path))
+        texts = dict(menu_texts)
+        texts.update(load_texts(plat, text_bank_name(scr_path)))
         ov = overrides.get(stem, {})
 
         # 1) objetos: overrides, entrenadores y luego los de Platino
@@ -621,7 +684,14 @@ def main():
                 bgs.append(dict(entry, plat_script=b["script"]))
 
         # 3) scripts
-        conv = ScriptConverter(labels, order, texts, known_items, local_ids, flags, dyn_flag_names, var_max)
+        conv = ScriptConverter(labels, order, texts, known_items, local_ids, flags, dyn_flag_names, var_max,
+                               maps_info)
+        # plantas de los ascensores: SetSpecialLocation MAP_HEADER_X ... SetVar VAR_ELEVATOR_FLOORS_ABOVE, n
+        for body in labels.values():
+            dest = [a[0] for c, a in body if c == "SetSpecialLocation"]
+            floor = [a[1] for c, a in body if c == "SetVar" and a[0] == "VAR_ELEVATOR_FLOORS_ABOVE"]
+            if dest and floor and dest[0] in maps_info and floor[-1].lstrip("-").isdigit():
+                elevator_floors[maps_info[dest[0]][0]] = int(floor[-1])
         scrdefs, bodies = [], []
         includes = set()
 
@@ -699,6 +769,12 @@ def main():
            "text_banks": text_banks, "ext_flags": dict(sorted(flags.ext.items(), key=lambda kv: kv[1])),
            "zones": result}
     (SINNOH / "events.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+    lines = ["// Generado por tools/sinnoh/sync_events.py: plantas de los ascensores de Sinnoh",
+             "// (mapa, plantas por encima; lo devuelve get_dynamic_warp_floor_no, ver src/shg_elevators.c)",
+             f"#define SHG_NUM_ELEVATOR_FLOORS {len(elevator_floors)}",
+             "static const u16 sShgElevatorFloors[][2] = {"]
+    lines += [f"    {{ {m}, {f} }}," for m, f in sorted(elevator_floors.items())] + ["};"]
+    (SINNOH / "elevator_floors.h").write_text("\n".join(lines) + "\n")
     signs = SINNOH / "props" / "signs"
     signs.mkdir(parents=True, exist_ok=True)
     for model in SIGN_MODELS.values():

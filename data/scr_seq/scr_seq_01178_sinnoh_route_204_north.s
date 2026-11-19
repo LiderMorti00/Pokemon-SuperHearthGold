@@ -61,6 +61,8 @@ P_Route204North_AceTrainerF:
 	faceplayer
 	goto_if_set 4466, P_Route204North_CaptivateOppositeGender
 	npc_msg 1
+	setvar VAR_SPECIAL_x8004, ITEM_TM078
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM078, 1, P_Route204North_BagIsFull
 	giveitem_no_check ITEM_TM078, 1
 	setflag 4466

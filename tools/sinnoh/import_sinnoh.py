@@ -317,6 +317,9 @@ def append_objects(event_file, objects):
     return bytes(ev[:insert_at]) + b"".join(objects) + bytes(ev[insert_at:])
 
 
+DYNAMIC_WARP_MAP, DYNAMIC_WARP_ANCHOR = 4095, 256
+
+
 def pack_bg(script, kind, x, z, y, direction):
     """Evento de fondo (cartel, objeto oculto...): script, tipo, x, z, y (words) y dirección."""
     return struct.pack("<HHiiiI", script, kind, x, z, y, direction)
@@ -327,6 +330,8 @@ def build_events(warps, objects=(), bgs=()):
     data += struct.pack("<I", len(objects)) + b"".join(objects)
     data += struct.pack("<I", len(warps))
     for x, z, y, dest, dest_warp in warps:
+        if dest == DYNAMIC_WARP_MAP:
+            dest_warp = DYNAMIC_WARP_ANCHOR   # salida de ascensor: vuelve al warp dinámico
         data += struct.pack("<HHHHI", x, z, dest, dest_warp, y & 0xFFFFFFFF)
     data += struct.pack("<I", 0)                      # eventos de coordenadas
     return data

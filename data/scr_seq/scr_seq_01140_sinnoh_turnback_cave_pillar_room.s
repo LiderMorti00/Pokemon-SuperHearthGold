@@ -34,6 +34,8 @@ scrdef_end
 P_TurnbackCavePillarRoom_Pillar:
 	play_se SEQ_SE_DP_SELECT
 	lockall
+	setvar VAR_SPECIAL_x8004, 0
+	setvar VAR_SPECIAL_x8005, 15
 	// Platino: BufferNumber 0, VAR_0x8004
 	// Platino: BufferNumber 1, VAR_0x8005
 	npc_msg 0

@@ -39,6 +39,8 @@ P_HearthomeCityPokemonFanClub_Gentleman:
 	faceplayer
 	goto_if_set 4153, P_HearthomeCityPokemonFanClub_WeAreNumberOneFanClub
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_POFFIN_CASE
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_POFFIN_CASE, 1, P_HearthomeCityPokemonFanClub_BagIsFull
 	giveitem_no_check ITEM_POFFIN_CASE, 1
 	setflag 4153

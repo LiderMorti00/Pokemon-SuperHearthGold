@@ -1,2 +1,6 @@
 Would you like to buy some Honey for\nattracting Pokémon? Just $100 each!
+X 1
+X 10
+NO THANKS
 Oopsy!\nWell, come again.
+Oh, too bad!\nSeems to me your Bag’s full.\rYou can’t hold any more Honey, a shame\nthough it is.

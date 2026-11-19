@@ -96,14 +96,30 @@ P_VeilstoneStore5F_VendingMachine:
 	goto P_VeilstoneStore5F_VendingMachineMenu
 
 P_VeilstoneStore5F_VendingMachineMenu:
-	// Platino: InitGlobalTextMenu 1, 1, 0, LOCAL_VAR_DRINK_CHOICE
-	// Platino: AddMenuEntryImm MenuEntries_Text_FreshWater, 0
-	// Platino: AddMenuEntryImm MenuEntries_Text_SodaPop, 1
-	// Platino: AddMenuEntryImm MenuEntries_Text_Lemonade, 2
-	// Platino: AddMenuEntryImm MenuEntries_Text_NoThanks, 3
-	// Platino: ShowMenu 
-	npc_msg 6
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_x8009
+	AddMultiOption 6, 0
+	AddMultiOption 7, 1
+	AddMultiOption 8, 2
+	AddMultiOption 9, 3
+	ShowMulti
+	copyvar VAR_SPECIAL_x800B, VAR_SPECIAL_x8009
+	compare VAR_SPECIAL_x800B, 0
+	goto_if_eq P_VeilstoneStore5F_VendingMachineChooseFreshWater
+	compare VAR_SPECIAL_x800B, 1
+	goto_if_eq P_VeilstoneStore5F_VendingMachineChooseSodaPop
+	compare VAR_SPECIAL_x800B, 2
+	goto_if_eq P_VeilstoneStore5F_VendingMachineChooseLemonade
+	npc_msg 10
 	goto P_VeilstoneStore5F_VendingMachineClose
+
+P_VeilstoneStore5F_VendingMachineChooseFreshWater:
+	goto P_VeilstoneStore5F_VendingMachineDispenseDrink
+
+P_VeilstoneStore5F_VendingMachineChooseSodaPop:
+	goto P_VeilstoneStore5F_VendingMachineDispenseDrink
+
+P_VeilstoneStore5F_VendingMachineChooseLemonade:
+	goto P_VeilstoneStore5F_VendingMachineDispenseDrink
 
 P_VeilstoneStore5F_VendingMachineClose:
 	wait_button_or_walk_away
@@ -112,10 +128,27 @@ P_VeilstoneStore5F_VendingMachineClose:
 	releaseall
 	end
 
+P_VeilstoneStore5F_VendingMachineDispenseDrink:
+	// Platino: UpdateMoneyDisplay 
+	npc_msg 11
+	npc_msg 12
+	goto P_VeilstoneStore5F_VendingMachineBuyAnotherDrink
+
+P_VeilstoneStore5F_VendingMachineBagIsFull:
+	callstd std_bag_is_full
+	closemsg
+	// Platino: HideMoney 
+	releaseall
+	end
+
+P_VeilstoneStore5F_VendingMachineBuyAnotherDrink:
+	npc_msg 5
+	goto P_VeilstoneStore5F_VendingMachineMenu
+
 P_VeilstoneStore5F_Directory:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 7
+	npc_msg 13
 	wait_button_or_walk_away
 	closemsg
 	releaseall

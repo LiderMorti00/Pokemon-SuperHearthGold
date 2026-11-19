@@ -38,6 +38,7 @@ P_Route206CyclingRoadSouthGate_BattleGirl:
 	goto_if_set 4475, P_Route206CyclingRoadSouthGate_GoThroughMtCoronet
 	// Platino: BufferAccessoryName 0, VAR_0x8004
 	npc_msg 0
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4475
 	closemsg
 	releaseall

@@ -37,6 +37,8 @@ P_OreburghCityEastHouse2F_Youngster:
 	faceplayer
 	goto_if_set 4124, P_OreburghCityEastHouse2F_IThinkAboutBestPokeBalls
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_GREAT_BALL
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_GREAT_BALL, 1, P_OreburghCityEastHouse2F_BagIsFull
 	giveitem_no_check ITEM_GREAT_BALL, 1
 	setflag 4124

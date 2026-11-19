@@ -61,14 +61,23 @@ P_VeilstoneStore4F_Attendant:
 	faceplayer
 	// Platino: CheckIsDepartmentStoreRegular VAR_RESULT
 	npc_msg 2
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
-	// Platino: AddMenuEntryImm MenuEntries_Text_WhatIsRecommended, 1
-	// Platino: AddMenuEntryImm MenuEntries_Text_NothingThanks, 0
-	// Platino: ShowMenu 
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	AddMultiOption 3, 1
+	AddMultiOption 4, 0
+	ShowMulti
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq P_VeilstoneStore4F_AttendantYellowCushion
 	goto P_VeilstoneStore4F_AttendantPleaseEnjoyYourself
 
+P_VeilstoneStore4F_AttendantYellowCushion:
+	npc_msg 5
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
 P_VeilstoneStore4F_AttendantPleaseEnjoyYourself:
-	npc_msg 3
+	npc_msg 6
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -78,7 +87,7 @@ P_VeilstoneStore4F_SchoolBoy:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg 7
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -87,7 +96,7 @@ P_VeilstoneStore4F_SchoolBoy:
 P_VeilstoneStore4F_Directory:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 5
+	npc_msg 8
 	wait_button_or_walk_away
 	closemsg
 	releaseall

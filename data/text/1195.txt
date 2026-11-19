@@ -1,1 +1,4 @@
 Oh? ROTOM appears as if it wants to\nrevert to its original form.\rWould you like to recall it from\nthe motor?
+RECALL
+Which ROTOM are you choosing?
+That Pokémon can’t enter a motor.

@@ -134,6 +134,8 @@ P_Route215_BlackBelt:
 	faceplayer
 	goto_if_set 4602, P_Route215_PaybackIsHarsh
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_TM066
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM066, 1, P_Route215_BagIsFull
 	giveitem_no_check ITEM_TM066, 1
 	setflag 4602

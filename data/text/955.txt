@@ -3,6 +3,7 @@ Which prize would you like?
 Here you go!
 You don’t have enough Coins.
 There isn’t any room available for\nthat {STRVAR_1 8, 0, 0}.
+{STRVAR_1 8, 0, 0}{STRVAR_1 54, 1, 0}
 I woke up and realized my potential!\rSo, what potential was woken in me?\nWhat’s my hidden power, you ask?\rIt’s a power that lets me see the\nHidden Power of a Pokémon.\rWhen they learn that move, I can tell\nwhat type the move will be.\rSo, want me to use my hidden power?\rI’ll tell you what type your Pokémon’s\nHidden Power will be.
 I’ll tell you what type your Pokémon’s\nHidden Power will be.\rMy own hidden power lets me do that.
 If you want to know, ask me, and I’ll\nactivate my hidden power for you.

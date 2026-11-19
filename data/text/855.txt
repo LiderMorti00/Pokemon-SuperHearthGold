@@ -1,7 +1,12 @@
 When you walk with your Pokémon,\nthey gradually grow friendlier.
 Hiya, where’d you come from?\r...\rTwinleaf Town, huh...\nIt’s a nice place. Quiet and all.\rJubilife City is a big place, so it\nmight be a bit of a shock to you.
 The way you look...\nYou’re obviously a Trainer!\rCan you tell me what type of Pokémon\nyou like?
+FIRE
+WATER
+GRASS
 You chose the Grass type?\nNo wonder you look so calm.\rI think you need to watch out you don’t\nget burned by fire.
+The Fire type?\nYou must have a fiery personality.\rYou’d better watch out that fire isn’t\ndoused by water, though.
+A person that likes the Water type\nmust be somewhat cool.\rBut beware of being drained dry by\nthirsty grass.
 Did you see me on TV?\nI was in an interview!
 Hello, Trainer!\nDo you know much about Pokémon?
 Ah, I see!\nYou are knowledgeable!\rI imagine you wouldn’t see the need\nto visit the Trainers’ School, then.\rBut do visit if you have the time.\nYou may discover something new!

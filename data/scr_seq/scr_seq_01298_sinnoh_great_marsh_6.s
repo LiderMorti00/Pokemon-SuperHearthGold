@@ -61,6 +61,7 @@ P_GreatMarsh6_AceTrainerM:
 	faceplayer
 	goto_if_set 4773, P_GreatMarsh6_IllTryFindingMore
 	npc_msg 0
+	setvar VAR_SPECIAL_x8008, 0
 	goto P_GreatMarsh6_SetRedShard
 
 P_GreatMarsh6_IllTryFindingMore:
@@ -71,9 +72,11 @@ P_GreatMarsh6_IllTryFindingMore:
 	end
 
 P_GreatMarsh6_SetRedShard:
+	setvar VAR_SPECIAL_x8004, ITEM_RED_SHARD
 	goto P_GreatMarsh6_TryGiveShard
 
 P_GreatMarsh6_TryGiveShard:
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4773
 	closemsg
 	releaseall

@@ -51,42 +51,48 @@ P_OreburghCityPokecenter1F_WhatKindOfTrainerDoYouLike:
 P_OreburghCityPokecenter1F_BeWhichKindOfTrainer:
 	npc_msg 2
 	// Platino: LoadTrainerAppearances 
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
-	// Platino: AddMenuEntryImm MenuEntries_Text_TrainerAppearanceVariant1, 0
-	// Platino: AddMenuEntryImm MenuEntries_Text_TrainerAppearanceVariant2, 1
-	// Platino: AddMenuEntryImm MenuEntries_Text_TrainerAppearanceVariant3, 2
-	// Platino: AddMenuEntryImm MenuEntries_Text_TrainerAppearanceVariant4, 3
-	// Platino: AddMenuEntryImm MenuEntries_Text_TrainerAppearancesExit, 4
-	// Platino: ShowMenu 
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	AddMultiOption 3, 0
+	AddMultiOption 4, 1
+	AddMultiOption 5, 2
+	AddMultiOption 6, 3
+	AddMultiOption 7, 4
+	ShowMulti
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 4
+	goto_if_eq P_OreburghCityPokecenter1F_IllJustTalkToYouLater
+	compare VAR_SPECIAL_x8008, -2
+	goto_if_eq P_OreburghCityPokecenter1F_IllJustTalkToYouLater
 	// Platino: GetTrainerInfoTrainerClass VAR_0x8004, VAR_0x8005
 	// Platino: BufferTrainerClassNameWithArticle 0, VAR_0x8005
 	// Platino: CapitalizeFirstLetter 0
-	npc_msg 3
+	npc_msg 8
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq P_OreburghCityPokecenter1F_SetTrainerClass
 	goto P_OreburghCityPokecenter1F_BeWhichKindOfTrainer
 
-P_OreburghCityPokecenter1F_SetTrainerClass:
-	// Platino: BufferTrainerClassNameWithArticle 0, VAR_0x8005
-	npc_msg 4
-	setflag 4119
-	// Platino: CalculateTrainerInfoAppearance VAR_0x8004, VAR_0x8005
-	// Platino: SetTrainerInfoAppearance VAR_0x8005
-	goto P_OreburghCityPokecenter1F_IllJustTalkToYouLater
-
 P_OreburghCityPokecenter1F_IllJustTalkToYouLater:
-	npc_msg 5
+	npc_msg 9
 	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
+P_OreburghCityPokecenter1F_SetTrainerClass:
+	// Platino: BufferTrainerClassNameWithArticle 0, VAR_0x8005
+	npc_msg 10
+	setflag 4119
+	// Platino: CalculateTrainerInfoAppearance VAR_0x8004, VAR_0x8005
+	// Platino: SetTrainerInfoAppearance VAR_0x8005
+	goto P_OreburghCityPokecenter1F_IllJustTalkToYouLater
+
 P_OreburghCityPokecenter1F_AceTrainerF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 6
+	npc_msg 11
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -96,7 +102,7 @@ P_OreburghCityPokecenter1F_NinjaBoy:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg 12
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -109,7 +115,7 @@ P_OreburghCityPokecenter1F_Gentleman:
 	goto P_OreburghCityPokecenter1F_WhatOrWhoIsTeamGalactic
 
 P_OreburghCityPokecenter1F_WhatOrWhoIsTeamGalactic:
-	npc_msg 8
+	npc_msg 13
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -119,7 +125,7 @@ P_OreburghCityPokecenter1F_KidWithNDSWest:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 9
+	npc_msg 14
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -129,7 +135,7 @@ P_OreburghCityPokecenter1F_KidWithNDSEast:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 10
+	npc_msg 15
 	wait_button_or_walk_away
 	closemsg
 	releaseall

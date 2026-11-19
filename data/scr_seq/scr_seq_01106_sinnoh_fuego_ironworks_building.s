@@ -128,6 +128,8 @@ P_FuegoIronworksBuilding_MrFuego:
 	goto_if_set 4228, P_FuegoIronworksBuilding_CheckStarPieceForTradeAgain
 	goto_if_set 4229, P_FuegoIronworksBuilding_CheckStarPieceForTrade
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_STAR_PIECE
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_STAR_PIECE, 1, P_FuegoIronworksBuilding_BagIsFull
 	setflag 4229
 	giveitem_no_check ITEM_STAR_PIECE, 1

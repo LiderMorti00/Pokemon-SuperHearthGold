@@ -1,1 +1,11 @@
--
+Hello, thank you for taking the time\nout of your busy day to visit us.\rTo which floor may I take you?
+4F
+3F
+2F
+1F
+EXIT
+I look forward to serving you again.
+Sorry, we are already on that floor.
+Certainly.\nElevator going up.
+Certainly.\nElevator going down.
+Here we are!

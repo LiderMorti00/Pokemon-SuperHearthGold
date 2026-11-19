@@ -36,6 +36,8 @@ P_Route209LostTower5F_OldWoman1:
 	faceplayer
 	goto_if_set 4508, P_Route209LostTower5F_FantinaIsARegularVisitor
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_SPELL_TAG
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_SPELL_TAG, 1, P_Route209LostTower5F_BagIsFull
 	giveitem_no_check ITEM_SPELL_TAG, 1
 	setflag 4508
@@ -67,6 +69,8 @@ P_Route209LostTower5F_OldWoman2:
 	faceplayer
 	goto_if_set 4509, P_Route209LostTower5F_PokemonFindSolaceHere
 	npc_msg 3
+	setvar VAR_SPECIAL_x8004, ITEM_CLEANSE_TAG
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_CLEANSE_TAG, 1, P_Route209LostTower5F_BagIsFull
 	giveitem_no_check ITEM_CLEANSE_TAG, 1
 	setflag 4509

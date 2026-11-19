@@ -1,2 +1,18 @@
 Hello, thank you for shopping\nwith us today.\rTo which floor may I take you?
+5F
+4F
+3F
+2F
+1F
+B1F
+EXIT
 I look forward to serving you again.
+We are already on that floor?!
+Certainly.\nElevator going up.
+Certainly.\nElevator going down.
+Fifth floor: The Rooftop Square for\na refreshing break from shopping.
+Fourth floor: Desirable decoration\ngoods and Pokémon Dolls.
+Third floor: Technical Machines for\npowering up Pokémon.
+Second floor: Useful items for all\nPokémon battles.
+Ground floor: Medicine and items for\nall your adventure needs.
+Basement floor: Food and produce, with\nmany exclusives for you to enjoy.

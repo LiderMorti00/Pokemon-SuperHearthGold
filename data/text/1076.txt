@@ -4,4 +4,12 @@ Are you the forgetful type who\nforgets where Berries are planted?
 Yes, yes, I thought so!\nI’m the same way!\rI feel a sort of kinship with you!\nYou can have this Pokétch app!
 Oh, is that so.\rThen you’re OK even if I don’t give\nyou this nice thing.
 Um... Would you like some Mulch?\rIf you’re going to grow Berries,\nMulch is a good fertilizer.
+GROWTH MULCH$200
+DAMP MULCH$200
+STABLE MULCH$200
+GOOEY MULCH$200
+EXIT
 Um...\nPlease come again.
+You bought some {STRVAR_1 8, 0, 0}.
+That {STRVAR_1 8, 0, 0}...\rI made it by mixing high-grade soil\nwith Pokémon...um...you know...\rIt will promote healthy Berry growth.
+I’m so sorry...\nYour Bag appears to be full...

@@ -61,6 +61,7 @@ P_VeilstoneCitySouthwestHouse_Beauty:
 	// Platino: IncreasePartyMonFriendship 3, VAR_MAP_LOCAL_0x00
 	// Platino: TryGetRandomMassageGirlAccessory VAR_0x8004
 	npc_msg 4
+	setvar VAR_SPECIAL_x8005, 1
 	goto P_VeilstoneCitySouthwestHouse_DropByAgainTomorrow
 
 P_VeilstoneCitySouthwestHouse_ComeBackTomorrow:

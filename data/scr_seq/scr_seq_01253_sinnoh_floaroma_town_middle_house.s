@@ -63,6 +63,8 @@ P_FloaromaTownMiddleHouse_UsingPluckEatsBerry:
 
 P_FloaromaTownMiddleHouse_HeresTMForPluck:
 	npc_msg 3
+	setvar VAR_SPECIAL_x8004, ITEM_TM088
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM088, 1, P_FloaromaTownMiddleHouse_BagIsFull
 	setflag 4708
 	giveitem_no_check ITEM_TM088, 1

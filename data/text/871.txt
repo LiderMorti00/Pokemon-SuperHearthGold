@@ -11,7 +11,12 @@ PSYDUCK: Gua! Gua! Gwa?\nGuaa! Guuagwa?!
 The Gym Leader and Trainers of this Gym\noften go out to Iron Island.\rThey not only train their Pokémon,\nbut they work out as well.
 I’m flabbergasted!\nWhat could explode at Lake Valor?
 Do you wanna set sail?
+IRON ISLAND
+EXIT
+FULLMOON ISLAND
+NEWMOON ISLAND
 You just tell me whenever you need\nto set sail!
+Anchors aweigh!
 Canalave Library
 Canalave City Pokémon Gym\nLeader: Byron\fThe Man with the Steel Body!
 Canalave Dock

@@ -45,6 +45,8 @@ P_FlowerShop_Lass:
 	faceplayer
 	goto_if_set 4706, P_FlowerShop_UseSprayduckToWaterSoil
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_SPRAYDUCK
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4706
 	giveitem_no_check ITEM_SPRAYDUCK, 1
 	closemsg
@@ -65,6 +67,7 @@ P_FlowerShop_PokemonBreederF:
 	goto_if_set 4707, P_FlowerShop_PlantBerryInSoil
 	npc_msg 2
 	// Platino: AddVar VAR_0x8004, ITEM_CHERI_BERRY /* Cheri, Chesto, Pecha, Rawst or Aspear */
+	setvar VAR_SPECIAL_x8005, 1
 	setflag 4707
 	closemsg
 	releaseall

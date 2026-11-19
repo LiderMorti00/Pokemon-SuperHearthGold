@@ -29,7 +29,13 @@ Añade el tipo Hada, los Pokémon y movimientos hasta la Gen 9, y un viaje de po
          concursos y mapas sin uso de Platino), con sus warps.
    - [x] Música de Sinnoh (75 canciones de Platino; ver «Música»).
 4. [x] Encuentros, entrenadores, gimnasios y Liga de Sinnoh (ver «Fase 4»).
-5. [ ] Mapa del Pokégear, Pokédex de Sinnoh y caja de medallas de Platino.
+5. [ ] Resto de Sinnoh y menús (ver «Fase 5»).
+   - [x] NPCs, carteles, objetos del suelo y objetos ocultos.
+   - [x] Sprites de mapa de Platino que faltaban (Alto Mando, recepcionistas, guías...).
+   - [x] Ascensores.
+   - [ ] Mecanismos de los gimnasios (botones de Pradera, plataformas de Canal, engranajes de
+         Marina, reloj de Vetusta, sacos de Rocavelo, bolas de nieve de Puntaneva).
+   - [ ] Caja de medallas de Platino, mapa del Pokégear y Pokédex de Sinnoh.
 
 ## Compilar
 
@@ -125,7 +131,7 @@ Todo se genera desde el decomp de Platino:
 
 ```sh
 python3 tools/sinnoh/sync_encounters.py /ruta/a/pokeplatinum   # data/sinnoh/encounters.*
-python3 tools/sinnoh/sync_trainers.py /ruta/a/pokeplatinum     # trainers.*, services.json, ...
+python3 tools/sinnoh/sync_trainers.py /ruta/a/pokeplatinum     # trainers.*
 ```
 
 - **Pokémon salvajes** (`data/sinnoh/encounters.h`, bancos 142-245 de `data/Encounters.c`): niveles
@@ -137,29 +143,69 @@ python3 tools/sinnoh/sync_trainers.py /ruta/a/pokeplatinum     # trainers.*, ser
   banderas de "vencido" de los IDs 1040 o más van al bloque libre 0x9D4 (`src/shg_trainer_flags.c`).
   `trainerdatagen` nombra ahora los archivos con 4 cifras (con IDs de 4 cifras la narc salía
   desordenada).
-- **Gimnasios** (`data/scr_seq/scr_seq_00966_shg_sinnoh_gyms.s`): los 8 líderes con sus equipos de
+- **Gimnasios** (`data/scr_seq/include/shg_gyms.inc`): los 8 líderes con sus equipos de
   revancha de Platino (niveles 61-78) y su MT. Las medallas son las flags 1032-1039 (`FLAG_SHG_BADGE_*`)
   hasta que llegue la caja de medallas de Platino (fase 5). Los puzles de Platino no existen (no hay
   scripts de botones, ascensores ni engranajes), pero todos los líderes son accesibles: en Pradera
   Mananti espera junto a la entrada y en Canal los objetos se colocan a ras de suelo.
-- **Liga** (`data/scr_seq/scr_seq_00967_shg_sinnoh_league.s`): el guardia del Centro Pokémon norte
+- **Liga** (`data/scr_seq/include/shg_league.inc`): el guardia del Centro Pokémon norte
   comprueba las 8 medallas y lleva a la sala de Alecrán. Cada miembro del Alto Mando tapa la salida
   hasta que se le vence y la salida lleva directa a la sala siguiente (sin ascensores). Al vencer a
   Cintia se vuelve al Centro Pokémon norte (flag 1053, sin Salón de la Fama). La ronda se reinicia
   al hablar con el guardia.
-- **Servicios**: enfermeras y dependientes en Centros Pokémon y tiendas de Sinnoh (script 967).
-- Sprites: HGSS quitó algunos sprites de Platino (nadadores, Alto Mando...); el importador los
-  sustituye por otros de HGSS (`SPRITE_REMAP` en `import_sinnoh.py`).
-- Mapas: `zone_overrides.json` admite `objects` (con `flag` para ocultar), `scripts`, `warp_targets`
-  y `flatten_y`.
+- **Servicios**: enfermeras y dependientes en Centros Pokémon y tiendas de Sinnoh
+  (`data/scr_seq/include/shg_services.inc`).
+- Mapas: `zone_overrides.json` admite `objects` (`script` = etiqueta de un script de
+  `data/scr_seq/include/shg_*.inc`; `flag` para ocultar), `warp_targets` y `flatten_y`.
 
 `SINNOH_DEBUG_NO_TRAINERS=1` quita los entrenadores de los mapas (útil para probar rutas).
 
+## Fase 5: NPCs, carteles, objetos, sprites y ascensores
+
+```sh
+python3 tools/sinnoh/sync_sprites.py /ruta/a/pokeplatinum /ruta/a/pokeheartgold
+python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
+```
+
+- **Scripts por mapa**: `sync_events.py` traduce los scripts de Platino de cada NPC y cartel a
+  comandos de HGSS y genera un archivo de scripts y un banco de textos por mapa
+  (`data/scr_seq/scr_seq_00965..01311_sinnoh_*.s`, `data/text/855..1201.txt`) y
+  `data/sinnoh/events.json` (objetos, eventos de fondo y carteles de cada mapa). Traduce mensajes,
+  menús sí/no y de opciones, regalos de objetos, tiendas, gritos, hora del día, sexo del jugador y
+  ascensores. Lo que depende de la trama de Platino se evalúa como si ya hubiera terminado (las
+  variables de la historia toman su valor máximo y las flags de la historia están puestas). Los
+  comandos que no tienen equivalente quedan como comentario `// Platino: ...` en el script.
+- **NPCs**: 623, con sus diálogos. No se importan los ocultos por la historia, los de enlaces Wi-Fi
+  ni los de Subsuelo, concursos, Poké-reloj o el Frente de Batalla.
+- **Objetos**: 314 en el suelo (`std_itemball_variadic` de HGSS) y 261 ocultos (se recogen al pulsar
+  A delante de la casilla; el Zahorí de HGSS no los detecta).
+- **Flags ampliadas**: objetos, objetos ocultos y regalos de NPC usan las flags 0x1000-0x12FF (768),
+  guardadas en 96 bytes nuevos del bloque «misc» (`src/shg_flags.c`). Era todo el sitio que quedaba
+  en el primer bloque del guardado. Las partidas anteriores a este cambio se adaptan con
+  `python3 tools/sinnoh/convert_save.py vieja.sav nueva.sav`.
+- **Carteles**: en Platino son objetos con modelo 3D; aquí son edificios. Sus texturas se fusionan
+  en los conjuntos de texturas de las áreas (`tools/sinnoh/nitro_tex.py`, que reescribe el bloque
+  TEX0 y sus diccionarios) y la casilla queda bloqueada.
+- **Sprites** (`sync_sprites.py`): los sprites de Platino con índice < 146 son los de HGSS; el resto
+  se asigna por nombre. 30 sprites de NPC nuevos se convierten de los PNG de Platino (Alto Mando,
+  recepcionistas, guías de gimnasio, gente de Puntaneva...) y se añaden con `NEW_NPC_ENTRY` de
+  hg-engine (etiquetas 7000+). Los Pokémon usan los sprites de acompañante de hg-engine.
+- **Ascensores**: menú de plantas, animación y warp dinámico como en Platino. HGSS ya tiene esos
+  comandos; `src/shg_elevators.c` añade las plantas de los ascensores de Sinnoh a
+  `get_dynamic_warp_floor_no`. Los warps «volver al anterior» (4095) llevan el ancla 256 para que
+  HGSS recuerde desde dónde se entró.
+- `tools/narcpy.py` ordena los archivos por número y descarta duplicados (con más de 1000 archivos
+  se mezclaban nombres de 3 y 4 cifras).
+
 ### Limitaciones actuales
 
-- Sin NPCs normales, carteles ni objetos en el suelo (solo entrenadores, líderes, Liga y servicios).
-- Los sprites del Alto Mando son sustitutos de HGSS.
+- Mecanismos de gimnasio: en Platino son ~4000 líneas de código propio (`gym_features.c`) que
+  mueven agua, plataformas, engranajes y el reloj. Aquí todos los líderes son accesibles, pero sin
+  esos mecanismos.
+- Caja de medallas, mapa del Pokégear y Pokédex de Sinnoh: pendientes. Las medallas de Sinnoh son
+  flags.
+- Los diálogos con menús largos o funciones de Platino sin equivalente (tutores, intercambios...)
+  se quedan en el texto.
 - No se ha visto en el emulador la animación de apertura de las puertas (los warps sí funcionan).
-- Los ascensores y otros mapas que en Platino dependen de scripts propios no funcionan.
 - Las canciones de evento, combate y Pokémon legendarios de Platino no están importadas (solo las
   de los mapas).

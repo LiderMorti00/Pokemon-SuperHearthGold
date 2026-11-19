@@ -681,3 +681,6 @@ arm9 ShgTrainerFlagClear 02040544 2
 
 # --- Pokémon SuperHearthGold: flags ampliadas 0x1000-0x12FF (src/shg_flags.c) ---
 arm9 ShgGetFlagAddr 0205045C 2
+
+# --- Pokémon SuperHearthGold: plantas de los ascensores de Sinnoh (src/shg_elevators.c) ---
+0001 ShgMapNumToFloorNo 021EE81C 1

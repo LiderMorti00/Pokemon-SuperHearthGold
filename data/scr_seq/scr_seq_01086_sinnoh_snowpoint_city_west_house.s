@@ -74,6 +74,7 @@ P_SnowpointCityWestHouse_TryTrade:
 	// Platino: FadeScreenIn 
 	// Platino: WaitFadeScreen 
 	// Platino: InitNPCTrade NPC_TRADE_GASPAR_HAUNTER
+	setvar VAR_SPECIAL_x8004, 10000
 	// Platino: GetNPCTradeRequestedSpecies VAR_RESULT
 	goto P_SnowpointCityWestHouse_IAskedForMedicham
 

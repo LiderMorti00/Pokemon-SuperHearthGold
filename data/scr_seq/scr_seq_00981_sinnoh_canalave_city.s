@@ -160,33 +160,68 @@ P_CanalaveCity_SailorEldritch:
 	faceplayer
 	faceplayer
 	npc_msg 12
-	// Platino: InitGlobalTextMenu 1, 1, 0, VAR_RESULT
-	// Platino: AddMenuEntryImm MenuEntries_Text_CanalaveDock_IronIsland, 0
+	MultiLocalText 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	AddMultiOption 13, 0
 	call_if_set 4109, P_CanalaveCity_AddMenuEntryFullmoonIsland
 	call_if_set 4110, P_CanalaveCity_AddMenuEntryNewmoonIsland
-	// Platino: AddMenuEntryImm MenuEntries_Text_CanalaveDock_Exit, 4
-	// Platino: ShowMenu 
+	AddMultiOption 14, 4
+	ShowMulti
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq P_CanalaveCity_TakeShipToIronIsland
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq P_CanalaveCity_TakeShipToFullmoonIsland
+	compare VAR_SPECIAL_RESULT, 2
+	goto_if_eq P_CanalaveCity_TakeShipToNewmoonIsland
+	compare VAR_SPECIAL_RESULT, 3
+	goto_if_eq P_CanalaveCity_DontTakeShip
 	goto P_CanalaveCity_DontTakeShip
 
 P_CanalaveCity_AddMenuEntryFullmoonIsland:
-	// Platino: AddMenuEntryImm MenuEntries_Text_CanalaveDock_FullmoonIsland, 1
+	AddMultiOption 15, 1
 	return
 
 P_CanalaveCity_AddMenuEntryNewmoonIsland:
-	// Platino: AddMenuEntryImm MenuEntries_Text_CanalaveDock_NewmoonIsland, 2
+	AddMultiOption 16, 2
 	return
 
+P_CanalaveCity_TakeShipToIronIsland:
+	call P_CanalaveCity_SailorEldritchEnterShip
+	// Platino: TakeShipFromCanalave DIR_EAST, MAP_HEADER_IRON_ISLAND, 100, 502
+	releaseall
+	end
+
+P_CanalaveCity_TakeShipToFullmoonIsland:
+	call P_CanalaveCity_SailorEldritchEnterShip
+	// Platino: TakeShipFromCanalave DIR_WEST, MAP_HEADER_FULLMOON_ISLAND, 39, 277
+	releaseall
+	end
+
+P_CanalaveCity_TakeShipToNewmoonIsland:
+	call P_CanalaveCity_SailorEldritchEnterShip
+	// Platino: TakeShipFromCanalave DIR_EAST, MAP_HEADER_NEWMOON_ISLAND, 152, 277
+	releaseall
+	end
+
 P_CanalaveCity_DontTakeShip:
-	npc_msg 13
+	npc_msg 17
 	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
+P_CanalaveCity_SailorEldritchEnterShip:
+	npc_msg 18
+	closemsg
+	// Platino: ApplyMovement LOCALID_SAILOR_ELDRITCH, CanalaveCity_Movement_SailorEldritchFaceEast
+	// Platino: WaitMovement 
+	// Platino: ApplyMovement LOCALID_SAILOR_ELDRITCH, CanalaveCity_Movement_SetInvisible
+	// Platino: WaitMovement 
+	return
+
 P_CanalaveCity_SignboardCanalaveLibrary:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 14
+	npc_msg 19
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -195,7 +230,7 @@ P_CanalaveCity_SignboardCanalaveLibrary:
 P_CanalaveCity_GymSignpost:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 15
+	npc_msg 20
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -204,7 +239,7 @@ P_CanalaveCity_GymSignpost:
 P_CanalaveCity_SignboardCanalaveDock:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 16
+	npc_msg 21
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -213,7 +248,7 @@ P_CanalaveCity_SignboardCanalaveDock:
 P_CanalaveCity_MapSignpost:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 17
+	npc_msg 22
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -222,7 +257,7 @@ P_CanalaveCity_MapSignpost:
 P_CanalaveCity_SignboardSailorEldritchsHouse:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 18
+	npc_msg 23
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -232,7 +267,7 @@ P_CanalaveCity_SignboardHarborInn:
 	call P_CanalaveCity_CheckDoDarkraiEvent
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 19
+	npc_msg 24
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -249,7 +284,7 @@ P_CanalaveCity_SetMapLocalFalse:
 P_CanalaveCity_Door:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 20
+	npc_msg 25
 	wait_button_or_walk_away
 	closemsg
 	releaseall

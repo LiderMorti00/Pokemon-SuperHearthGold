@@ -75,9 +75,13 @@ P_Route229_PokefanM:
 	faceplayer
 	goto_if_set 4704, P_Route229_ThoseAreMyNuggets
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_NUGGET
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_NUGGET, 1, P_Route229_BagIsFull
 	giveitem_no_check ITEM_NUGGET, 1
 	setflag 4704
+	setvar VAR_SPECIAL_x8004, ITEM_NUGGET
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_NUGGET, 1, P_Route229_ThoseAreMyNuggets
 	npc_msg 1
 	giveitem_no_check ITEM_NUGGET, 1

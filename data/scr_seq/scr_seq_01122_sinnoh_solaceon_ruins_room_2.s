@@ -61,6 +61,8 @@ P_SolaceonRuinsRoom2_AskLoanHMDefog:
 
 P_SolaceonRuinsRoom2_LoanHMDefog:
 	npc_msg 3
+	setvar VAR_SPECIAL_x8004, ITEM_GREEN_SHARD
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_GREEN_SHARD, 1, P_SolaceonRuinsRoom2_BagIsFull
 	setflag 4294
 	giveitem_no_check ITEM_GREEN_SHARD, 1

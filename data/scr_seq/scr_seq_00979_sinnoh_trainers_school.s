@@ -127,6 +127,8 @@ P_TrainersSchool_ButBattlingIsTheBest:
 
 P_TrainersSchool_GivePotion:
 	npc_msg 9
+	setvar VAR_SPECIAL_x8004, ITEM_POTION
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_POTION, 1, P_TrainersSchool_BagIsFull
 	giveitem_no_check ITEM_POTION, 1
 	setflag 4103
@@ -221,15 +223,46 @@ P_TrainersSchool_Blackboard:
 
 P_TrainersSchool_StatusMenu:
 	npc_msg 16
-	// Platino: InitGlobalTextMenu 7, 2, 0, VAR_RESULT
-	// Platino: AddMenuEntryImm MenuEntries_Text_Status_Poisoned, 0
-	// Platino: AddMenuEntryImm MenuEntries_Text_Status_Paralyzed, 1
-	// Platino: AddMenuEntryImm MenuEntries_Text_Status_Asleep, 2
-	// Platino: AddMenuEntryImm MenuEntries_Text_Status_Burned, 3
-	// Platino: AddMenuEntryImm MenuEntries_Text_Status_Frozen, 4
-	// Platino: AddMenuEntryImm MenuEntries_Text_Exit, 5
+	MultiLocalText 7, 2, 0, 1, VAR_SPECIAL_RESULT
+	AddMultiOption 17, 0
+	AddMultiOption 18, 1
+	AddMultiOption 19, 2
+	AddMultiOption 20, 3
+	AddMultiOption 21, 4
+	AddMultiOption 22, 5
 	// Platino: ShowMenuMultiColumn 2
+	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8008, 0
+	goto_if_eq P_TrainersSchool_StatusPoisoned
+	compare VAR_SPECIAL_x8008, 1
+	goto_if_eq P_TrainersSchool_StatusParalyzed
+	compare VAR_SPECIAL_x8008, 2
+	goto_if_eq P_TrainersSchool_StatusAsleep
+	compare VAR_SPECIAL_x8008, 3
+	goto_if_eq P_TrainersSchool_StatusBurned
+	compare VAR_SPECIAL_x8008, 4
+	goto_if_eq P_TrainersSchool_StatusFrozen
 	goto P_TrainersSchool_BlackboardEnd
+
+P_TrainersSchool_StatusPoisoned:
+	npc_msg 23
+	goto P_TrainersSchool_StatusMenu
+
+P_TrainersSchool_StatusParalyzed:
+	npc_msg 24
+	goto P_TrainersSchool_StatusMenu
+
+P_TrainersSchool_StatusAsleep:
+	npc_msg 25
+	goto P_TrainersSchool_StatusMenu
+
+P_TrainersSchool_StatusBurned:
+	npc_msg 26
+	goto P_TrainersSchool_StatusMenu
+
+P_TrainersSchool_StatusFrozen:
+	npc_msg 27
+	goto P_TrainersSchool_StatusMenu
 
 P_TrainersSchool_BlackboardEnd:
 	closemsg

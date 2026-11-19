@@ -38,10 +38,12 @@ P_Route221House_ExpertM:
 	goto_if_set 4643, P_Route221House_ComeAgainTomorrow
 	// Platino: GetDailyRandomLevel VAR_0x8000
 	// Platino: BufferNumber 0, VAR_0x8000
+	setvar VAR_SPECIAL_x8003, 0
 	goto P_Route221House_CheckPartyMonLevel
 
 P_Route221House_TryGiveReward:
 	npc_msg 0
+	setvar VAR_SPECIAL_x8005, 1
 	goto P_Route221House_GiveReward
 
 P_Route221House_ComeAgainTomorrow:

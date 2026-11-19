@@ -15,3 +15,14 @@ Boo!\nWhere’s your sense of adventure?\rDon’t be shy about talking to people
 We were actually confident that we\nwould do pretty good.\rBut I’m completely impressed by how\ntough you are.\rIf you’d like, talk to my friend and\nget a nice item from him.
 The blackboard lists status changes\nthat may affect Pokémon in battle.
 Which would you like to read about?
+POISONED
+PARALYZED
+ASLEEP
+BURNED
+FROZEN
+EXIT
+If a Pokémon is poisoned, it will\nsteadily lose HP.\rThe effects of poison remain after\na battle.\rA poisoned Pokémon’s HP will drop\nwhile it is traveling.\rHeal a poisoning using an Antidote.
+If a Pokémon becomes paralyzed,\nits Speed stat drops.\rIn addition, it may not be able to\nmove while it is in battle.\rParalysis remains after battle.\nCure it using a Parlyz Heal.
+If a Pokémon falls asleep, it will be\nunable to attack.\rThe Pokémon may wake up on its own,\nbut if a battle ends while it is\fsleeping, it will stay asleep.\rWake it up using an Awakening.
+A burn reduces the Attack stat and\nsteadily reduces the victim’s HP.\rA burn lingers after battle.\nCure a burn using a Burn Heal.
+If a Pokémon is frozen, it becomes\ncompletely helpless.\rThe Pokémon may thaw out on its own,\nbut if a battle ends while it is\ffrozen, it will stay frozen.\rThaw it out using an Ice Heal.

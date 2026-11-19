@@ -37,6 +37,8 @@ P_EternaCityCondominiums2F_ExpertF:
 	faceplayer
 	goto_if_set 4138, P_EternaCityCondominiums2F_LongHistory
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_TM067
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM067, 1, P_EternaCityCondominiums2F_BagIsFull
 	setflag 4138
 	giveitem_no_check ITEM_TM067, 1

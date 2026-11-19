@@ -35,6 +35,8 @@ P_SurvivalAreaSouthHouse_BlackBelt:
 	faceplayer
 	goto_if_set 4728, P_SurvivalAreaSouthHouse_ExplainFacade
 	npc_msg 0
+	setvar VAR_SPECIAL_x8004, ITEM_TM042
+	setvar VAR_SPECIAL_x8005, 1
 	goto_if_no_item_space ITEM_TM042, 1, P_SurvivalAreaSouthHouse_BagIsFull
 	giveitem_no_check ITEM_TM042, 1
 	setflag 4728
