@@ -218,7 +218,7 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
 - Mecanismos de gimnasio: en Platino son ~4000 líneas de código propio (`gym_features.c`) que
   mueven agua, plataformas, engranajes y el reloj. Aquí todos los líderes son accesibles, pero sin
   esos mecanismos.
-- Pokédex de Sinnoh: pendiente.
+- Pokédex: en Sinnoh se usa la Nacional, como en Kanto.
 - Mapa del Pokégear en Sinnoh: sin miniatura de cada ciudad ni marcas de Volar; Volar desde Sinnoh
   sigue mostrando el mapa de Johto y Kanto.
 - Ficha en Sinnoh: como la ficha queda en la pantalla de arriba, se gira con ←/→ y se cierra con
