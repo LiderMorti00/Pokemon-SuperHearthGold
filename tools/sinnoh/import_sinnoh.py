@@ -527,6 +527,62 @@ def build_badge_case():
     save(TRAINER_CARD_NARC, narc)
 
 
+# --- mapa de Sinnoh del Pokégear (ver tools/sinnoh/sync_pokegear_map.py y src/shg_pokegear.c) --------
+POKEGEAR_MAP_NARC = "a/1/4/4"
+POKEGEAR_MAP_VANILLA_COUNT = 70
+
+
+def _tile8(img, tx, ty):
+    px = img.load()
+    return bytes(px[tx * 8 + x, ty * 8 + y] for y in range(8) for x in range(8))
+
+
+def _flip8(tile, h, v):
+    rows = [tile[8 * y:8 * y + 8] for y in range(8)]
+    if v:
+        rows = rows[::-1]
+    if h:
+        rows = [r[::-1] for r in rows]
+    return b"".join(rows)
+
+
+def build_pokegear_map():
+    from PIL import Image
+    narc = vanilla_narc(POKEGEAR_MAP_NARC)
+    assert len(narc.files) == POKEGEAR_MAP_VANILLA_COUNT
+    files = narc.files
+    img = Image.open(SINNOH / "pokegear_map" / "map.png")
+    tiles = [bytes(64)]
+    index = {tiles[0]: (0, 0)}
+    entries = [0] * (64 * 64)
+    for ty in range(img.height // 8):
+        for tx in range(img.width // 8):
+            t = _tile8(img, tx, ty)
+            for h in (0, 1):
+                for v in (0, 1):
+                    found = index.get(_flip8(t, h, v))
+                    if found is not None:
+                        break
+                if found is not None:
+                    break
+            if found is None:
+                index[t] = (len(tiles), 0)
+                tiles.append(t)
+                n, h, v = len(tiles) - 1, 0, 0
+            else:
+                n = found[0]
+            entries[ty * 64 + tx] = n | (h << 10) | (v << 11)
+    assert len(tiles) <= 1024, len(tiles)
+    files.append(_with_char(files[10], b"".join(tiles)))                     # 70: gráficos (8bpp)
+    files.append(_with_screen(files[11], entries))                         # 71: mapa 64x64
+    pal = img.getpalette()
+    colors = [tuple(pal[3 * i:3 * i + 3]) for i in range(176, 208)]
+    for frame in range(6):
+        files.append(_with_colors(files[20 + frame], colors, 176))         # 72-77: paletas
+    save(POKEGEAR_MAP_NARC, narc)
+    print(f"mapa del Pokégear: {len(tiles)} casillas")
+
+
 def main():
     zones = json.loads((SINNOH / "zones.json").read_text())["zones"]
     overrides = json.loads((SINNOH / "zone_overrides.json").read_text())
@@ -765,6 +821,7 @@ def main():
         headers.files.append(encode_header(z, area_remap[z["area"]], matrix_remap[(z["group"], cls)], events_bank, music))
     save("a/0/3/2", events)
     build_badge_case()
+    build_pokegear_map()
     save(MAP_HEADER_NARC, headers)
 
     print(f"Sinnoh: {len(zones)} mapas (cabeceras {NUM_HG_HEADERS}-{len(headers.files) - 1}), "

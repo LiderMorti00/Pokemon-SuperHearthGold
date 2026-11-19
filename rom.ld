@@ -949,3 +949,9 @@ GfGfx_EngineATogglePlanes = 0x02022C60 | 1;
 System_GetTouchNew = 0x02025358 | 1;
 TouchscreenHitbox_TouchNewIsIn = 0x02025320 | 1;
 FontID_Release = 0x02002DB4 | 1;
+/* Pokémon SuperHearthGold (src/shg_pokegear.c) */
+ShgOverlayManager_GetArgs = 0x020072A4 | 1;
+ShgOverlayManager_CreateAndGetData = 0x02007280 | 1;
+ShgHeap_Create = 0x0201A910 | 1;
+ShgMemset = 0x020E5B44;
+FieldSystem_InitPokegearArgs = 0x02092BE8 | 1;

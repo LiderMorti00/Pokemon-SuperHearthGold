@@ -690,3 +690,8 @@ arm9 ShgTrainerCardBadges 0206940C 3
 0051 ShgTrainerCardSetBanks 021E60D4 1
 0051 ShgTrainerCardTouch 021E6AAC 2
 0051 ShgTrainerCardFreeStrings 021E6038 1
+
+# --- Pokémon SuperHearthGold: mapa de Sinnoh en el Pokégear (src/shg_pokegear.c) ---
+arm9 ShgPokegearArgsPhone 02092D80 2
+arm9 ShgPokegearArgsMap 02092D8C 2
+0101 ShgPokegearMapInit 021E7740 2

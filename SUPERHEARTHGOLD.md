@@ -202,6 +202,14 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
   `src/shg_trainer_card.c` elige las medallas que se marcan y, al abrir la ficha en Sinnoh, cambia
   en la RAM del overlay 51 los archivos que carga, las posiciones de las medallas, el fondo BG3
   (la tapa, de 256 colores) y el orden de las pantallas, y se encarga del botón de la tapa.
+- **Mapa del Pokégear** (`python3 tools/sinnoh/sync_pokegear_map.py /ruta/a/pokeplatinum`): en
+  Sinnoh el mapa del Pokégear es el de Sinnoh, con el nombre de cada zona y su descripción, la
+  posición del jugador (en interiores, la de su entrada), desplazamiento y zoom. El script reescala
+  el mapa de Platino (7 píxeles por celda) a las casillas de 8x8 de HGSS y genera
+  `data/sinnoh/pokegear_map.h` y el banco de textos 1208 (1202-1207 están vacíos para poder cargar
+  el número con dos instrucciones). `src/shg_pokegear.c` calcula la posición y, al abrir el mapa,
+  cambia en la RAM del overlay 101 los gráficos (archivos 70-77 de `a/1/4/4`), el tamaño, los
+  textos y la lista de zonas.
 - `tools/narcpy.py` ordena los archivos por número y descarta duplicados (con más de 1000 archivos
   se mezclaban nombres de 3 y 4 cifras).
 
@@ -210,7 +218,9 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
 - Mecanismos de gimnasio: en Platino son ~4000 líneas de código propio (`gym_features.c`) que
   mueven agua, plataformas, engranajes y el reloj. Aquí todos los líderes son accesibles, pero sin
   esos mecanismos.
-- Mapa del Pokégear y Pokédex de Sinnoh: pendientes.
+- Pokédex de Sinnoh: pendiente.
+- Mapa del Pokégear en Sinnoh: sin miniatura de cada ciudad ni marcas de Volar; Volar desde Sinnoh
+  sigue mostrando el mapa de Johto y Kanto.
 - Ficha en Sinnoh: como la ficha queda en la pantalla de arriba, se gira con ←/→ y se cierra con
   B; no se puede firmar (hay que hacerlo en Johto o Kanto). Las medallas brillan o se ensucian con
   el estado de pulido de las 8 medallas de Johto (HGSS guarda uno por hueco), no se pueden pulir y

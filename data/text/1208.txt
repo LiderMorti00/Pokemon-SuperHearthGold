@@ -1,0 +1,118 @@
+Kanto
+Sinnoh
+{STRVAR_1 4, 0, 0}
+{STRVAR_1 28, 0, 0}
+Choose your destination.
+Fly to {STRVAR_1 4, 0, 0}?
+Close
+Fly
+Quit
+                       
+One of the lakes that is symbolic of\nthe water-rich Sinnoh region.
+A winter wonderland blanketed\nin thick snow.
+A speck of an island far from any\ncivilization.
+A rugged rock mountain blanketed\nby the volcanic ash it spews.
+A straight path bounded by the sea on\nboth sides.
+A small, crescent-shaped pond that\nlies inside a closed-off forest.
+A small, round pond that lies inside a\nclosed-off forest.
+Snow blows down from Mt. Coronet\ninto a harsh, ceaseless blizzard.
+A steep mountain path under\nfalling volcanic ash.
+The path makes its way up and down\namong rocky outcroppings.
+A town where hot-blooded Trainers\nhone their battling skills.
+A path that winds along sheer cliffs\nby the sea’s pounding waves.
+A rough path raked by a sandstorm\nblown in from the sea.
+This mountainous road leads from Mt.\nCoronet.
+A tiny port city where Trainers who\nlove battling more than eating gather.
+A sea route that stretches from west\nto east.
+A seaside path through wildly\ngrowing trees and plants.
+A town for Trainers who enjoy\nPokémon in ways other than battling.
+A small, ore-rich island that is off\nthe coast of Eterna City.
+Fields, rocks, sea and sandbars:\nlike a miniature Sinnoh region.
+A forest enveloped in chilly air.
+A wide, wooden walkway spans a large\npond.
+An old city with vestiges of\nancient history.
+A mountain path that tunnels through\nMt. Coronet.
+A tiny town that preserves the history\nof Sinnoh and the old ways of life.
+A canyon covered in untamed nature. It\nis always shrouded by a dense fog.
+A narrow route lined with deep,\ntall grass.
+Trainers seeking to become the best\narrive here after a long journey.
+The sprawling ironworks is located\nwith the forest at its back.
+A quiet stream and hilly terrain\nwith ledges for a fun adventure.
+Smoothly paved in asphalt, the Cycling\nRoad is heavenly for bicycle lovers.
+This area is always inundated by heavy\nrainfall.
+This city was made by carving out\nsteep, rocky mountains.
+A town of flower lovers, always\nperfumed with sweet flowers.
+A marine route full of jutting\nrocks and sandbars.
+Numerous wind turbines stand in the\nvicinity of the Valley Windworks.
+A relaxed and casual town for\npeople and Pokémon to live in.
+A road between Veilstone City and a\nlake. Wildly natural, or a mess.
+A charmingly natural path that wanders\npast many ponds and groves of trees.
+A friendly city where people and\nPokémon gather. A center of commerce.
+Streams wind past copses and grassy\npatches in a serene manner.
+The fourth lake of Sinnoh that was\nkept secret.
+A port city that is bisected by a\ncanal.
+A road carved into the rugged, rocky\nterrain at the foot of Mt. Coronet.
+A lush field of grass spreads from\nMt. Coronet’s sheer rock face.
+A short road loved by fishing\nenthusiasts as a hidden spot.
+The most modernized city in the Sinnoh\nregion.
+A path near a big city that keeps\nits relaxed, natural atmosphere.
+A vibrant mining town blessed with\na precious natural resource.
+A sturdy wall surrounds an estate\nthat takes up half of the road.
+One of the lakes that is symbolic of\nthe water-rich Sinnoh region.
+A port city that was built around the\nbay portion of the cape.
+A sandy beach extends from the road.
+One of the lakes that is symbolic of\nthe water-rich Sinnoh region.
+A winding path that twists through\ngrassy fields.
+This city was originally founded to\nprotect the Great Marsh.
+Offshore boulders form a jetty that\nbecalms waves reaching the beach.
+A small path through a lush, green,\nwooded area.
+A sandy town that is located right\nnext to a beach.
+This path weaves among deep puddles\nmade by the unending rainfall.
+A small town with the fresh scent of\nnew leaves in the air.
+A beautiful white-sand beach only five\nseconds on foot from Sandgem Town.
+The sea here is perfect for swimming,\nwith gentle winds and tides.
+A straight path hemmed by green grass\nand sparse stands of trees.
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
