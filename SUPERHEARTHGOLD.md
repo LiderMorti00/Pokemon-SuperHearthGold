@@ -215,6 +215,9 @@ python3 tools/sinnoh/sync_events.py /ruta/a/pokeplatinum
   0x12E0-0x12FF (se ponen al entrar en el pueblo). Volar en Sinnoh abre el mapa de Sinnoh y lleva
   delante del Centro Pokémon; al perder un combate se vuelve al último Centro de Sinnoh visitado.
   Lo genera `sync_pokegear_map.py` y lo usan las funciones de `src/shg_pokegear.c`.
+- **Iluminación**: las áreas de Sinnoh usan la iluminación de Platino (`data/sinnoh/lighting/`,
+  pasada al formato de texto de `data/arealight.narc`); con la de HGSS los tejados y puertas de los
+  edificios de Platino salían apagados.
 - `tools/narcpy.py` ordena los archivos por número y descarta duplicados (con más de 1000 archivos
   se mezclaban nombres de 3 y 4 cifras).
 

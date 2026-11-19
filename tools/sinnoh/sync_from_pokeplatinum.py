@@ -191,6 +191,10 @@ def main():
         prop_sets.add(area["mapPropSet"])
     for t in sorted(tex_sets):
         shutil.copy(field / "mapmodels" / "texture_sets" / f"{t}.nsbtx", DEST / "map_textures")
+    # iluminación de las áreas (import_sinnoh.py la pasa al formato de texto de HGSS)
+    (DEST / "lighting").mkdir(exist_ok=True)
+    for f in (field / "lighting").glob("lighting_set_*.json"):
+        shutil.copy(f, DEST / "lighting")
 
     order = (field / "props" / "models" / "map_prop_models.order").read_text().split()
     (DEST / "props" / "models" / "map_prop_models.order").write_text("\n".join(order) + "\n")

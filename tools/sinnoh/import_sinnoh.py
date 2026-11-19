@@ -458,6 +458,28 @@ def _tiles_4bpp(img, x0, y0, w, h, index_of):
     return bytes(out)
 
 
+AREA_LIGHT = "data/arealight.narc"
+
+
+def lighting_text(entries):
+    """Iluminación de Platino (JSON) -> archivo de texto de arealight.narc de HGSS."""
+    def rgb(c):
+        return f"{c['red']},{c['green']},{c['blue']},"
+    out = []
+    for e in entries:
+        out.append(f"{e['endTime']},")
+        for light in e["lights"]:
+            d = light["direction"]
+            out.append(f"{int(light['enabled'])},{light['color']['red']},{light['color']['green']},"
+                       f"{light['color']['blue']},{round(d['x'] * 4096)},{round(d['y'] * 4096)},"
+                       f"{round(d['z'] * 4096)},")
+        for k in ("diffuseColor", "ambientColor", "specularColor", "emissionColor"):
+            out.append(rgb(e[k]))
+        out.append("")
+    out.append("EOF")
+    return "\r\n".join(out).encode() + b"\r\n"
+
+
 def build_badge_case():
     from PIL import Image
     narc = vanilla_narc(TRAINER_CARD_NARC)
@@ -683,13 +705,23 @@ def main():
         map_tex.files.append(t.read_bytes())
     save("a/0/4/4", map_tex)
 
+    # iluminación: la de Platino (otra dirección y otros colores que la de HGSS: con la de HGSS los
+    # tejados y puertas de Platino salen apagados)
+    lights = vanilla_narc(AREA_LIGHT)
+    light_remap = {}
+    for f in sorted((SINNOH / "lighting").glob("lighting_set_*.json")):
+        light_remap[f.stem] = len(lights.files)
+        lights.files.append(lighting_text(json.loads(f.read_text())))
+    save(AREA_LIGHT, lights)
+
     area_narc = vanilla_narc("a/0/4/2")
     area_remap = {}
     for a, d in areas.items():
         bs = BUILDING_SETS[area_class[a]]
         area_remap[a] = len(area_narc.files)
+        light = light_remap.get(d.get("lightingSet"), bs["light"])
         area_narc.files.append(struct.pack("<HHHBB", list_index[(d["mapPropSet"], area_class[a])],
-                                           tex_remap[d["mapTextureSet"]], 0xFFFF, bs["area_type"], bs["light"]))
+                                           tex_remap[d["mapTextureSet"]], 0xFFFF, bs["area_type"], light))
     if len(area_narc.files) > 256:
         sys.exit("demasiadas áreas para el campo de 8 bits de la cabecera")
     save("a/0/4/2", area_narc)
